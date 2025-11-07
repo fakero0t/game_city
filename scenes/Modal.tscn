@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://modal_scene_uid"]
+
+[ext_resource type="Script" path="res://scripts/Modal.gd" id="1_modal"]
+[ext_resource type="Theme" path="res://assets/vocab_cat_theme.tres" id="2_theme"]
+
+[node name="Modal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_modal")
+
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.118, 0.106, 0.18, 0.8)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModalPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+
+[node name="ModalContent" type="VBoxContainer" parent="CenterContainer/ModalPanel"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/ModalPanel/ModalContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Modal Title"
+horizontal_alignment = 1
+
+[node name="BodyLabel" type="RichTextLabel" parent="CenterContainer/ModalPanel/ModalContent"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Modal body text goes here"
+fit_content = true
+scroll_active = false
+
+[node name="Spacer" type="Control" parent="CenterContainer/ModalPanel/ModalContent"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="CenterContainer/ModalPanel/ModalContent"]
+layout_mode = 2
+alignment = 1
+
+[node name="ActionButton" type="Button" parent="CenterContainer/ModalPanel/ModalContent/ButtonContainer"]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Action"
+

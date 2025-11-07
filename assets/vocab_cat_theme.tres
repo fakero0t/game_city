@@ -1,0 +1,223 @@
+[gd_resource type="Theme" load_steps=15 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/fredoka-bold.ttf" id="1"]
+[ext_resource type="FontFile" path="res://assets/fonts/nunito-regular.ttf" id="2"]
+
+[sub_resource type="StyleBoxFlat" id="button_normal"]
+bg_color = Color(0.545, 0.361, 0.965, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.925, 0.282, 0.6, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 4
+shadow_offset = Vector2(0, 4)
+shadow_color = Color(0, 0, 0, 0.15)
+
+[sub_resource type="StyleBoxFlat" id="button_hover"]
+bg_color = Color(0.6, 0.4, 1.0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.925, 0.282, 0.6, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 12
+shadow_offset = Vector2(0, 8)
+shadow_color = Color(0.545, 0.361, 0.965, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="button_pressed"]
+bg_color = Color(0.5, 0.33, 0.88, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.925, 0.282, 0.6, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+shadow_color = Color(0, 0, 0, 0.1)
+
+[sub_resource type="StyleBoxFlat" id="button_disabled"]
+bg_color = Color(0.545, 0.361, 0.965, 0.5)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.925, 0.282, 0.6, 0.5)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="panel_card"]
+bg_color = Color(0.176, 0.149, 0.251, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.545, 0.361, 0.965, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+shadow_color = Color(0, 0, 0, 0.15)
+
+[sub_resource type="StyleBoxFlat" id="panel_surface"]
+bg_color = Color(0.239, 0.204, 0.314, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="panel_modal"]
+bg_color = Color(0.176, 0.149, 0.251, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_size = 12
+shadow_offset = Vector2(0, 12)
+shadow_color = Color(0, 0, 0, 0.3)
+
+[sub_resource type="StyleBoxFlat" id="input_normal"]
+bg_color = Color(0.239, 0.204, 0.314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.3, 0.3, 0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 16
+content_margin_right = 16
+content_margin_top = 12
+content_margin_bottom = 12
+
+[sub_resource type="StyleBoxFlat" id="input_focus"]
+bg_color = Color(0.239, 0.204, 0.314, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.545, 0.361, 0.965, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 8
+shadow_offset = Vector2(0, 2)
+shadow_color = Color(0.545, 0.361, 0.965, 0.3)
+content_margin_left = 16
+content_margin_right = 16
+content_margin_top = 12
+content_margin_bottom = 12
+
+[sub_resource type="StyleBoxFlat" id="progress_bg"]
+bg_color = Color(0.239, 0.204, 0.314, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="progress_fill"]
+bg_color = Color(0.063, 0.725, 0.506, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxEmpty" id="focus_outline"]
+
+[resource]
+default_font = ExtResource("2")
+default_font_size = 16
+
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(0.973, 0.98, 1, 1)
+Button/colors/font_disabled_color = Color(0.7, 0.7, 0.7, 1)
+Button/constants/hseparation = 8
+Button/font_sizes/font_size = 18
+Button/fonts/font = ExtResource("1")
+Button/styles/normal = SubResource("button_normal")
+Button/styles/hover = SubResource("button_hover")
+Button/styles/pressed = SubResource("button_pressed")
+Button/styles/disabled = SubResource("button_disabled")
+Button/styles/focus = SubResource("focus_outline")
+
+Label/colors/font_color = Color(0.973, 0.98, 0.988, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.3)
+Label/constants/shadow_offset_x = 0
+Label/constants/shadow_offset_y = 2
+Label/constants/line_spacing = 4
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("2")
+
+Panel/styles/panel = SubResource("panel_card")
+
+PanelContainer/styles/panel = SubResource("panel_surface")
+
+LineEdit/colors/font_color = Color(0.973, 0.98, 0.988, 1)
+LineEdit/colors/font_placeholder_color = Color(0.6, 0.6, 0.6, 0.6)
+LineEdit/colors/font_selected_color = Color(1, 1, 1, 1)
+LineEdit/colors/selection_color = Color(0.545, 0.361, 0.965, 0.5)
+LineEdit/colors/caret_color = Color(0.545, 0.361, 0.965, 1)
+LineEdit/font_sizes/font_size = 16
+LineEdit/fonts/font = ExtResource("2")
+LineEdit/styles/normal = SubResource("input_normal")
+LineEdit/styles/focus = SubResource("input_focus")
+
+ProgressBar/colors/font_color = Color(0.973, 0.98, 0.988, 1)
+ProgressBar/font_sizes/font_size = 14
+ProgressBar/fonts/font = ExtResource("2")
+ProgressBar/styles/bg = SubResource("progress_bg")
+ProgressBar/styles/fg = SubResource("progress_fill")
+
+# Heading styles (use RichTextLabel with custom tags or separate Labels)
+RichTextLabel/colors/default_color = Color(0.973, 0.98, 0.988, 1)
+RichTextLabel/font_sizes/normal_font_size = 16
+RichTextLabel/font_sizes/bold_font_size = 18
+RichTextLabel/fonts/normal_font = ExtResource("2")
+RichTextLabel/fonts/bold_font = ExtResource("1")
+
+# Color definitions for reference in scripts
+# Primary Colors
+# primary_purple = Color(0.545, 0.361, 0.965, 1) # #8B5CF6
+# primary_blue = Color(0.231, 0.51, 0.965, 1) # #3B82F6
+# primary_pink = Color(0.925, 0.282, 0.6, 1) # #EC4899
+# primary_green = Color(0.063, 0.725, 0.506, 1) # #10B981
+
+# Secondary/Accent Colors
+# orange = Color(0.976, 0.451, 0.086, 1) # #F97316
+# yellow = Color(0.984, 0.749, 0.141, 1) # #FBBF24
+# cyan = Color(0.024, 0.714, 0.831, 1) # #06B6D4
+# lime = Color(0.518, 0.8, 0.086, 1) # #84CC16
+
+# Background Colors
+# dark_base = Color(0.118, 0.106, 0.18, 1) # #1E1B2E
+# light_base = Color(0.973, 0.98, 0.988, 1) # #F8FAFC
+# card_background = Color(0.176, 0.149, 0.251, 1) # #2D2640
+# surface = Color(0.239, 0.204, 0.314, 1) # #3D3450
+
+# Semantic Colors
+# success = Color(0.063, 0.725, 0.506, 1) # #10B981
+# error = Color(0.937, 0.267, 0.267, 1) # #EF4444
+# warning = Color(0.961, 0.620, 0.043, 1) # #F59E0B
+# info = Color(0.231, 0.51, 0.965, 1) # #3B82F6
+

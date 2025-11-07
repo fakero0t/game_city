@@ -1,0 +1,89 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4jvyt8w8b7xp"]
+
+[ext_resource type="Script" path="res://scripts/VocabularyError.gd" id="1_vocabulary_error"]
+
+[node name="VocabularyError" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vocabulary_error")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.117647, 0.105882, 0.180392, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ErrorPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/ErrorPanel"]
+layout_mode = 2
+
+[node name="TopSpacer" type="Control" parent="CenterContainer/ErrorPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="ErrorIcon" type="Label" parent="CenterContainer/ErrorPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.960784, 0.619608, 0.0431373, 1)
+theme_override_font_sizes/font_size = 72
+text = "⚠️"
+horizontal_alignment = 1
+
+[node name="Spacer1" type="Control" parent="CenterContainer/ErrorPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="ErrorTitle" type="Label" parent="CenterContainer/ErrorPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.972549, 0.980392, 0.988235, 1)
+theme_override_font_sizes/font_size = 36
+text = "Vocabulary Loading Error"
+horizontal_alignment = 1
+
+[node name="Spacer2" type="Control" parent="CenterContainer/ErrorPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="ErrorMessage" type="Label" parent="CenterContainer/ErrorPanel/VBoxContainer"]
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.972549, 0.980392, 0.988235, 1)
+theme_override_font_sizes/font_size = 18
+text = "Error message will be displayed here."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Spacer3" type="Control" parent="CenterContainer/ErrorPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="HelpText" type="Label" parent="CenterContainer/ErrorPanel/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.7)
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.972549, 0.980392, 0.988235, 1)
+theme_override_font_sizes/font_size = 14
+text = "Please check the console for details and ensure vocabulary.json is properly configured."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="BottomSpacer" type="Control" parent="CenterContainer/ErrorPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2

@@ -1,0 +1,193 @@
+[gd_scene load_steps=3 format=3 uid="uid://memory_game_uid"]
+
+[ext_resource type="Script" path="res://scripts/MemoryGame.gd" id="1_memory"]
+[ext_resource type="Theme" path="res://assets/vocab_cat_theme.tres" id="2_theme"]
+
+[node name="MemoryGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_memory")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.545, 0.361, 0.965, 1)
+
+[node name="HeaderBar" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 1240.0
+offset_bottom = 80.0
+
+[node name="TitleLabel" type="Label" parent="HeaderBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.973, 0.98, 0.988, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 28
+text = "Memory Match"
+
+[node name="ScoreLabel" type="Label" parent="HeaderBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.973, 0.98, 0.988, 1)
+theme_override_font_sizes/font_size = 22
+text = "Score: 0/8"
+horizontal_alignment = 2
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -220.0
+offset_right = 300.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 4
+
+[node name="Card1" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(140, 95)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "?"
+
+[node name="Card2" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(140, 95)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "?"
+
+[node name="Card3" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(140, 95)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "?"
+
+[node name="Card4" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(140, 95)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "?"
+
+[node name="Card5" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(140, 95)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "?"
+
+[node name="Card6" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(140, 95)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "?"
+
+[node name="Card7" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(140, 95)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "?"
+
+[node name="Card8" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(140, 95)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "?"
+
+[node name="Card9" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(140, 95)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "?"
+
+[node name="Card10" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(140, 95)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "?"
+
+[node name="Card11" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(140, 95)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "?"
+
+[node name="Card12" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(140, 95)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "?"
+
+[node name="Card13" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(140, 95)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "?"
+
+[node name="Card14" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(140, 95)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "?"
+
+[node name="Card15" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(140, 95)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "?"
+
+[node name="Card16" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(140, 95)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "?"
+
+[node name="Character" type="Node2D" parent="."]
+position = Vector2(640, 500)
+
+[node name="WinMessage" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -50.0
+offset_right = 200.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.973, 0.98, 0.988, 1)
+theme_override_font_sizes/font_size = 32
+text = "All Matched! 🎉"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1100.0
+offset_top = 620.0
+offset_right = 1240.0
+offset_bottom = 680.0
+theme_override_font_sizes/font_size = 20
+text = "Next"
+
