@@ -1,11 +1,11 @@
-# Vocabulary Cat - Version 1.0 PRD
+# Vocabulary Zoo - Version 1.0 PRD
 **Product Requirements Document**
 
 ---
 
 ## 1. Product Overview
 
-**Product Name:** Vocabulary Cat  
+**Product Name:** Vocabulary Zoo  
 **Version:** 1.0 (MVP - Navigation Flow)  
 **Target Audience:** Children aged 8-11  
 **Platform:** Godot 4.x  
@@ -83,7 +83,7 @@ Create an engaging vocabulary learning game frontend that feels like **playing, 
 ### 3.1 Main Screen
 
 **Visual Elements:**
-- Game logo/title: "Vocabulary Cat" (top center, Fredoka Bold, 56px)
+- Game logo/title: "Vocabulary Zoo" (top center, Fredoka Bold, 56px)
 - Large "Start" button (center of screen)
 - Background: `DARK_BASE` color (#1E1B2E)
 - Optional: Settings icon (top right, future functionality)
@@ -268,7 +268,7 @@ Each game has the same structure for v1:
       - fox_tail.png
     /ui
       - (icons, decorative elements)
-    vocab_cat_theme.tres
+    vocab_zoo_theme.tres
   /scenes
     - Main.tscn (Main Screen)
     - GamePortal.tscn (or use modal in Main)
@@ -287,8 +287,8 @@ Each game has the same structure for v1:
     - FillInBlank.gd
     - SentenceGen.gd
     - Completion.gd
-    - VocabCatColors.gd
-    - VocabCatConstants.gd
+    - VocabZooColors.gd
+    - VocabZooConstants.gd
   project.godot
 ```
 
@@ -358,7 +358,7 @@ Display/Window/Stretch/Aspect: keep
 **Implementation:**
 - Use `Tween` for UI animations
 - Use `AnimationPlayer` for character animations
-- Helper functions in `VocabCatConstants.gd`
+- Helper functions in `VocabZooConstants.gd`
 
 ---
 
@@ -408,10 +408,10 @@ Display/Window/Stretch/Aspect: keep
 
 ### 6.1 Theme Application
 
-- Apply `vocab_cat_theme.tres` at project level
+- Apply `vocab_zoo_theme.tres` at project level
 - All screens inherit base styling
-- Use `VocabCatColors.gd` for custom colors
-- Use `VocabCatConstants.gd` for animations
+- Use `VocabZooColors.gd` for custom colors
+- Use `VocabZooConstants.gd` for animations
 
 ### 6.2 Character Specifications
 
@@ -540,10 +540,10 @@ These will be addressed in future versions.
 
 ## 11. Resources & References
 
-- **Style Guide:** `vocab_cat_style_guide.md`
-- **Theme File:** `assets/vocab_cat_theme.tres`
-- **Color Constants:** `scripts/VocabCatColors.gd`
-- **Animation Helpers:** `scripts/VocabCatConstants.gd`
+- **Style Guide:** `vocab_zoo_style_guide.md`
+- **Theme File:** `assets/vocab_zoo_theme.tres`
+- **Color Constants:** `scripts/VocabZooColors.gd`
+- **Animation Helpers:** `scripts/VocabZooConstants.gd`
 - **Godot Documentation:** https://docs.godotengine.org/en/stable/
 
 ---

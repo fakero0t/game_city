@@ -70,7 +70,7 @@ func _play_exit_animation() -> void:
 
 func _on_action_button_pressed() -> void:
 	# Use button press animation helper
-	const Anim = preload("res://scripts/VocabCatConstants.gd")
+	const Anim = preload("res://scripts/VocabZooConstants.gd")
 	Anim.animate_button_press(action_button)
 	
 	# Wait briefly for animation to start
@@ -79,10 +79,10 @@ func _on_action_button_pressed() -> void:
 	emit_signal("modal_action_pressed")
 
 func _on_button_hover_enter() -> void:
-	const Anim = preload("res://scripts/VocabCatConstants.gd")
+	const Anim = preload("res://scripts/VocabZooConstants.gd")
 	Anim.create_hover_scale(action_button, true, 0.2)
 
 func _on_button_hover_exit() -> void:
-	const Anim = preload("res://scripts/VocabCatConstants.gd")
+	const Anim = preload("res://scripts/VocabZooConstants.gd")
 	Anim.create_hover_scale(action_button, false, 0.2)
 

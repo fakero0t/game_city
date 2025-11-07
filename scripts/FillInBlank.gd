@@ -4,9 +4,9 @@ extends Control
 ## Features rabbit character with tail wiggle animation
 
 const CharacterHelper = preload("res://scripts/CharacterHelper.gd")
-const Colors = preload("res://scripts/VocabCatColors.gd")
-const Anim = preload("res://scripts/VocabCatConstants.gd")
-const THEME = preload("res://assets/vocab_cat_theme.tres")
+const Colors = preload("res://scripts/VocabZooColors.gd")
+const Anim = preload("res://scripts/VocabZooConstants.gd")
+const THEME = preload("res://assets/vocab_zoo_theme.tres")
 
 class SentenceQuestion:
 	var sentence: String  # with ___ placeholder

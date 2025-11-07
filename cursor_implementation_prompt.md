@@ -1,4 +1,4 @@
-# Cursor Implementation Prompt: Vocabulary Cat Game Updates
+# Cursor Implementation Prompt: Vocabulary Zoo Game Updates
 
 ## ✅ STATUS: FULLY IMPLEMENTED
 **All updates described in this document have been successfully implemented across 5 PRs.**
@@ -8,7 +8,7 @@ Last updated: November 7, 2025
 ---
 
 ## Project Context
-This is an existing Godot 4.x educational game called "Vocabulary Cat" for children aged 8-11. We have updated multiple game screens with bug fixes and visual improvements.
+This is an existing Godot 4.x educational game called "Vocabulary Zoo" for children aged 8-11. We have updated multiple game screens with bug fixes and visual improvements.
 
 ---
 

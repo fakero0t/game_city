@@ -3,8 +3,8 @@ extends Control
 ## Features cat character with tail wiggle animation
 
 const CharacterHelper = preload("res://scripts/CharacterHelper.gd")
-const Colors = preload("res://scripts/VocabCatColors.gd")
-const Anim = preload("res://scripts/VocabCatConstants.gd")
+const Colors = preload("res://scripts/VocabZooColors.gd")
+const Anim = preload("res://scripts/VocabZooConstants.gd")
 
 var tail_base_x: float
 var wiggle_timer: Timer

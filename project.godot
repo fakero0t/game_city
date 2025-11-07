@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Vocabulary Cat"
+config/name="Vocabulary Zoo"
 run/main_scene="res://scenes/Main.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
@@ -27,4 +27,4 @@ window/stretch/mode="canvas_items"
 
 [gui]
 
-theme/custom="res://assets/vocab_cat_theme.tres"
+theme/custom="res://assets/vocab_zoo_theme.tres"

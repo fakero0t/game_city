@@ -11,3 +11,6 @@ res://scripts/CharacterHelper.gd
 res://scripts/Completion.gd
 res://scripts/Flashcards.gd
 res://scripts/VocabCatColors.gd
+res://scripts/Main.gd
+res://scripts/Modal.gd
+res://scripts/SentenceGen.gd

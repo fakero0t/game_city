@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://memory_game_uid"]
 
 [ext_resource type="Script" path="res://scripts/MemoryGame.gd" id="1_memory"]
-[ext_resource type="Theme" path="res://assets/vocab_cat_theme.tres" id="2_theme"]
+[ext_resource type="Theme" path="res://assets/vocab_zoo_theme.tres" id="2_theme"]
 
 [node name="MemoryGame" type="Control"]
 layout_mode = 3

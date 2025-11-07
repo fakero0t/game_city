@@ -1,11 +1,11 @@
-# Vocabulary Cat - Version 2.0 PRD
+# Vocabulary Zoo - Version 2.0 PRD
 **Product Requirements Document**
 
 ---
 
 ## 1. Product Overview
 
-**Product Name:** Vocabulary Cat  
+**Product Name:** Vocabulary Zoo  
 **Version:** 2.0 (Game Logic Implementation)  
 **Target Audience:** Children aged 8-11  
 **Platform:** Godot 4.x  
@@ -741,7 +741,7 @@ VocabularyManager="*res://scripts/VocabularyManager.gd"
 - Text fade-in: 0.3s (scale bounce)
 - Character reaction: 0.4-0.6s
 - Total feedback display: 1.5-2s
-- Use VocabCatConstants for consistency
+- Use VocabZooConstants for consistency
 
 ---
 
@@ -781,7 +781,7 @@ VocabularyManager="*res://scripts/VocabularyManager.gd"
       - bird.png (body)
       - bird_wing.png
     vocabulary.json (NEW)
-    vocab_cat_theme.tres
+    vocab_zoo_theme.tres
   /scenes
     - Main.tscn
     - Modal.tscn
@@ -803,8 +803,8 @@ VocabularyManager="*res://scripts/VocabularyManager.gd"
     - WordMatching.gd (NEW)
     - Completion.gd (updated)
     - CharacterHelper.gd (add bird)
-    - VocabCatColors.gd
-    - VocabCatConstants.gd
+    - VocabZooColors.gd
+    - VocabZooConstants.gd
   project.godot
 ```
 
@@ -1007,10 +1007,10 @@ These will be addressed in future versions (v2.1, v3.0).
 
 - **v1.0 PRD:** `v1_prd.md` (navigation flow foundation)
 - **v1.0 Task List:** `v1_task_list.md` (implementation details)
-- **Style Guide:** `vocab_cat_style_guide.md`
-- **Theme File:** `assets/vocab_cat_theme.tres`
-- **Color Constants:** `scripts/VocabCatColors.gd`
-- **Animation Helpers:** `scripts/VocabCatConstants.gd`
+- **Style Guide:** `vocab_zoo_style_guide.md`
+- **Theme File:** `assets/vocab_zoo_theme.tres`
+- **Color Constants:** `scripts/VocabZooColors.gd`
+- **Animation Helpers:** `scripts/VocabZooConstants.gd`
 - **Godot Documentation:** https://docs.godotengine.org/en/stable/
 
 ---

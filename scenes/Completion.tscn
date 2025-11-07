@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://completion_uid"]
 
 [ext_resource type="Script" path="res://scripts/Completion.gd" id="1_completion"]
-[ext_resource type="Theme" path="res://assets/vocab_cat_theme.tres" id="2_theme"]
+[ext_resource type="Theme" path="res://assets/vocab_zoo_theme.tres" id="2_theme"]
 
 [sub_resource type="Gradient" id="gradient_1"]
 offsets = PackedFloat32Array(0, 1)

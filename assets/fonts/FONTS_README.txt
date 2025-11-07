@@ -1,4 +1,4 @@
-REQUIRED FONTS FOR VOCAB CAT THEME
+REQUIRED FONTS FOR VOCAB ZOO THEME
 
 This theme requires two font families to be placed in this directory:
 
@@ -26,5 +26,5 @@ ALTERNATIVE:
 If you prefer different rounded fonts, you can substitute with:
 - Primary: Quicksand, Comfortaa, or Baloo
 - Body: Open Sans, Lato, or Rubik
-(Update the font paths in vocab_cat_theme.tres if you change fonts)
+(Update the font paths in vocab_zoo_theme.tres if you change fonts)
 

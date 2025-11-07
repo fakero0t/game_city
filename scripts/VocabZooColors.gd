@@ -1,5 +1,5 @@
 extends Node
-## VocabCat Color Palette
+## VocabZoo Color Palette
 ## Reference script for all colors defined in the style guide
 
 # Primary Colors

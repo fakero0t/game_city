@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://fillinblank_uid"]
 
 [ext_resource type="Script" path="res://scripts/FillInBlank.gd" id="1_fillinblank"]
-[ext_resource type="Theme" path="res://assets/vocab_cat_theme.tres" id="2_theme"]
+[ext_resource type="Theme" path="res://assets/vocab_zoo_theme.tres" id="2_theme"]
 
 [node name="FillInBlank" type="Control"]
 layout_mode = 3

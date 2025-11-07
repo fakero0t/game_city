@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://y4k1v0xog8lo"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_main"]
-[ext_resource type="Theme" path="res://assets/vocab_cat_theme.tres" id="2_theme"]
+[ext_resource type="Theme" path="res://assets/vocab_zoo_theme.tres" id="2_theme"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -52,7 +52,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 56
-text = "Vocabulary Cat"
+text = "Vocabulary Zoo"
 horizontal_alignment = 1
 
 [node name="StartButton" type="Button" parent="MenuContainer/VBoxContainer"]

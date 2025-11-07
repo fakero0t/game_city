@@ -1,13 +1,13 @@
 extends Control
-## Main Screen - Entry point for Vocabulary Cat
+## Main Screen - Entry point for Vocabulary Zoo
 ## Handles main menu, modals, and game container loading
 
 var modal_scene = preload("res://scenes/Modal.tscn")
 var error_scene = preload("res://scenes/VocabularyError.tscn")
 var modal_instance = null
 
-const Colors = preload("res://scripts/VocabCatColors.gd")
-const Anim = preload("res://scripts/VocabCatConstants.gd")
+const Colors = preload("res://scripts/VocabZooColors.gd")
+const Anim = preload("res://scripts/VocabZooConstants.gd")
 
 @onready var title_label = $MenuContainer/VBoxContainer/TitleLabel
 @onready var start_button = $MenuContainer/VBoxContainer/StartButton

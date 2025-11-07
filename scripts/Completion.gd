@@ -3,8 +3,8 @@ extends Control
 ## Features all 5 characters and celebration animations per style guide
 
 const CharacterHelper = preload("res://scripts/CharacterHelper.gd")
-const Colors = preload("res://scripts/VocabCatColors.gd")
-const Anim = preload("res://scripts/VocabCatConstants.gd")
+const Colors = preload("res://scripts/VocabZooColors.gd")
+const Anim = preload("res://scripts/VocabZooConstants.gd")
 
 func _ready() -> void:
 	_create_characters()

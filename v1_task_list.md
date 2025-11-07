@@ -1,7 +1,7 @@
-# Vocabulary Cat v1.0 - Task List
+# Vocabulary Zoo v1.0 - Task List
 
 **Based on:** v1_prd.md  
-**Style Guide:** vocab_cat_style_guide.md  
+**Style Guide:** vocab_zoo_style_guide.md  
 **Total PRs:** 2 (Sequential)  
 **Goal:** Complete implementation of PRD requirements - navigation flow with 4 game placeholders
 
@@ -9,18 +9,18 @@
 
 ## Style Guide Adherence
 
-All implementation must follow the Vocabulary Cat Style Guide specifications:
+All implementation must follow the Vocabulary Zoo Style Guide specifications:
 
 **Reference Files:**
-- `vocab_cat_style_guide.md` - Complete design specifications
-- `scripts/VocabCatColors.gd` - Color constants
-- `scripts/VocabCatConstants.gd` - Animation timing and spacing constants
-- `assets/vocab_cat_theme.tres` - Godot theme resource
+- `vocab_zoo_style_guide.md` - Complete design specifications
+- `scripts/VocabZooColors.gd` - Color constants
+- `scripts/VocabZooConstants.gd` - Animation timing and spacing constants
+- `assets/vocab_zoo_theme.tres` - Godot theme resource
 
 **Key Specifications:**
 
 **Colors:**
-- Use exact hex codes from VocabCatColors.gd
+- Use exact hex codes from VocabZooColors.gd
 - Gradients at 45-135 degree angles
 - Text must have 4.5:1 contrast ratio minimum
 
@@ -84,7 +84,7 @@ All implementation must follow the Vocabulary Cat Style Guide specifications:
 6. Spacing follows 8px base unit system
 7. All easing functions match style guide specifications
 
-Use `VocabCatColors.gd` and `VocabCatConstants.gd` for consistency.
+Use `VocabZooColors.gd` and `VocabZooConstants.gd` for consistency.
 
 ---
 
@@ -193,7 +193,7 @@ signal modal_closed()
 **Entrance Animation (per Style Guide):**
 - Overlay: Fade in 0→1 opacity over 0.2s (UI transition timing)
 - Panel: Scale from 0.9→1.0 with TRANS_BACK (bounce easing) over 0.3s
-- Use VocabCatConstants.DURATION_UI (0.25s) for timing reference
+- Use VocabZooConstants.DURATION_UI (0.25s) for timing reference
 - Easing: Tween.EASE_OUT + Tween.TRANS_BACK for bounce effect
 
 **Exit Animation:**
@@ -211,7 +211,7 @@ signal modal_closed()
 Main (Control - fullscreen anchors)
 ├─ Background (ColorRect - #1E1B2E, full screen)
 ├─ VBoxContainer (centered)
-│  ├─ TitleLabel (Label - "Vocabulary Cat")
+│  ├─ TitleLabel (Label - "Vocabulary Zoo")
 │  ├─ Spacer (Control - 100px min height)
 │  └─ StartButton (Button - "Start")
 ├─ GameContainer (Control - fullscreen, initially hidden)
@@ -243,9 +243,9 @@ Main (Control - fullscreen anchors)
   - Scale: 1.05 (0.2s transition)
   - Shadow: Glow `0 0 20px rgba(139, 92, 246, 0.6)`
   - Brightness: 110%
-  - Use VocabCatConstants.create_hover_scale() helper
+  - Use VocabZooConstants.create_hover_scale() helper
 - Press animation:
-  - Use VocabCatConstants.animate_button_press() helper
+  - Use VocabZooConstants.animate_button_press() helper
   - Scale: 0.95 (0.1s) → 1.05 (0.15s) → 1.0 (0.1s)
   - Easing: EASE_OUT + TRANS_CUBIC
 
@@ -335,7 +335,7 @@ func _show_completion_screen():
 
 **Changes:**
 - Add GameManager to AutoLoad section
-- Verify theme application: `theme/custom="res://assets/vocab_cat_theme.tres"`
+- Verify theme application: `theme/custom="res://assets/vocab_zoo_theme.tres"`
 - Verify display settings:
   - Width: 1280
   - Height: 720
@@ -366,7 +366,7 @@ This allows PR1 to test navigation without full game implementation.
 
 - [ ] GameManager correctly tracks game state (0-3)
 - [ ] GameManager signals fire correctly
-- [ ] Main screen displays with "Vocabulary Cat" title and "Start" button
+- [ ] Main screen displays with "Vocabulary Zoo" title and "Start" button
 - [ ] Start button has hover/press animations
 - [ ] Clicking Start shows Info Modal with correct content
 - [ ] Info Modal has entrance animation (scale bounce)
@@ -499,7 +499,7 @@ Flashcards (Control - fullscreen)
   - Border radius: 16px
   - Shadow: Level 2 `0 4px 12px rgba(0,0,0,0.15)`
   - Hover: Scale 1.05, glow shadow, brightness 110%
-  - Press: Use VocabCatConstants.animate_button_press()
+  - Press: Use VocabZooConstants.animate_button_press()
 
 **Script:**
 ```gdscript
@@ -807,7 +807,7 @@ func _on_game_completed(game_name: String):
 Upon completion of both PRs, the following must be true:
 
 ### Functional Requirements:
-✅ Main screen displays with "Vocabulary Cat" title and "Start" button  
+✅ Main screen displays with "Vocabulary Zoo" title and "Start" button  
 ✅ Clicking Start shows Game Portal modal with correct content and styling  
 ✅ All four game placeholders implemented with unique characters (Cat, Dog, Rabbit, Fox)  
 ✅ Each character's tail wiggles every 2 seconds via translation animation  
@@ -846,7 +846,7 @@ Upon completion of both PRs, the following must be true:
 ✅ All animations use specified easing (EASE_OUT for entrances, EASE_IN for exits)  
 ✅ Completion screen flash is exactly 0.1s  
 ✅ Touch targets meet 44x44px minimum  
-✅ VocabCatConstants helpers are used for animations where applicable  
+✅ VocabZooConstants helpers are used for animations where applicable  
 
 ---
 
@@ -876,7 +876,7 @@ Upon completion of both PRs, the following must be true:
 - **Completion flash**: 0.1s white flash fade out
 - **Completion text**: 0.4s scale bounce with TRANS_BACK
 - **Character pop-in**: 0.3s fade + scale, staggered 0.1s delays
-- **All timings align with VocabCatConstants**: DURATION_MICRO (0.125s), DURATION_UI (0.25s), etc.
+- **All timings align with VocabZooConstants**: DURATION_MICRO (0.125s), DURATION_UI (0.25s), etc.
 
 ### Testing Priority
 1. Complete game flow (start to finish)

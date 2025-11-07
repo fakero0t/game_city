@@ -1,4 +1,4 @@
-# Vocabulary Cat - v2 Task List: Game UI Improvements
+# Vocabulary Zoo - v2 Task List: Game UI Improvements
 
 This task list implements the improvements outlined in the Game UI Improvements plan. Tasks are organized into sequential PRs for systematic implementation.
 
@@ -10,10 +10,10 @@ This task list implements the improvements outlined in the Game UI Improvements 
 
 ### Task 1.1: Add Memory Card Button Styles to Theme
 
-**File:** `assets/vocab_cat_theme.tres`
+**File:** `assets/vocab_zoo_theme.tres`
 
 **Actions:**
-1. Open `assets/vocab_cat_theme.tres` in text editor (or Godot theme editor)
+1. Open `assets/vocab_zoo_theme.tres` in text editor (or Godot theme editor)
 
 2. Create three new StyleBoxFlat sub-resources after existing button styles (around line 62):
 
@@ -80,7 +80,7 @@ This task list implements the improvements outlined in the Game UI Improvements 
 
 ### Task 1.2: Add Answer Button State Styles to Theme
 
-**File:** `assets/vocab_cat_theme.tres`
+**File:** `assets/vocab_zoo_theme.tres`
 
 **Actions:**
 1. Add two more StyleBoxFlat sub-resources after the memory card styles:
@@ -134,7 +134,7 @@ This task list implements the improvements outlined in the Game UI Improvements 
 **Actions:**
 1. At top of script, preload the theme:
    ```gdscript
-   const THEME = preload("res://assets/vocab_cat_theme.tres")
+   const THEME = preload("res://assets/vocab_zoo_theme.tres")
    ```
 
 2. Remove `_style_card_face_down()` function (lines 158-178) - delete entire function
@@ -170,7 +170,7 @@ This task list implements the improvements outlined in the Game UI Improvements 
 **Actions:**
 1. At top of script, preload the theme:
    ```gdscript
-   const THEME = preload("res://assets/vocab_cat_theme.tres")
+   const THEME = preload("res://assets/vocab_zoo_theme.tres")
    ```
 
 2. Remove `_style_button_correct()` function (lines 166-185) - delete entire function
@@ -201,7 +201,7 @@ This task list implements the improvements outlined in the Game UI Improvements 
 
 **Actions:**
 Same pattern as MultipleChoice.gd:
-1. Preload theme at top: `const THEME = preload("res://assets/vocab_cat_theme.tres")`
+1. Preload theme at top: `const THEME = preload("res://assets/vocab_zoo_theme.tres")`
 2. Remove `_style_button_correct()` function
 3. Remove `_style_button_wrong()` function
 4. Update `_on_answer_pressed()` to use `THEME.get_stylebox("button_answer_correct"/"button_answer_wrong", "Button")`
@@ -215,7 +215,7 @@ Same pattern as MultipleChoice.gd:
 
 **Actions:**
 Same pattern as other quiz games:
-1. Preload theme at top: `const THEME = preload("res://assets/vocab_cat_theme.tres")`
+1. Preload theme at top: `const THEME = preload("res://assets/vocab_zoo_theme.tres")`
 2. Remove `_style_button_correct()` function
 3. Remove `_style_button_wrong()` function
 4. Update `_on_answer_pressed()` to use `THEME.get_stylebox("button_answer_correct"/"button_answer_wrong", "Button")`
@@ -229,7 +229,7 @@ Same pattern as other quiz games:
 
 **Actions:**
 Same pattern as other quiz games:
-1. Preload theme at top: `const THEME = preload("res://assets/vocab_cat_theme.tres")`
+1. Preload theme at top: `const THEME = preload("res://assets/vocab_zoo_theme.tres")`
 2. Remove `_style_button_correct()` function
 3. Remove `_style_button_wrong()` function
 4. Update `_on_answer_pressed()` to use `THEME.get_stylebox("button_answer_correct"/"button_answer_wrong", "Button")`
@@ -782,7 +782,7 @@ The `is_answering` flag state during retry is not a concern for this implementat
 
 ### Task 5.4: Verify Theme File Documentation
 
-**File:** `assets/vocab_cat_theme.tres`
+**File:** `assets/vocab_zoo_theme.tres`
 
 **Actions:**
 1. Ensure comments document the new style variations added
@@ -852,14 +852,14 @@ After all PRs are merged:
 - Do NOT modify VocabularyManager integration
 - Do NOT modify GameManager score tracking
 - Do NOT modify vocabulary.json structure
-- Keep all existing color constants (VocabCatColors.gd)
-- Keep all existing animation helpers (VocabCatConstants.gd)
+- Keep all existing color constants (VocabZooColors.gd)
+- Keep all existing animation helpers (VocabZooConstants.gd)
 - Maintain existing character creation functions (CharacterHelper.gd)
 
 ### Code Style Guidelines
 
-- Use VocabCatColors.gd constants for all colors
-- Use VocabCatConstants.gd (Anim) for all animations
+- Use VocabZooColors.gd constants for all colors
+- Use VocabZooConstants.gd (Anim) for all animations
 - Follow existing naming conventions
 - Maintain 4px borders and 12-16px corner radius for rounded elements
 - Use StyleBoxFlat for all custom styling

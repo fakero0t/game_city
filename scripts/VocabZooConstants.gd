@@ -1,5 +1,5 @@
 extends Node
-## VocabCat Animation & Style Constants
+## VocabZoo Animation & Style Constants
 ## Reference script for all timing, sizing, and style values from the style guide
 
 # Animation Durations (in seconds)
