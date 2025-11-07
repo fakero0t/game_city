@@ -4,3 +4,10 @@ res://scripts/MemoryGame.gd
 res://scripts/MultipleChoice.gd
 res://scripts/SynonymAntonym.gd
 res://scripts/WordMatching.gd
+res://assets/vocab_cat_theme.tres
+res://scenes/Modal.tscn
+res://scenes/VocabularyError.tscn
+res://scripts/CharacterHelper.gd
+res://scripts/Completion.gd
+res://scripts/Flashcards.gd
+res://scripts/VocabCatColors.gd

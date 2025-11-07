@@ -6,6 +6,7 @@ extends Control
 const CharacterHelper = preload("res://scripts/CharacterHelper.gd")
 const Colors = preload("res://scripts/VocabCatColors.gd")
 const Anim = preload("res://scripts/VocabCatConstants.gd")
+const THEME = preload("res://assets/vocab_cat_theme.tres")
 
 class Card:
 	var content: String
@@ -14,6 +15,7 @@ class Card:
 	var is_flipped: bool = false
 	var is_matched: bool = false
 	var button: Button
+	var font_size: int = 18  # Pre-calculated font size for content
 
 var cards: Array[Card] = []
 var selected_cards: Array[Card] = []
@@ -58,12 +60,15 @@ func _setup_game() -> void:
 	
 	# Create card data (8 word cards + 8 definition cards)
 	var card_data = []
+	var button_size = Vector2(140, 95)  # Fixed size from scene
+	
 	for i in range(8):
 		# Word card
 		var word_card = Card.new()
 		word_card.content = words[i]["word"]
 		word_card.is_word = true
 		word_card.pair_id = i
+		word_card.font_size = _calculate_font_size_for_card(word_card.content, button_size)
 		card_data.append(word_card)
 		
 		# Definition card
@@ -71,6 +76,7 @@ func _setup_game() -> void:
 		def_card.content = words[i]["definition"]
 		def_card.is_word = false
 		def_card.pair_id = i
+		def_card.font_size = _calculate_font_size_for_card(def_card.content, button_size)
 		card_data.append(def_card)
 	
 	# Shuffle cards
@@ -87,7 +93,40 @@ func _setup_game() -> void:
 		# Setup button
 		button.text = ""  # Face-down state (empty)
 		button.pressed.connect(_on_card_pressed.bind(i))
-		_style_card_face_down(button)
+		button.add_theme_stylebox_override("normal", THEME.get_stylebox("button_memory_down", "Button"))
+		button.add_theme_stylebox_override("hover", THEME.get_stylebox("button_memory_down", "Button"))
+		button.add_theme_stylebox_override("pressed", THEME.get_stylebox("button_memory_down", "Button"))
+		button.add_theme_color_override("font_color", Colors.LIGHT_BASE)
+
+func _calculate_font_size_for_card(text: String, button_size: Vector2) -> int:
+	# Create temporary label for size calculation
+	var temp_label = Label.new()
+	temp_label.text = text
+	temp_label.autowrap_mode = TextServer.AUTOWRAP_WORD
+	
+	# Calculate available space (button size minus padding)
+	var available_width = button_size.x - 32  # 16px padding each side
+	var available_height = button_size.y - 32  # 16px padding top/bottom
+	
+	# Start with default size and reduce until it fits
+	var font_size = 18
+	var min_font_size = 12
+	
+	while font_size >= min_font_size:
+		temp_label.add_theme_font_size_override("font_size", font_size)
+		temp_label.size = Vector2(available_width, 0)  # Set width constraint
+		var text_size = temp_label.get_minimum_size()
+		
+		# Check if text fits
+		if text_size.x <= available_width and text_size.y <= available_height:
+			temp_label.queue_free()
+			return font_size
+		
+		font_size -= 1
+	
+	# If we get here, use minimum font size
+	temp_label.queue_free()
+	return min_font_size
 
 func _on_card_pressed(card_index: int) -> void:
 	if is_checking:
@@ -112,7 +151,12 @@ func _on_card_pressed(card_index: int) -> void:
 func _flip_card(card: Card) -> void:
 	card.is_flipped = true
 	card.button.text = card.content
-	_style_card_face_up(card.button)
+	card.button.autowrap_mode = TextServer.AUTOWRAP_WORD  # Enable text wrapping
+	card.button.add_theme_font_size_override("font_size", card.font_size)  # Apply pre-calculated size
+	card.button.add_theme_stylebox_override("normal", THEME.get_stylebox("button_memory_up", "Button"))
+	card.button.add_theme_stylebox_override("hover", THEME.get_stylebox("button_memory_up", "Button"))
+	card.button.add_theme_stylebox_override("pressed", THEME.get_stylebox("button_memory_up", "Button"))
+	card.button.add_theme_color_override("font_color", Colors.DARK_BASE)
 	
 	# Flip animation
 	var tween = create_tween()
@@ -129,8 +173,14 @@ func _check_match() -> void:
 		# Match found!
 		card1.is_matched = true
 		card2.is_matched = true
-		_style_card_matched(card1.button)
-		_style_card_matched(card2.button)
+		card1.button.add_theme_stylebox_override("normal", THEME.get_stylebox("button_memory_matched", "Button"))
+		card1.button.add_theme_stylebox_override("hover", THEME.get_stylebox("button_memory_matched", "Button"))
+		card1.button.add_theme_stylebox_override("pressed", THEME.get_stylebox("button_memory_matched", "Button"))
+		card1.button.add_theme_color_override("font_color", Colors.LIGHT_BASE)
+		card2.button.add_theme_stylebox_override("normal", THEME.get_stylebox("button_memory_matched", "Button"))
+		card2.button.add_theme_stylebox_override("hover", THEME.get_stylebox("button_memory_matched", "Button"))
+		card2.button.add_theme_stylebox_override("pressed", THEME.get_stylebox("button_memory_matched", "Button"))
+		card2.button.add_theme_color_override("font_color", Colors.LIGHT_BASE)
 		
 		matches_found += 1
 		$HeaderBar/ScoreLabel.text = "Score: " + str(matches_found) + "/" + str(total_pairs)
@@ -153,73 +203,10 @@ func _check_match() -> void:
 func _flip_card_back(card: Card) -> void:
 	card.is_flipped = false
 	card.button.text = ""
-	_style_card_face_down(card.button)
-
-func _style_card_face_down(button: Button) -> void:
-	# Purple gradient background
-	var style = StyleBoxFlat.new()
-	style.bg_color = Colors.PRIMARY_PURPLE
-	style.corner_radius_top_left = 12
-	style.corner_radius_top_right = 12
-	style.corner_radius_bottom_left = 12
-	style.corner_radius_bottom_right = 12
-	style.border_width_left = 3
-	style.border_width_right = 3
-	style.border_width_top = 3
-	style.border_width_bottom = 3
-	style.border_color = Colors.PRIMARY_PINK
-	style.content_margin_left = 8
-	style.content_margin_right = 8
-	style.content_margin_top = 8
-	style.content_margin_bottom = 8
-	button.add_theme_stylebox_override("normal", style)
-	button.add_theme_stylebox_override("hover", style)
-	button.add_theme_stylebox_override("pressed", style)
-	button.add_theme_color_override("font_color", Colors.LIGHT_BASE)
-
-func _style_card_face_up(button: Button) -> void:
-	# Light background with dark text
-	var style = StyleBoxFlat.new()
-	style.bg_color = Colors.LIGHT_BASE
-	style.corner_radius_top_left = 12
-	style.corner_radius_top_right = 12
-	style.corner_radius_bottom_left = 12
-	style.corner_radius_bottom_right = 12
-	style.border_width_left = 3
-	style.border_width_right = 3
-	style.border_width_top = 3
-	style.border_width_bottom = 3
-	style.border_color = Colors.PRIMARY_PINK
-	style.content_margin_left = 8
-	style.content_margin_right = 8
-	style.content_margin_top = 8
-	style.content_margin_bottom = 8
-	button.add_theme_stylebox_override("normal", style)
-	button.add_theme_stylebox_override("hover", style)
-	button.add_theme_stylebox_override("pressed", style)
-	button.add_theme_color_override("font_color", Colors.DARK_BASE)
-
-func _style_card_matched(button: Button) -> void:
-	# Green background and border
-	var style = StyleBoxFlat.new()
-	style.bg_color = Colors.SUCCESS
-	style.corner_radius_top_left = 12
-	style.corner_radius_top_right = 12
-	style.corner_radius_bottom_left = 12
-	style.corner_radius_bottom_right = 12
-	style.border_width_left = 3
-	style.border_width_right = 3
-	style.border_width_top = 3
-	style.border_width_bottom = 3
-	style.border_color = Colors.SUCCESS
-	style.content_margin_left = 8
-	style.content_margin_right = 8
-	style.content_margin_top = 8
-	style.content_margin_bottom = 8
-	button.add_theme_stylebox_override("normal", style)
-	button.add_theme_stylebox_override("hover", style)
-	button.add_theme_stylebox_override("pressed", style)
-	button.add_theme_color_override("font_color", Colors.LIGHT_BASE)
+	card.button.add_theme_stylebox_override("normal", THEME.get_stylebox("button_memory_down", "Button"))
+	card.button.add_theme_stylebox_override("hover", THEME.get_stylebox("button_memory_down", "Button"))
+	card.button.add_theme_stylebox_override("pressed", THEME.get_stylebox("button_memory_down", "Button"))
+	card.button.add_theme_color_override("font_color", Colors.LIGHT_BASE)
 
 func _play_cat_celebration() -> void:
 	# Cat bounce animation

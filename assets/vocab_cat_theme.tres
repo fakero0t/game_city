@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=3]
+[gd_resource type="Theme" load_steps=20 format=3]
 
 [ext_resource type="FontFile" path="res://assets/fonts/fredoka-bold.ttf" id="1"]
 [ext_resource type="FontFile" path="res://assets/fonts/nunito-regular.ttf" id="2"]
@@ -59,6 +59,86 @@ corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="button_memory_down"]
+bg_color = Color(0.545, 0.361, 0.965, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.925, 0.282, 0.6, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 8
+content_margin_right = 8
+content_margin_top = 8
+content_margin_bottom = 8
+
+[sub_resource type="StyleBoxFlat" id="button_memory_up"]
+bg_color = Color(0.973, 0.98, 0.988, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.925, 0.282, 0.6, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 8
+content_margin_right = 8
+content_margin_top = 8
+content_margin_bottom = 8
+
+[sub_resource type="StyleBoxFlat" id="button_memory_matched"]
+bg_color = Color(0.063, 0.725, 0.506, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.063, 0.725, 0.506, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 8
+content_margin_right = 8
+content_margin_top = 8
+content_margin_bottom = 8
+
+[sub_resource type="StyleBoxFlat" id="button_answer_correct"]
+bg_color = Color(0.063, 0.725, 0.506, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.063, 0.725, 0.506, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+content_margin_left = 12
+content_margin_right = 12
+content_margin_top = 8
+content_margin_bottom = 8
+
+[sub_resource type="StyleBoxFlat" id="button_answer_wrong"]
+bg_color = Color(0.937, 0.267, 0.267, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.937, 0.267, 0.267, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+content_margin_left = 12
+content_margin_right = 12
+content_margin_top = 8
+content_margin_bottom = 8
 
 [sub_resource type="StyleBoxFlat" id="panel_card"]
 bg_color = Color(0.176, 0.149, 0.251, 1)
@@ -189,35 +269,9 @@ ProgressBar/fonts/font = ExtResource("2")
 ProgressBar/styles/bg = SubResource("progress_bg")
 ProgressBar/styles/fg = SubResource("progress_fill")
 
-# Heading styles (use RichTextLabel with custom tags or separate Labels)
 RichTextLabel/colors/default_color = Color(0.973, 0.98, 0.988, 1)
 RichTextLabel/font_sizes/normal_font_size = 16
 RichTextLabel/font_sizes/bold_font_size = 18
 RichTextLabel/fonts/normal_font = ExtResource("2")
 RichTextLabel/fonts/bold_font = ExtResource("1")
-
-# Color definitions for reference in scripts
-# Primary Colors
-# primary_purple = Color(0.545, 0.361, 0.965, 1) # #8B5CF6
-# primary_blue = Color(0.231, 0.51, 0.965, 1) # #3B82F6
-# primary_pink = Color(0.925, 0.282, 0.6, 1) # #EC4899
-# primary_green = Color(0.063, 0.725, 0.506, 1) # #10B981
-
-# Secondary/Accent Colors
-# orange = Color(0.976, 0.451, 0.086, 1) # #F97316
-# yellow = Color(0.984, 0.749, 0.141, 1) # #FBBF24
-# cyan = Color(0.024, 0.714, 0.831, 1) # #06B6D4
-# lime = Color(0.518, 0.8, 0.086, 1) # #84CC16
-
-# Background Colors
-# dark_base = Color(0.118, 0.106, 0.18, 1) # #1E1B2E
-# light_base = Color(0.973, 0.98, 0.988, 1) # #F8FAFC
-# card_background = Color(0.176, 0.149, 0.251, 1) # #2D2640
-# surface = Color(0.239, 0.204, 0.314, 1) # #3D3450
-
-# Semantic Colors
-# success = Color(0.063, 0.725, 0.506, 1) # #10B981
-# error = Color(0.937, 0.267, 0.267, 1) # #EF4444
-# warning = Color(0.961, 0.620, 0.043, 1) # #F59E0B
-# info = Color(0.231, 0.51, 0.965, 1) # #3B82F6
 

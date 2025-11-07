@@ -6,6 +6,7 @@ extends Control
 const CharacterHelper = preload("res://scripts/CharacterHelper.gd")
 const Colors = preload("res://scripts/VocabCatColors.gd")
 const Anim = preload("res://scripts/VocabCatConstants.gd")
+const THEME = preload("res://assets/vocab_cat_theme.tres")
 
 class Question:
 	var word: String
@@ -22,6 +23,13 @@ var is_answering: bool = false
 var answer_buttons: Array[Button] = []
 var tail_base_x: float
 var wiggle_timer: Timer
+var encouraging_messages = [
+	"Not quite! Try again - you've got this!",
+	"Keep trying! You can figure this out!",
+	"Good effort! Give it another try!",
+	"So close! Try a different answer!",
+	"Don't give up! Try again!"
+]
 
 func _ready() -> void:
 	# Create dog character
@@ -123,32 +131,60 @@ func _on_answer_pressed(button_index: int) -> void:
 	
 	if button_index == q.correct_index:
 		# Correct answer
-		_style_button_correct(answer_buttons[button_index])
+		answer_buttons[button_index].add_theme_stylebox_override("normal", THEME.get_stylebox("button_answer_correct", "Button"))
+		answer_buttons[button_index].add_theme_stylebox_override("hover", THEME.get_stylebox("button_answer_correct", "Button"))
+		answer_buttons[button_index].add_theme_stylebox_override("pressed", THEME.get_stylebox("button_answer_correct", "Button"))
+		answer_buttons[button_index].add_theme_color_override("font_color", Colors.LIGHT_BASE)
 		$FeedbackLabel.text = "Correct! 🎉"
 		$FeedbackLabel.add_theme_color_override("font_color", Colors.SUCCESS)
 		score += 1
 		$FooterBar/ScoreLabel.text = "Score: " + str(score) + "/" + str(total_questions)
 		_play_dog_celebration()
+		
+		# Show feedback
+		$FeedbackLabel.show()
+		Anim.create_scale_bounce($FeedbackLabel, 1.0, 0.3)
+		
+		# Wait 2 seconds, then next question (ONLY for correct answers)
+		await get_tree().create_timer(2.0).timeout
+		current_question_index += 1
+		
+		if current_question_index < total_questions:
+			_display_question()
+		else:
+			_on_game_complete()
 	else:
-		# Wrong answer
-		_style_button_wrong(answer_buttons[button_index])
-		_style_button_correct(answer_buttons[q.correct_index])
-		$FeedbackLabel.text = "Not quite. The answer is " + _get_letter(q.correct_index)
-		$FeedbackLabel.add_theme_color_override("font_color", Colors.ERROR)
+		# Wrong answer - NEW BEHAVIOR
+		answer_buttons[button_index].add_theme_stylebox_override("normal", THEME.get_stylebox("button_answer_wrong", "Button"))
+		answer_buttons[button_index].add_theme_stylebox_override("hover", THEME.get_stylebox("button_answer_wrong", "Button"))
+		answer_buttons[button_index].add_theme_stylebox_override("pressed", THEME.get_stylebox("button_answer_wrong", "Button"))
+		answer_buttons[button_index].add_theme_color_override("font_color", Colors.LIGHT_BASE)
+		
+		# Show encouraging feedback with random message
+		var random_msg = encouraging_messages[randi() % encouraging_messages.size()]
+		$FeedbackLabel.text = random_msg
+		$FeedbackLabel.add_theme_color_override("font_color", Colors.WARNING)  # Orange instead of red
 		_play_dog_sympathy()
-	
-	# Show feedback
-	$FeedbackLabel.show()
-	Anim.create_scale_bounce($FeedbackLabel, 1.0, 0.3)
-	
-	# Wait 2 seconds, then next question
-	await get_tree().create_timer(2.0).timeout
-	current_question_index += 1
-	
-	if current_question_index < total_questions:
-		_display_question()
-	else:
-		_on_game_complete()
+		
+		# Show feedback label
+		$FeedbackLabel.show()
+		Anim.create_scale_bounce($FeedbackLabel, 1.0, 0.3)
+		
+		# Wait briefly, then re-enable buttons for retry
+		await get_tree().create_timer(0.5).timeout
+		
+		# Re-enable all answer buttons
+		for btn in answer_buttons:
+			btn.disabled = false
+		
+		# Reset button styles for retry
+		_reset_button_style(answer_buttons[button_index])
+		
+		# Set is_answering to false to allow retry
+		is_answering = false
+		
+		# DO NOT advance to next question - student must try again
+		return  # Exit function without advancing
 
 func _on_game_complete() -> void:
 	# Show final score
@@ -162,48 +198,6 @@ func _on_game_complete() -> void:
 	
 	# Record score
 	GameManager.record_game_score(1, score)
-
-func _style_button_correct(button: Button) -> void:
-	var style = StyleBoxFlat.new()
-	style.bg_color = Colors.SUCCESS
-	style.corner_radius_top_left = 16
-	style.corner_radius_top_right = 16
-	style.corner_radius_bottom_left = 16
-	style.corner_radius_bottom_right = 16
-	style.border_width_left = 3
-	style.border_width_right = 3
-	style.border_width_top = 3
-	style.border_width_bottom = 3
-	style.border_color = Colors.SUCCESS
-	style.content_margin_left = 12
-	style.content_margin_right = 12
-	style.content_margin_top = 8
-	style.content_margin_bottom = 8
-	button.add_theme_stylebox_override("normal", style)
-	button.add_theme_stylebox_override("hover", style)
-	button.add_theme_stylebox_override("pressed", style)
-	button.add_theme_color_override("font_color", Colors.LIGHT_BASE)
-
-func _style_button_wrong(button: Button) -> void:
-	var style = StyleBoxFlat.new()
-	style.bg_color = Colors.ERROR
-	style.corner_radius_top_left = 16
-	style.corner_radius_top_right = 16
-	style.corner_radius_bottom_left = 16
-	style.corner_radius_bottom_right = 16
-	style.border_width_left = 3
-	style.border_width_right = 3
-	style.border_width_top = 3
-	style.border_width_bottom = 3
-	style.border_color = Colors.ERROR
-	style.content_margin_left = 12
-	style.content_margin_right = 12
-	style.content_margin_top = 8
-	style.content_margin_bottom = 8
-	button.add_theme_stylebox_override("normal", style)
-	button.add_theme_stylebox_override("hover", style)
-	button.add_theme_stylebox_override("pressed", style)
-	button.add_theme_color_override("font_color", Colors.LIGHT_BASE)
 
 func _reset_button_style(button: Button) -> void:
 	# Reset to default theme style

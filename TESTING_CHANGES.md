@@ -1,7 +1,24 @@
 # Testing Changes - Next Buttons Always Enabled
 
 **Date:** November 7, 2025
+**Last Updated:** November 7, 2025 (PR 3 - Answer Validation added)
 **Purpose:** Enable Next buttons in all games for faster testing/debugging
+
+## ⚠️ Important Note: Interaction with Answer Validation (PR 3)
+
+As of PR 3, all 4 multiple-choice games now have "retry until correct" logic that:
+- Re-enables answer buttons after wrong answers
+- Shows encouraging retry messages
+- Does NOT auto-advance until correct answer is selected
+
+**However, the testing bypass (always-enabled Next button) still works:**
+- Testers can still click Next to skip questions without answering correctly
+- The retry logic doesn't conflict with the testing guardrail
+- Both systems coexist independently
+
+**In production (after reversing testing changes):**
+- Students MUST answer correctly to enable Next button
+- Retry logic will be the only way to progress after wrong answers
 
 ## Changes Made
 

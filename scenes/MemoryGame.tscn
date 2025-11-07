@@ -20,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.545, 0.361, 0.965, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="HeaderBar" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -66,101 +66,133 @@ columns = 4
 [node name="Card1" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(140, 95)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
 text = "?"
 
 [node name="Card2" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(140, 95)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
 text = "?"
 
 [node name="Card3" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(140, 95)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
 text = "?"
 
 [node name="Card4" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(140, 95)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
 text = "?"
 
 [node name="Card5" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(140, 95)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
 text = "?"
 
 [node name="Card6" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(140, 95)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
 text = "?"
 
 [node name="Card7" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(140, 95)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
 text = "?"
 
 [node name="Card8" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(140, 95)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
 text = "?"
 
 [node name="Card9" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(140, 95)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
 text = "?"
 
 [node name="Card10" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(140, 95)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
 text = "?"
 
 [node name="Card11" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(140, 95)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
 text = "?"
 
 [node name="Card12" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(140, 95)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
 text = "?"
 
 [node name="Card13" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(140, 95)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
 text = "?"
 
 [node name="Card14" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(140, 95)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
 text = "?"
 
 [node name="Card15" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(140, 95)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
 text = "?"
 
 [node name="Card16" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(140, 95)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
 text = "?"
 
 [node name="Character" type="Node2D" parent="."]
-position = Vector2(640, 500)
+position = Vector2(180, 400)
 
 [node name="WinMessage" type="Label" parent="."]
 visible = false
