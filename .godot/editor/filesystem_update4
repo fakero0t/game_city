@@ -1,5 +1,7 @@
-res://scripts/DJSetup.gd
+res://scripts/FillInBlank.gd
+res://scripts/MultipleChoice.gd
+res://scripts/SynonymAntonym.gd
+res://scripts/VocabularyManager.gd
+res://scripts/WordMatching.gd
 res://scripts/Main.gd
-res://scripts/CrossfaderController.gd
-res://scripts/FaderController.gd
-res://scenes/DJSetup.tscn
+res://scripts/MemoryGame.gd

@@ -61,7 +61,7 @@ func _ready() -> void:
 	$NextButton.pressed.connect(_on_next_pressed)
 	$NextButton.mouse_entered.connect(_on_button_hover_enter)
 	$NextButton.mouse_exited.connect(_on_button_hover_exit)
-	# $NextButton.disabled = true  # Disabled for testing
+	$NextButton.disabled = true
 	
 	# Setup questions
 	_generate_questions()
