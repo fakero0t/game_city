@@ -39,13 +39,6 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 28
 text = "Match the Meaning"
 
-[node name="ProgressLabel" type="Label" parent="HeaderBar"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.973, 0.98, 0.988, 1)
-theme_override_font_sizes/font_size = 22
-text = "Question 1/8"
-horizontal_alignment = 2
-
 [node name="QuestionPanel" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -139,13 +132,6 @@ offset_left = 40.0
 offset_top = 620.0
 offset_right = 1240.0
 offset_bottom = 680.0
-
-[node name="ScoreLabel" type="Label" parent="FooterBar"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.973, 0.98, 0.988, 1)
-theme_override_font_sizes/font_size = 22
-text = "Score: 0/8"
 
 [node name="NextButton" type="Button" parent="."]
 layout_mode = 0

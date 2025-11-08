@@ -28,7 +28,7 @@ func _ready() -> void:
 	# Connect GameManager signals
 	GameManager.load_game_scene.connect(_on_load_game_scene)
 	GameManager.show_info_modal.connect(_show_info_modal)
-	GameManager.show_ready_modal.connect(_show_ready_modal)
+	GameManager.show_error_toast.connect(_show_error_toast)
 	GameManager.show_completion_screen.connect(_show_completion_screen)
 	
 	# Initially hide game container
@@ -56,12 +56,8 @@ func _show_info_modal() -> void:
 	modal_instance = modal_scene.instantiate()
 	modal_layer.add_child(modal_instance)
 	
-	var body_text = "[center]You have [b]five awesome games[/b] to complete today:\n\n"
-	body_text += "🧠 [b]Memory Match[/b] - Find the pairs!\n"
-	body_text += "✅ [b]Pick the Meaning[/b] - Choose the definition\n"
-	body_text += "✏️ [b]Complete the Sentence[/b] - Fill in the blank\n"
-	body_text += "🔄 [b]Word Relationships[/b] - Find synonyms & antonyms\n"
-	body_text += "🎯 [b]Match the Meaning[/b] - Which word fits?\n\n"
+	var body_text = "[center]You'll complete vocabulary activities to learn new words!\n\n"
+	body_text += "Each activity will help you practice and remember.\n\n"
 	body_text += "Ready to start? Let's go![/center]"
 	
 	modal_instance.show_modal("Welcome, Friend! 🎉", body_text, "Let's Go!")
@@ -72,28 +68,10 @@ func _on_info_modal_action() -> void:
 	await modal_instance.modal_closed
 	modal_instance = null
 	
-	# Load first game
-	GameManager.advance_to_next_game()
+	# Request first activity
+	GameManager.request_next_activity()
 
-func _show_ready_modal(completed_game: String, next_game: String) -> void:
-	modal_instance = modal_scene.instantiate()
-	modal_layer.add_child(modal_instance)
-	
-	var body_text = "[center]You completed [b]%s[/b]!\n\n" % completed_game
-	body_text += "Are you ready for the next game?[/center]"
-	
-	modal_instance.show_modal("Great Job! 🎉", body_text, "Next Game")
-	modal_instance.modal_action_pressed.connect(_on_ready_modal_action)
-
-func _on_ready_modal_action() -> void:
-	modal_instance.hide_modal()
-	await modal_instance.modal_closed
-	modal_instance = null
-	
-	# Advance to next game
-	GameManager.advance_to_next_game()
-
-func _on_load_game_scene(scene_path: String) -> void:
+func _on_load_game_scene(scene_path: String, activity_data: Dictionary = {}) -> void:
 	# Clear previous game if exists
 	for child in game_container.get_children():
 		child.queue_free()
@@ -102,6 +80,11 @@ func _on_load_game_scene(scene_path: String) -> void:
 	var game_scene = load(scene_path).instantiate()
 	game_container.add_child(game_scene)
 	game_container.show()
+	
+	# Pass activity data to game if provided
+	if not activity_data.is_empty():
+		if game_scene.has_method("load_activity_data"):
+			game_scene.load_activity_data(activity_data)
 
 func _show_completion_screen() -> void:
 	# Clear game container
@@ -132,3 +115,22 @@ func _on_vocabulary_load_failed(error_message: String) -> void:
 
 func _on_vocabulary_loaded() -> void:
 	print("Vocabulary ready: ", VocabularyManager.get_all_words().size(), " words loaded")
+
+func _show_error_toast(message: String) -> void:
+	# Create simple toast notification
+	var toast = Label.new()
+	toast.text = message
+	toast.add_theme_color_override("font_color", Colors.LIGHT_BASE)
+	toast.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	# Position at bottom center
+	toast.position = Vector2(get_viewport_rect().size.x / 2 - 150, get_viewport_rect().size.y - 100)
+	toast.size = Vector2(300, 50)
+	add_child(toast)
+	
+	# Fade in, wait, fade out, remove
+	toast.modulate.a = 0
+	var tween = create_tween()
+	tween.tween_property(toast, "modulate:a", 1.0, 0.3)
+	tween.tween_interval(2.0)
+	tween.tween_property(toast, "modulate:a", 0.0, 0.3)
+	tween.tween_callback(toast.queue_free)

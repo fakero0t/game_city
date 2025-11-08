@@ -17,8 +17,6 @@ class RelationshipQuestion:
 
 var questions: Array[RelationshipQuestion] = []
 var current_question_index: int = 0
-var score: int = 0
-var total_questions: int = 10
 var is_answering: bool = false
 
 var answer_buttons: Array[Button] = []
@@ -63,8 +61,49 @@ func _ready() -> void:
 	$NextButton.mouse_exited.connect(_on_button_hover_exit)
 	$NextButton.disabled = true
 	
-	# Setup questions
-	_generate_questions()
+	# Wait for activity data to be loaded via load_activity_data()
+
+## Load activity data from API
+func load_activity_data(activity_data: Dictionary) -> void:
+	var word_data = activity_data["word"]
+	var params = activity_data["params"]
+	
+	questions.clear()
+	current_question_index = 0
+	
+	var q = RelationshipQuestion.new()
+	q.target_word = word_data.get("headword", "")
+	q.question_type = "synonym"  # Default to synonym for synonym_mcq activity
+	
+	# Get correct answer from targetWord or first option
+	var target_word_data = params.get("targetWord", {})
+	q.correct_answer = target_word_data.get("headword", "")
+	if q.correct_answer.is_empty():
+		# Fallback: use first option
+		var options = params.get("options", [])
+		if options.size() > 0:
+			if options[0] is Dictionary:
+				q.correct_answer = options[0].get("headword", "")
+			else:
+				q.correct_answer = str(options[0])
+	
+	# Extract options (array of {wordId, headword} or strings)
+	var options_array = params.get("options", [])
+	var options_temp: Array[String] = []
+	for option in options_array:
+		if option is Dictionary:
+			options_temp.append(option.get("headword", ""))
+		else:
+			options_temp.append(str(option))
+	q.options = options_temp
+	
+	# Find correct index
+	q.correct_index = q.options.find(q.correct_answer)
+	if q.correct_index == -1:
+		q.correct_index = 0
+	
+	questions.append(q)
+	
 	_display_question()
 
 func _generate_questions() -> void:
@@ -134,9 +173,6 @@ func _display_question() -> void:
 	# Display target word
 	$QuestionPanel/VBoxContainer/TargetWordLabel.text = "\"" + q.target_word + "\"?"
 	
-	# Update progress
-	$HeaderBar/ProgressLabel.text = "Question " + str(current_question_index + 1) + "/" + str(total_questions)
-	
 	# Update answer buttons
 	for i in range(4):
 		answer_buttons[i].text = q.options[i]
@@ -167,8 +203,6 @@ func _on_answer_pressed(button_index: int) -> void:
 		answer_buttons[button_index].add_theme_color_override("font_color", Colors.LIGHT_BASE)
 		$FeedbackLabel.text = "Yes! " + q.correct_answer + " is a " + q.question_type + " of " + q.target_word
 		$FeedbackLabel.add_theme_color_override("font_color", Colors.SUCCESS)
-		score += 1
-		$FooterBar/ScoreLabel.text = "Score: " + str(score) + "/" + str(total_questions)
 		_play_fox_celebration()
 		
 		# Show feedback
@@ -177,12 +211,7 @@ func _on_answer_pressed(button_index: int) -> void:
 		
 		# Wait 2 seconds, then next question (ONLY for correct answers)
 		await get_tree().create_timer(2.0).timeout
-		current_question_index += 1
-		
-		if current_question_index < total_questions:
-			_display_question()
-		else:
-			_on_game_complete()
+		_on_game_complete()
 	else:
 		# Wrong answer - NEW BEHAVIOR
 		answer_buttons[button_index].add_theme_stylebox_override("normal", THEME.get_stylebox("button_answer_wrong", "Button"))
@@ -217,17 +246,9 @@ func _on_answer_pressed(button_index: int) -> void:
 		return  # Exit without advancing
 
 func _on_game_complete() -> void:
-	# Show final score
-	$FeedbackLabel.text = "You got " + str(score) + "/" + str(total_questions) + " correct!"
-	$FeedbackLabel.add_theme_color_override("font_color", Colors.LIGHT_BASE)
-	$FeedbackLabel.show()
-	
 	# Enable next button
 	$NextButton.disabled = false
 	Anim.create_scale_bounce($NextButton, 1.0, 0.3)
-	
-	# Record score
-	GameManager.record_game_score(3, score)
 
 func _reset_button_style(button: Button) -> void:
 	# Reset to default theme style
@@ -266,7 +287,8 @@ func _wiggle_tail() -> void:
 func _on_next_pressed() -> void:
 	Anim.animate_button_press($NextButton)
 	await get_tree().create_timer(0.4).timeout
-	GameManager.emit_signal("game_completed", "Word Relationships")
+	# Request next activity instead of fixed sequence
+	GameManager.request_next_activity()
 
 func _on_button_hover_enter() -> void:
 	if not $NextButton.disabled:

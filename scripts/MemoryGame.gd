@@ -41,14 +41,29 @@ func _ready() -> void:
 		add_child(wiggle_timer)
 		wiggle_timer.start()
 	
-	# Setup game
-	_setup_game()
-	
 	# Connect next button
 	$NextButton.pressed.connect(_on_next_pressed)
 	$NextButton.mouse_entered.connect(_on_button_hover_enter)
 	$NextButton.mouse_exited.connect(_on_button_hover_exit)
 	$NextButton.disabled = true
+	
+	# Wait for activity data to be loaded via load_activity_data()
+	# If no activity data, setup with vocabulary (backward compatibility)
+	if not has_method("load_activity_data"):
+		_setup_game()
+
+## Load activity data from API (for flashcard mode)
+## NOTE: Full flashcard UI requires scene modification (MemoryGame.tscn)
+## For now, this uses existing memory game as fallback
+func load_activity_data(activity_data: Dictionary) -> void:
+	var word_data = activity_data["word"]
+	
+	# For flashcard_usage activity type, we show word and definition
+	# This is a simplified implementation - full flashcard requires scene changes
+	push_warning("MemoryGame: Flashcard mode requires scene modifications. Using memory game as fallback.")
+	
+	# Fall back to regular memory game setup for now
+	_setup_game()
 
 func _setup_game() -> void:
 	# Get 8 random words from vocabulary
@@ -183,7 +198,6 @@ func _check_match() -> void:
 		card2.button.add_theme_color_override("font_color", Colors.LIGHT_BASE)
 		
 		matches_found += 1
-		$HeaderBar/ScoreLabel.text = "Score: " + str(matches_found) + "/" + str(total_pairs)
 		
 		# Cat celebration animation
 		_play_cat_celebration()
@@ -235,8 +249,7 @@ func _on_game_won() -> void:
 	$NextButton.disabled = false
 	Anim.create_scale_bounce($NextButton, 1.0, 0.3)
 	
-	# Record score
-	GameManager.record_game_score(0, matches_found)
+	# Score recording removed (no longer tracked globally)
 
 func _wiggle_tail() -> void:
 	var tail_node = $Character.get_node_or_null("Tail")
@@ -253,7 +266,8 @@ func _wiggle_tail() -> void:
 func _on_next_pressed() -> void:
 	Anim.animate_button_press($NextButton)
 	await get_tree().create_timer(0.4).timeout
-	GameManager.emit_signal("game_completed", "Memory Match")
+	# Request next activity instead of fixed sequence
+	GameManager.request_next_activity()
 
 func _on_button_hover_enter() -> void:
 	if not $NextButton.disabled:

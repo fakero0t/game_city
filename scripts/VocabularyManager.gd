@@ -1,11 +1,9 @@
 extends Node
 ## VocabularyManager - Singleton for vocabulary data management
 ## Loads vocabulary.json and provides word data to all games
-## Tracks word usage to prevent repetition within a playthrough
 
 # Vocabulary data
 var all_words: Array = []
-var used_words: Array = []  # Track words used in current playthrough
 var vocabulary_loaded: bool = false
 var load_error: String = ""
 
@@ -93,30 +91,19 @@ func _validate_word_entry(word: Dictionary, index: int) -> bool:
 	
 	return true
 
-# Get random words that haven't been used yet
+# Get random words (no usage tracking)
 func get_random_words(count: int) -> Array:
 	if not vocabulary_loaded:
 		push_error("Vocabulary not loaded")
 		return []
 	
-	var available_words = []
-	for word in all_words:
-		if not used_words.has(word["word"]):
-			available_words.append(word)
-	
-	if available_words.size() < count:
-		push_error("Not enough unused words available")
+	if all_words.size() < count:
+		push_error("Not enough words available")
 		return []
 	
-	# Shuffle and take first 'count' words
-	available_words.shuffle()
-	var selected = available_words.slice(0, count)
-	
-	# Mark as used
-	for word in selected:
-		used_words.append(word["word"])
-	
-	return selected
+	var shuffled = all_words.duplicate()
+	shuffled.shuffle()
+	return shuffled.slice(0, count)
 
 # Get specific word data by word string
 func get_word_data(word_string: String) -> Dictionary:
@@ -144,10 +131,6 @@ func get_random_word_strings(exclude_word: String, count: int) -> Array:
 	
 	words.shuffle()
 	return words.slice(0, count)
-
-# Reset word usage tracking (call on "Play Again")
-func reset_usage_tracking() -> void:
-	used_words.clear()
 
 # Get all words (for debugging)
 func get_all_words() -> Array:

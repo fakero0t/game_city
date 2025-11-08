@@ -1,5 +1,5 @@
 extends Control
-## Completion Screen - Shows after all 5 games are completed
+## Completion Screen - Shows after session ends (10 minutes or completion)
 ## Features all 5 characters and celebration animations per style guide
 
 const CharacterHelper = preload("res://scripts/CharacterHelper.gd")
@@ -46,12 +46,15 @@ func _create_characters() -> void:
 	bird.scale = Vector2(0.5, 0.5)
 
 func _display_scores() -> void:
-	# Get total score from GameManager
-	var total_score = GameManager.get_total_score()
-	var total_possible = GameManager.get_total_possible()
+	# Get session stats from GameManager
+	var activities_count = GameManager.activities_completed
+	var elapsed_time = Time.get_unix_time_from_system() - GameManager.session_start_time
+	var minutes = int(elapsed_time / 60)
+	var seconds = int(elapsed_time) % 60
 	
-	# Update message label
-	$CenterContent/VBoxContainer/MessageLabel.text = "WOW! You answered " + str(total_score) + "/" + str(total_possible) + " questions correctly!"
+	# Show completion message with stats
+	var message = "Great job! You completed %d activities in %d:%02d!" % [activities_count, minutes, seconds]
+	$CenterContent/VBoxContainer/MessageLabel.text = message
 
 func _play_entrance_animation() -> void:
 	# SUCCESS MOMENT ANIMATION per Style Guide:

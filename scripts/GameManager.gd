@@ -1,125 +1,99 @@
 extends Node
 ## GameManager - Singleton for managing game flow and state
-## Tracks current game, handles transitions, and coordinates modals
+## Handles API-driven activity loading and session management
 
 # Signals
 signal game_completed(game_name: String)
 signal show_info_modal()
-signal show_ready_modal(completed_game: String, next_game: String)
-signal load_game_scene(scene_path: String)
+signal load_game_scene(scene_path: String, activity_data: Dictionary)
 signal show_completion_screen()
+signal next_activity_requested(session_id: String)
+signal activity_data_received(activity_data: Dictionary)
+signal activity_load_failed(error_message: String)
+signal show_error_toast(message: String)
 
-# Game data structure
-var games = [
-	{
-		"name": "Memory Match",
-		"scene_path": "res://scenes/MemoryGame.tscn",
-		"color": "#8B5CF6",  # Primary Purple
-		"character": "Cat"
-	},
-	{
-		"name": "Pick the Meaning",
-		"scene_path": "res://scenes/MultipleChoice.tscn",
-		"color": "#F97316",  # Orange
-		"character": "Dog"
-	},
-	{
-		"name": "Complete the Sentence",
-		"scene_path": "res://scenes/FillInBlank.tscn",
-		"color": "#3B82F6",  # Primary Blue
-		"character": "Rabbit"
-	},
-	{
-		"name": "Word Relationships",
-		"scene_path": "res://scenes/SynonymAntonym.tscn",
-		"color": "#F97316",  # Orange (Fox)
-		"character": "Fox"
-	},
-	{
-		"name": "Match the Meaning",
-		"scene_path": "res://scenes/WordMatching.tscn",
-		"color": "#10B981",  # Primary Green
-		"character": "Bird"
-	}
-]
-
-# Score tracking: [score, total] for each game
-var game_scores: Array = [
-	[0, 8],   # Memory: 8 pairs
-	[0, 10],  # Multiple Choice: 10 questions
-	[0, 10],  # Fill-in-Blank: 10 questions
-	[0, 10],  # Synonym/Antonym: 10 questions
-	[0, 8]    # Word Matching: 8 questions
-]
-
-var current_game_index: int = -1
+# API-driven session data
+var current_session_id: String = ""
+var current_activity_data: Dictionary = {}
+var session_start_time: float = 0.0
+var session_duration_seconds: float = 600.0  # 10 minutes
+var activities_completed: int = 0
 
 func _ready() -> void:
 	game_completed.connect(_on_game_completed)
 
-func get_current_game_name() -> String:
-	if current_game_index >= 0 and current_game_index < games.size():
-		return games[current_game_index]["name"]
-	return ""
+## Initialize a new session
+func initialize_session() -> void:
+	current_session_id = "test-session-" + str(Time.get_unix_time_from_system())
+	session_start_time = Time.get_unix_time_from_system()
+	activities_completed = 0
 
-func get_current_game_scene() -> String:
-	if current_game_index >= 0 and current_game_index < games.size():
-		return games[current_game_index]["scene_path"]
-	return ""
+## Check if session should end (time limit or data exhausted)
+func should_end_session() -> bool:
+	# Check time limit (10 minutes)
+	var elapsed_time = Time.get_unix_time_from_system() - session_start_time
+	if elapsed_time >= session_duration_seconds:
+		return true
+	
+	# Check if test data exhausted (no more activities available)
+	if APISimulator.is_test_data_exhausted():
+		return true
+	
+	return false
 
-func get_next_game_name() -> String:
-	var next_index = current_game_index + 1
-	if next_index >= 0 and next_index < games.size():
-		return games[next_index]["name"]
-	return ""
-
-func advance_to_next_game() -> void:
-	current_game_index += 1
-	if current_game_index < games.size():
-		var scene_path = games[current_game_index]["scene_path"]
-		emit_signal("load_game_scene", scene_path)
-	else:
-		# All games completed
+## Request next activity from API simulator
+func request_next_activity() -> void:
+	if current_session_id.is_empty():
+		initialize_session()
+	
+	# Check if session should end
+	if should_end_session():
 		emit_signal("show_completion_screen")
+		return
+	
+	emit_signal("next_activity_requested", current_session_id)
+	
+	# Call APISimulator (await the async call)
+	var activity_data = await APISimulator.request_next_activity(current_session_id)
+	
+	if activity_data.is_empty():
+		emit_signal("activity_load_failed", "Failed to load activity data")
+		_show_error_toast("Failed to load activity. Please try again.")
+		return
+	
+	current_activity_data = activity_data
+	activities_completed += 1
+	emit_signal("activity_data_received", activity_data)
+	load_game_from_activity(activity_data)
 
+## Load game scene from activity data
+func load_game_from_activity(activity_data: Dictionary) -> void:
+	var activity_type = activity_data.get("activityType", "")
+	var scene_path = ActivityMapper.get_scene_path(activity_type)
+	
+	if scene_path.is_empty():
+		push_error("Invalid activity type: " + activity_type)
+		emit_signal("activity_load_failed", "Invalid activity type")
+		_show_error_toast("Invalid activity type. Skipping to next activity.")
+		# Try loading next activity
+		request_next_activity()
+		return
+	
+	emit_signal("load_game_scene", scene_path, activity_data)
+
+## Show error toast notification
+func _show_error_toast(message: String) -> void:
+	emit_signal("show_error_toast", message)
+
+## Reset session and flow
 func reset_flow() -> void:
-	current_game_index = -1
-	# Reset all scores
-	for i in range(game_scores.size()):
-		game_scores[i][0] = 0
-	# Reset vocabulary word usage tracking
-	VocabularyManager.reset_usage_tracking()
+	current_session_id = ""
+	current_activity_data = {}
+	session_start_time = 0.0
+	activities_completed = 0
 
-func is_last_game() -> bool:
-	return current_game_index == games.size() - 1
-
-func record_game_score(game_index: int, score: int) -> void:
-	if game_index >= 0 and game_index < game_scores.size():
-		game_scores[game_index][0] = score
-
-func get_total_score() -> int:
-	var total = 0
-	for score_data in game_scores:
-		total += score_data[0]
-	return total
-
-func get_total_possible() -> int:
-	var total = 0
-	for score_data in game_scores:
-		total += score_data[1]
-	return total
-
-func get_game_score_text(game_index: int) -> String:
-	if game_index >= 0 and game_index < game_scores.size():
-		return str(game_scores[game_index][0]) + "/" + str(game_scores[game_index][1])
-	return "0/0"
-
+## Handle game completion - request next activity
 func _on_game_completed(game_name: String) -> void:
-	if is_last_game():
-		# Last game completed, go to completion screen
-		emit_signal("show_completion_screen")
-	else:
-		# Show ready modal for next game
-		var next_game = get_next_game_name()
-		emit_signal("show_ready_modal", game_name, next_game)
+	# Request next activity directly (no modal)
+	await request_next_activity()
 
