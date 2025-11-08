@@ -1,0 +1,13 @@
+res://scripts/APISimulator.gd
+res://scripts/FillInBlank.gd
+res://scripts/MemoryGame.gd
+res://scripts/MultipleChoice.gd
+res://scripts/SynonymAntonym.gd
+res://scripts/WordMatching.gd
+res://scripts/Completion.gd
+res://scripts/Flashcards.gd
+res://scripts/Main.gd
+res://scripts/Modal.gd
+res://scripts/SentenceGen.gd
+res://scripts/SoundManager.gd
+res://scripts/VocabularyManager.gd

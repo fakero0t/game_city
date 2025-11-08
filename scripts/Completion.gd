@@ -11,6 +11,9 @@ func _ready() -> void:
 	_display_scores()
 	_play_entrance_animation()
 	
+	# Play triumphant sound when reaching completion
+	SoundManager.play_triumph_sound()
+	
 	# Connect Play Again button
 	$PlayAgainButton.pressed.connect(_on_play_again_pressed)
 	$PlayAgainButton.mouse_entered.connect(_on_button_hover_enter)
@@ -103,6 +106,7 @@ func _play_entrance_animation() -> void:
 		char_tween.tween_property(char_container, "scale", initial_scale, 0.3).set_trans(Tween.TRANS_BACK)
 
 func _on_play_again_pressed() -> void:
+	SoundManager.play_click_sound()
 	Anim.animate_button_press($PlayAgainButton)
 	await get_tree().create_timer(0.1).timeout
 	

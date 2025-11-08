@@ -46,9 +46,9 @@ func load_vocabulary(file_path: String = "res://assets/vocabulary.json") -> void
 	
 	all_words = data["words"]
 	
-	# Validate word count
-	if all_words.size() < 46:
-		load_error = "Insufficient vocabulary: " + str(all_words.size()) + " words found, 46 required"
+	# Validate we have at least some words
+	if all_words.size() == 0:
+		load_error = "Vocabulary file contains no words"
 		emit_signal("vocabulary_load_failed", load_error)
 		vocabulary_loaded = false
 		return

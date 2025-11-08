@@ -42,6 +42,7 @@ func _wiggle_tail() -> void:
 		tween.tween_property(tail_node, "position:x", tail_base_x, 0.25)
 
 func _on_next_pressed() -> void:
+	SoundManager.play_click_sound()
 	Anim.animate_button_press($NextButton)
 	await get_tree().create_timer(0.1).timeout
 	

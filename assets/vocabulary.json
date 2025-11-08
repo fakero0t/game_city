@@ -1,371 +1,499 @@
 {
   "words": [
     {
-      "word": "abundant",
-      "definition": "existing in large quantities; plentiful",
-      "synonyms": ["plentiful", "ample", "copious", "bountiful"],
-      "antonyms": ["scarce", "rare", "lacking", "sparse"],
-      "example_sentence": "The garden had an _____ supply of fresh vegetables.",
+      "word": "happy",
+      "definition": "feeling or showing joy and pleasure",
+      "synonyms": ["glad", "cheerful", "joyful", "pleased"],
+      "antonyms": ["sad", "unhappy", "miserable", "upset"],
+      "example_sentence": "I felt _____ when I got a new toy.",
       "difficulty": 1
     },
     {
-      "word": "cautious",
-      "definition": "careful to avoid potential problems or dangers",
-      "synonyms": ["careful", "wary", "prudent", "alert"],
-      "antonyms": ["reckless", "careless", "rash", "bold"],
-      "example_sentence": "She was _____ when crossing the busy street.",
+      "word": "brave",
+      "definition": "showing courage and not being afraid",
+      "synonyms": ["courageous", "bold", "fearless", "heroic"],
+      "antonyms": ["scared", "afraid", "fearful", "cowardly"],
+      "example_sentence": "The _____ firefighter saved the cat from the tree.",
       "difficulty": 1
     },
     {
-      "word": "curious",
-      "definition": "eager to know or learn something",
-      "synonyms": ["interested", "inquisitive", "questioning", "wondering"],
-      "antonyms": ["indifferent", "uninterested", "bored", "apathetic"],
-      "example_sentence": "The _____ child asked many questions about the stars.",
+      "word": "kind",
+      "definition": "being friendly, helpful, and caring toward others",
+      "synonyms": ["nice", "gentle", "caring", "friendly"],
+      "antonyms": ["mean", "cruel", "unkind", "harsh"],
+      "example_sentence": "My teacher is very _____ and helps everyone.",
       "difficulty": 1
     },
     {
-      "word": "delicate",
-      "definition": "easily broken or damaged; fragile",
-      "synonyms": ["fragile", "breakable", "dainty", "fine"],
-      "antonyms": ["sturdy", "strong", "tough", "durable"],
-      "example_sentence": "Handle the _____ china cups with care.",
+      "word": "smart",
+      "definition": "able to learn and understand things quickly",
+      "synonyms": ["clever", "intelligent", "bright", "wise"],
+      "antonyms": ["dumb", "stupid", "foolish", "silly"],
+      "example_sentence": "The _____ student answered all the questions correctly.",
       "difficulty": 1
     },
     {
-      "word": "eager",
-      "definition": "wanting to do something very much",
-      "synonyms": ["enthusiastic", "keen", "excited", "willing"],
-      "antonyms": ["reluctant", "unwilling", "hesitant", "unenthusiastic"],
-      "example_sentence": "The students were _____ to start their field trip.",
-      "difficulty": 1
-    },
-    {
-      "word": "fragile",
-      "definition": "easily broken, damaged, or destroyed",
-      "synonyms": ["delicate", "breakable", "weak", "frail"],
-      "antonyms": ["strong", "sturdy", "durable", "robust"],
-      "example_sentence": "The _____ glass vase needed special protection.",
-      "difficulty": 1
-    },
-    {
-      "word": "generous",
-      "definition": "willing to give more than necessary or expected",
-      "synonyms": ["kind", "giving", "charitable", "unselfish"],
-      "antonyms": ["stingy", "selfish", "greedy", "mean"],
-      "example_sentence": "My _____ neighbor shared cookies with everyone.",
-      "difficulty": 1
-    },
-    {
-      "word": "gloomy",
-      "definition": "dark or poorly lit; sad and depressing",
-      "synonyms": ["dark", "dim", "dreary", "somber"],
-      "antonyms": ["bright", "cheerful", "sunny", "happy"],
-      "example_sentence": "The _____ weather made everyone feel sleepy.",
-      "difficulty": 1
-    },
-    {
-      "word": "humble",
-      "definition": "having a modest view of one's own importance",
-      "synonyms": ["modest", "unassuming", "meek", "simple"],
-      "antonyms": ["proud", "arrogant", "boastful", "conceited"],
-      "example_sentence": "Despite winning the award, she remained _____.",
-      "difficulty": 1
-    },
-    {
-      "word": "invisible",
-      "definition": "unable to be seen; not visible",
-      "synonyms": ["unseen", "hidden", "concealed", "imperceptible"],
-      "antonyms": ["visible", "obvious", "apparent", "noticeable"],
-      "example_sentence": "The tiny germs are _____ to the naked eye.",
-      "difficulty": 1
-    },
-    {
-      "word": "joyful",
-      "definition": "feeling or expressing great happiness",
-      "synonyms": ["happy", "cheerful", "delighted", "elated"],
-      "antonyms": ["sad", "unhappy", "miserable", "sorrowful"],
-      "example_sentence": "The children were _____ on their birthday.",
-      "difficulty": 1
-    },
-    {
-      "word": "loyal",
-      "definition": "giving firm and constant support or allegiance",
-      "synonyms": ["faithful", "devoted", "dedicated", "true"],
-      "antonyms": ["disloyal", "unfaithful", "traitorous", "false"],
-      "example_sentence": "A _____ friend stays by your side through hard times.",
-      "difficulty": 1
-    },
-    {
-      "word": "mysterious",
-      "definition": "difficult to understand or explain; strange",
-      "synonyms": ["puzzling", "strange", "unknown", "cryptic"],
-      "antonyms": ["obvious", "clear", "plain", "straightforward"],
-      "example_sentence": "The _____ footprints led into the forest.",
-      "difficulty": 1
-    },
-    {
-      "word": "nervous",
-      "definition": "easily worried or anxious; uneasy",
-      "synonyms": ["anxious", "worried", "uneasy", "tense"],
-      "antonyms": ["calm", "relaxed", "confident", "composed"],
-      "example_sentence": "I felt _____ before giving my presentation.",
-      "difficulty": 1
-    },
-    {
-      "word": "obvious",
-      "definition": "easily seen or understood; clear",
-      "synonyms": ["clear", "evident", "apparent", "plain"],
-      "antonyms": ["hidden", "obscure", "unclear", "mysterious"],
-      "example_sentence": "It was _____ that she had been practicing hard.",
-      "difficulty": 1
-    },
-    {
-      "word": "peaceful",
-      "definition": "free from disturbance; calm and quiet",
-      "synonyms": ["calm", "tranquil", "serene", "quiet"],
-      "antonyms": ["chaotic", "noisy", "violent", "turbulent"],
-      "example_sentence": "The _____ lake was perfect for an afternoon nap.",
-      "difficulty": 1
-    },
-    {
-      "word": "precious",
-      "definition": "of great value; not to be wasted",
-      "synonyms": ["valuable", "priceless", "treasured", "cherished"],
-      "antonyms": ["worthless", "cheap", "common", "ordinary"],
-      "example_sentence": "The family photo album was _____ to her.",
+      "word": "strong",
+      "definition": "having great power or physical strength",
+      "synonyms": ["powerful", "mighty", "tough", "sturdy"],
+      "antonyms": ["weak", "feeble", "frail", "delicate"],
+      "example_sentence": "The _____ athlete lifted the heavy weights.",
       "difficulty": 1
     },
     {
       "word": "quiet",
       "definition": "making little or no noise; peaceful",
-      "synonyms": ["silent", "hushed", "soft", "still"],
-      "antonyms": ["loud", "noisy", "deafening", "boisterous"],
-      "example_sentence": "Please be _____ in the library.",
+      "synonyms": ["silent", "calm", "peaceful", "still"],
+      "antonyms": ["loud", "noisy", "rowdy", "boisterous"],
+      "example_sentence": "The library was very _____ so people could read.",
       "difficulty": 1
     },
     {
-      "word": "rapid",
-      "definition": "happening in a short time; fast",
-      "synonyms": ["fast", "quick", "swift", "speedy"],
-      "antonyms": ["slow", "gradual", "leisurely", "sluggish"],
-      "example_sentence": "The _____ river current carried the boat downstream.",
+      "word": "fast",
+      "definition": "moving or happening quickly",
+      "synonyms": ["quick", "rapid", "swift", "speedy"],
+      "antonyms": ["slow", "sluggish", "gradual", "leisurely"],
+      "example_sentence": "The _____ runner won the race.",
       "difficulty": 1
     },
     {
-      "word": "sturdy",
-      "definition": "strong and solid; well-built",
-      "synonyms": ["strong", "solid", "robust", "durable"],
-      "antonyms": ["weak", "flimsy", "fragile", "delicate"],
-      "example_sentence": "The _____ table could hold many heavy books.",
+      "word": "big",
+      "definition": "large in size; large",
+      "synonyms": ["large", "huge", "enormous", "giant"],
+      "antonyms": ["small", "tiny", "little", "mini"],
+      "example_sentence": "The elephant was very _____ compared to the mouse.",
       "difficulty": 1
     },
     {
-      "word": "thoughtful",
-      "definition": "showing consideration for the needs of others",
-      "synonyms": ["considerate", "caring", "kind", "attentive"],
-      "antonyms": ["thoughtless", "inconsiderate", "careless", "rude"],
-      "example_sentence": "It was _____ of you to bring me soup when I was sick.",
+      "word": "bright",
+      "definition": "giving off a lot of light; very colorful",
+      "synonyms": ["shiny", "brilliant", "glowing", "radiant"],
+      "antonyms": ["dark", "dim", "dull", "gloomy"],
+      "example_sentence": "The _____ sun made everything warm and cheerful.",
       "difficulty": 1
     },
     {
-      "word": "ancient",
-      "definition": "belonging to the very distant past; very old",
-      "synonyms": ["old", "aged", "antique", "historic"],
-      "antonyms": ["modern", "new", "recent", "contemporary"],
-      "example_sentence": "The _____ ruins were built thousands of years ago.",
+      "word": "clean",
+      "definition": "free from dirt or mess; neat and tidy",
+      "synonyms": ["tidy", "neat", "spotless", "fresh"],
+      "antonyms": ["dirty", "messy", "filthy", "untidy"],
+      "example_sentence": "I helped my mom keep the room _____.",
       "difficulty": 1
     },
     {
-      "word": "bold",
-      "definition": "showing courage and willingness to take risks",
-      "synonyms": ["brave", "courageous", "daring", "fearless"],
-      "antonyms": ["timid", "cowardly", "fearful", "cautious"],
-      "example_sentence": "The _____ explorer ventured into unknown lands.",
-      "difficulty": 1
-    },
-    {
-      "word": "clever",
-      "definition": "quick to understand and learn; intelligent",
-      "synonyms": ["smart", "intelligent", "bright", "sharp"],
-      "antonyms": ["dull", "stupid", "foolish", "unintelligent"],
-      "example_sentence": "The _____ student solved the puzzle quickly.",
-      "difficulty": 1
-    },
-    {
-      "word": "distant",
-      "definition": "far away in space or time",
-      "synonyms": ["far", "remote", "faraway", "removed"],
-      "antonyms": ["near", "close", "nearby", "adjacent"],
-      "example_sentence": "We could see the _____ mountains on the horizon.",
-      "difficulty": 1
-    },
-    {
-      "word": "elegant",
-      "definition": "graceful and stylish in appearance or manner",
-      "synonyms": ["graceful", "stylish", "refined", "sophisticated"],
-      "antonyms": ["clumsy", "awkward", "crude", "inelegant"],
-      "example_sentence": "The dancer's movements were smooth and _____.",
-      "difficulty": 1
-    },
-    {
-      "word": "fierce",
-      "definition": "having a violent or aggressive nature",
-      "synonyms": ["violent", "aggressive", "ferocious", "savage"],
-      "antonyms": ["gentle", "mild", "tame", "peaceful"],
-      "example_sentence": "The _____ tiger protected its cubs.",
+      "word": "funny",
+      "definition": "causing laughter; amusing",
+      "synonyms": ["amusing", "humorous", "silly", "comical"],
+      "antonyms": ["serious", "sad", "boring", "dull"],
+      "example_sentence": "The _____ joke made everyone laugh.",
       "difficulty": 1
     },
     {
       "word": "gentle",
-      "definition": "kind, mild, and calm in manner or behavior",
-      "synonyms": ["kind", "mild", "tender", "soft"],
-      "antonyms": ["rough", "harsh", "violent", "fierce"],
-      "example_sentence": "The _____ breeze felt nice on a warm day.",
+      "definition": "kind, mild, and soft in manner",
+      "synonyms": ["kind", "soft", "tender", "mild"],
+      "antonyms": ["rough", "harsh", "mean", "cruel"],
+      "example_sentence": "The _____ breeze felt nice on my face.",
       "difficulty": 1
     },
     {
-      "word": "harsh",
-      "definition": "unpleasantly rough or severe",
-      "synonyms": ["severe", "rough", "cruel", "stern"],
-      "antonyms": ["gentle", "mild", "soft", "kind"],
-      "example_sentence": "The _____ winter wind stung our faces.",
+      "word": "honest",
+      "definition": "telling the truth; not lying",
+      "synonyms": ["truthful", "sincere", "trustworthy", "real"],
+      "antonyms": ["dishonest", "lying", "deceitful", "false"],
+      "example_sentence": "It's important to be _____ with your friends.",
       "difficulty": 1
     },
     {
-      "word": "immense",
-      "definition": "extremely large or great in size or degree",
-      "synonyms": ["huge", "enormous", "vast", "gigantic"],
-      "antonyms": ["tiny", "small", "minute", "little"],
-      "example_sentence": "The _____ whale was bigger than our boat.",
+      "word": "loud",
+      "definition": "making a lot of noise; not quiet",
+      "synonyms": ["noisy", "boisterous", "deafening", "rowdy"],
+      "antonyms": ["quiet", "silent", "soft", "hushed"],
+      "example_sentence": "The _____ music could be heard from far away.",
       "difficulty": 1
     },
     {
-      "word": "keen",
-      "definition": "having a sharp edge or point; very interested",
-      "synonyms": ["sharp", "eager", "enthusiastic", "interested"],
-      "antonyms": ["dull", "uninterested", "bored", "indifferent"],
-      "example_sentence": "She had a _____ interest in learning about science.",
+      "word": "neat",
+      "definition": "tidy and organized; clean",
+      "synonyms": ["tidy", "clean", "orderly", "organized"],
+      "antonyms": ["messy", "untidy", "disorganized", "sloppy"],
+      "example_sentence": "My desk is always _____ so I can find my things.",
       "difficulty": 1
     },
     {
-      "word": "lively",
-      "definition": "full of life and energy; active and outgoing",
-      "synonyms": ["energetic", "active", "spirited", "animated"],
-      "antonyms": ["dull", "boring", "lifeless", "inactive"],
-      "example_sentence": "The _____ music made everyone want to dance.",
+      "word": "proud",
+      "definition": "feeling pleased about something you did",
+      "synonyms": ["pleased", "satisfied", "happy", "glad"],
+      "antonyms": ["ashamed", "embarrassed", "humble", "modest"],
+      "example_sentence": "I felt _____ when I finished my project.",
       "difficulty": 1
     },
     {
-      "word": "modest",
-      "definition": "unassuming in the estimation of one's abilities",
-      "synonyms": ["humble", "unassuming", "reserved", "unpretentious"],
-      "antonyms": ["arrogant", "boastful", "proud", "conceited"],
-      "example_sentence": "Despite his success, he remained _____ about his achievements.",
+      "word": "silly",
+      "definition": "playful and funny; not serious",
+      "synonyms": ["funny", "playful", "goofy", "foolish"],
+      "antonyms": ["serious", "solemn", "grave", "stern"],
+      "example_sentence": "We made _____ faces in the mirror.",
       "difficulty": 1
     },
     {
-      "word": "nimble",
-      "definition": "quick and light in movement; agile",
-      "synonyms": ["agile", "quick", "swift", "spry"],
-      "antonyms": ["clumsy", "awkward", "slow", "lumbering"],
-      "example_sentence": "The _____ cat jumped from branch to branch.",
+      "word": "smooth",
+      "definition": "having an even surface without bumps",
+      "synonyms": ["even", "flat", "soft", "sleek"],
+      "antonyms": ["rough", "bumpy", "uneven", "jagged"],
+      "example_sentence": "The _____ ice was perfect for skating.",
       "difficulty": 1
     },
     {
-      "word": "ordinary",
-      "definition": "with no special or distinctive features; normal",
-      "synonyms": ["normal", "common", "usual", "typical"],
-      "antonyms": ["extraordinary", "unusual", "special", "unique"],
-      "example_sentence": "It was just an _____ day at school.",
+      "word": "tall",
+      "definition": "having great height; not short",
+      "synonyms": ["high", "lofty", "towering", "elevated"],
+      "antonyms": ["short", "small", "low", "tiny"],
+      "example_sentence": "The _____ tree reached up to the sky.",
+      "difficulty": 1
+    },
+    {
+      "word": "warm",
+      "definition": "having a comfortable temperature; not hot or cold",
+      "synonyms": ["cozy", "comfortable", "mild", "pleasant"],
+      "antonyms": ["cold", "cool", "freezing", "chilly"],
+      "example_sentence": "The _____ blanket kept me comfortable at night.",
+      "difficulty": 1
+    },
+    {
+      "word": "calm",
+      "definition": "peaceful and relaxed; not excited or worried",
+      "synonyms": ["peaceful", "relaxed", "serene", "quiet"],
+      "antonyms": ["excited", "nervous", "worried", "anxious"],
+      "example_sentence": "The _____ lake was perfect for fishing.",
+      "difficulty": 1
+    },
+    {
+      "word": "careful",
+      "definition": "paying attention to avoid mistakes or danger",
+      "synonyms": ["cautious", "watchful", "alert", "attentive"],
+      "antonyms": ["careless", "reckless", "sloppy", "negligent"],
+      "example_sentence": "Be _____ when crossing the street.",
+      "difficulty": 1
+    },
+    {
+      "word": "curious",
+      "definition": "wanting to know or learn about something",
+      "synonyms": ["interested", "inquisitive", "wondering", "questioning"],
+      "antonyms": ["uninterested", "bored", "indifferent", "apathetic"],
+      "example_sentence": "The _____ cat explored every corner of the house.",
+      "difficulty": 1
+    },
+    {
+      "word": "eager",
+      "definition": "very excited and wanting to do something",
+      "synonyms": ["excited", "enthusiastic", "keen", "impatient"],
+      "antonyms": ["reluctant", "unwilling", "hesitant", "unenthusiastic"],
+      "example_sentence": "I was _____ to start my first day of school.",
+      "difficulty": 1
+    },
+    {
+      "word": "friendly",
+      "definition": "kind and pleasant to others",
+      "synonyms": ["kind", "nice", "welcoming", "warm"],
+      "antonyms": ["unfriendly", "mean", "hostile", "cold"],
+      "example_sentence": "The _____ dog wagged its tail at everyone.",
+      "difficulty": 1
+    },
+    {
+      "word": "generous",
+      "definition": "willing to give or share with others",
+      "synonyms": ["giving", "kind", "sharing", "unselfish"],
+      "antonyms": ["selfish", "stingy", "greedy", "mean"],
+      "example_sentence": "My _____ friend shared her snacks with everyone.",
+      "difficulty": 1
+    },
+    {
+      "word": "helpful",
+      "definition": "willing to help others; useful",
+      "synonyms": ["useful", "assisting", "supportive", "cooperative"],
+      "antonyms": ["unhelpful", "useless", "hindering", "obstructive"],
+      "example_sentence": "The _____ student helped clean up the classroom.",
+      "difficulty": 1
+    },
+    {
+      "word": "loyal",
+      "definition": "faithful and true to friends or family",
+      "synonyms": ["faithful", "devoted", "true", "dedicated"],
+      "antonyms": ["disloyal", "unfaithful", "false", "treacherous"],
+      "example_sentence": "A _____ friend always stands by your side.",
       "difficulty": 1
     },
     {
       "word": "patient",
-      "definition": "able to wait calmly without complaining",
+      "definition": "able to wait calmly without getting upset",
       "synonyms": ["calm", "tolerant", "understanding", "composed"],
       "antonyms": ["impatient", "restless", "anxious", "agitated"],
       "example_sentence": "Be _____ and wait your turn in line.",
       "difficulty": 1
     },
     {
+      "word": "polite",
+      "definition": "showing good manners and respect",
+      "synonyms": ["respectful", "courteous", "well-mannered", "civil"],
+      "antonyms": ["rude", "impolite", "disrespectful", "discourteous"],
+      "example_sentence": "It's important to be _____ when speaking to adults.",
+      "difficulty": 1
+    },
+    {
+      "word": "creative",
+      "definition": "able to make or think of new things",
+      "synonyms": ["imaginative", "artistic", "inventive", "original"],
+      "antonyms": ["uncreative", "boring", "dull", "unimaginative"],
+      "example_sentence": "The _____ artist painted beautiful pictures.",
+      "difficulty": 1
+    },
+    {
+      "word": "energetic",
+      "definition": "full of energy and active",
+      "synonyms": ["active", "lively", "vigorous", "spirited"],
+      "antonyms": ["tired", "lazy", "sluggish", "lethargic"],
+      "example_sentence": "The _____ puppy ran around the yard all day.",
+      "difficulty": 1
+    },
+    {
+      "word": "fierce",
+      "definition": "very strong and aggressive",
+      "synonyms": ["strong", "powerful", "aggressive", "intense"],
+      "antonyms": ["gentle", "mild", "calm", "peaceful"],
+      "example_sentence": "The _____ lion protected its cubs.",
+      "difficulty": 1
+    },
+    {
+      "word": "graceful",
+      "definition": "moving in a smooth and elegant way",
+      "synonyms": ["elegant", "smooth", "refined", "beautiful"],
+      "antonyms": ["clumsy", "awkward", "rough", "graceless"],
+      "example_sentence": "The _____ dancer moved across the stage.",
+      "difficulty": 1
+    },
+    {
+      "word": "mysterious",
+      "definition": "strange and hard to understand",
+      "synonyms": ["strange", "puzzling", "secret", "unknown"],
+      "antonyms": ["obvious", "clear", "plain", "simple"],
+      "example_sentence": "The _____ footprints led into the dark forest.",
+      "difficulty": 1
+    },
+    {
+      "word": "peaceful",
+      "definition": "calm and quiet; without trouble",
+      "synonyms": ["calm", "quiet", "serene", "tranquil"],
+      "antonyms": ["chaotic", "noisy", "turbulent", "violent"],
+      "example_sentence": "The _____ garden was a nice place to relax.",
+      "difficulty": 1
+    },
+    {
+      "word": "powerful",
+      "definition": "having great strength or force",
+      "synonyms": ["strong", "mighty", "forceful", "potent"],
+      "antonyms": ["weak", "feeble", "powerless", "helpless"],
+      "example_sentence": "The _____ engine could pull heavy loads.",
+      "difficulty": 1
+    },
+    {
       "word": "quick",
-      "definition": "moving fast or doing something in a short time",
+      "definition": "moving or happening fast",
       "synonyms": ["fast", "rapid", "swift", "speedy"],
-      "antonyms": ["slow", "sluggish", "delayed", "gradual"],
-      "example_sentence": "She gave a _____ answer to the easy question.",
+      "antonyms": ["slow", "sluggish", "gradual", "leisurely"],
+      "example_sentence": "The _____ rabbit ran across the field.",
       "difficulty": 1
     },
     {
       "word": "rough",
-      "definition": "having an uneven or irregular surface; not smooth",
-      "synonyms": ["coarse", "uneven", "bumpy", "jagged"],
-      "antonyms": ["smooth", "even", "polished", "gentle"],
-      "example_sentence": "The _____ bark of the tree scratched my hand.",
+      "definition": "not smooth; having bumps or uneven surface",
+      "synonyms": ["bumpy", "uneven", "coarse", "jagged"],
+      "antonyms": ["smooth", "even", "flat", "soft"],
+      "example_sentence": "The _____ road made the car bounce.",
+      "difficulty": 1
+    },
+    {
+      "word": "shy",
+      "definition": "nervous or uncomfortable around other people",
+      "synonyms": ["timid", "bashful", "reserved", "nervous"],
+      "antonyms": ["bold", "confident", "outgoing", "brave"],
+      "example_sentence": "The _____ child hid behind her mother.",
       "difficulty": 1
     },
     {
       "word": "sincere",
-      "definition": "free from pretense or deceit; genuine",
-      "synonyms": ["genuine", "honest", "truthful", "heartfelt"],
+      "definition": "honest and meaning what you say",
+      "synonyms": ["honest", "genuine", "truthful", "real"],
       "antonyms": ["insincere", "fake", "dishonest", "false"],
-      "example_sentence": "Her _____ apology showed she truly felt sorry.",
+      "example_sentence": "Her _____ apology showed she really meant it.",
       "difficulty": 1
     },
     {
-      "word": "timid",
-      "definition": "showing a lack of courage or confidence; shy",
-      "synonyms": ["shy", "fearful", "nervous", "hesitant"],
-      "antonyms": ["bold", "confident", "brave", "fearless"],
-      "example_sentence": "The _____ rabbit hid when it heard a noise.",
+      "word": "sturdy",
+      "definition": "strong and well-built; not easily broken",
+      "synonyms": ["strong", "solid", "tough", "durable"],
+      "antonyms": ["weak", "fragile", "delicate", "flimsy"],
+      "example_sentence": "The _____ table could hold many heavy books.",
       "difficulty": 1
     },
     {
-      "word": "unique",
-      "definition": "being the only one of its kind; unlike anything else",
-      "synonyms": ["special", "distinctive", "individual", "singular"],
-      "antonyms": ["common", "ordinary", "typical", "usual"],
-      "example_sentence": "Each snowflake has a _____ pattern.",
-      "difficulty": 1
-    },
-    {
-      "word": "vast",
-      "definition": "of very great extent or quantity; immense",
-      "synonyms": ["huge", "enormous", "immense", "extensive"],
-      "antonyms": ["small", "tiny", "limited", "narrow"],
-      "example_sentence": "The _____ desert stretched for miles in every direction.",
-      "difficulty": 1
-    },
-    {
-      "word": "weary",
-      "definition": "feeling or showing tiredness; exhausted",
-      "synonyms": ["tired", "exhausted", "fatigued", "worn"],
-      "antonyms": ["energetic", "refreshed", "lively", "vigorous"],
-      "example_sentence": "After the long hike, we felt _____.",
+      "word": "thoughtful",
+      "definition": "thinking about others and being considerate",
+      "synonyms": ["considerate", "caring", "kind", "attentive"],
+      "antonyms": ["thoughtless", "inconsiderate", "careless", "selfish"],
+      "example_sentence": "It was _____ of you to help me with my homework.",
       "difficulty": 1
     },
     {
       "word": "wise",
-      "definition": "having or showing experience, knowledge, and good judgment",
-      "synonyms": ["intelligent", "smart", "knowledgeable", "sage"],
-      "antonyms": ["foolish", "unwise", "stupid", "ignorant"],
-      "example_sentence": "The _____ old owl gave good advice.",
+      "definition": "having good judgment and knowledge",
+      "synonyms": ["smart", "intelligent", "knowledgeable", "clever"],
+      "antonyms": ["foolish", "unwise", "stupid", "silly"],
+      "example_sentence": "The _____ owl gave good advice to the young bird.",
       "difficulty": 1
     },
     {
-      "word": "young",
-      "definition": "having lived or existed for only a short time",
-      "synonyms": ["youthful", "juvenile", "new", "fresh"],
-      "antonyms": ["old", "aged", "elderly", "ancient"],
-      "example_sentence": "The _____ puppy loved to play all day.",
+      "word": "active",
+      "definition": "moving around a lot; full of energy",
+      "synonyms": ["energetic", "lively", "busy", "moving"],
+      "antonyms": ["lazy", "inactive", "still", "quiet"],
+      "example_sentence": "The _____ children played outside all afternoon.",
       "difficulty": 1
     },
     {
-      "word": "zealous",
-      "definition": "having or showing great energy and enthusiasm",
-      "synonyms": ["enthusiastic", "passionate", "eager", "fervent"],
-      "antonyms": ["apathetic", "indifferent", "unenthusiastic", "lazy"],
-      "example_sentence": "The _____ volunteer worked tirelessly to help others.",
+      "word": "beautiful",
+      "definition": "very pretty or pleasing to look at",
+      "synonyms": ["pretty", "lovely", "gorgeous", "attractive"],
+      "antonyms": ["ugly", "unattractive", "plain", "hideous"],
+      "example_sentence": "The _____ sunset painted the sky in orange and pink.",
+      "difficulty": 1
+    },
+    {
+      "word": "clever",
+      "definition": "quick to understand and learn; smart",
+      "synonyms": ["smart", "intelligent", "bright", "wise"],
+      "antonyms": ["dumb", "stupid", "foolish", "silly"],
+      "example_sentence": "The _____ fox found a way to reach the grapes.",
+      "difficulty": 1
+    },
+    {
+      "word": "confident",
+      "definition": "feeling sure about yourself and your abilities",
+      "synonyms": ["sure", "certain", "bold", "brave"],
+      "antonyms": ["shy", "nervous", "unsure", "timid"],
+      "example_sentence": "The _____ student raised her hand to answer.",
+      "difficulty": 1
+    },
+    {
+      "word": "courageous",
+      "definition": "brave and not afraid to face danger",
+      "synonyms": ["brave", "bold", "fearless", "heroic"],
+      "antonyms": ["scared", "afraid", "fearful", "cowardly"],
+      "example_sentence": "The _____ knight faced the dragon without fear.",
+      "difficulty": 1
+    },
+    {
+      "word": "delicate",
+      "definition": "easily broken or damaged; fragile",
+      "synonyms": ["fragile", "breakable", "soft", "tender"],
+      "antonyms": ["strong", "sturdy", "tough", "durable"],
+      "example_sentence": "Handle the _____ butterfly wings with care.",
+      "difficulty": 1
+    },
+    {
+      "word": "excited",
+      "definition": "feeling very happy and enthusiastic about something",
+      "synonyms": ["thrilled", "eager", "enthusiastic", "happy"],
+      "antonyms": ["bored", "calm", "uninterested", "indifferent"],
+      "example_sentence": "I was so _____ about going to the amusement park.",
+      "difficulty": 1
+    },
+    {
+      "word": "fragile",
+      "definition": "easily broken or damaged; delicate",
+      "synonyms": ["delicate", "breakable", "weak", "frail"],
+      "antonyms": ["strong", "sturdy", "tough", "durable"],
+      "example_sentence": "The _____ glass ornament needed careful handling.",
+      "difficulty": 1
+    },
+    {
+      "word": "grateful",
+      "definition": "feeling thankful and appreciative",
+      "synonyms": ["thankful", "appreciative", "pleased", "happy"],
+      "antonyms": ["ungrateful", "unthankful", "disappointed", "unhappy"],
+      "example_sentence": "I was _____ for my friend's help with my homework.",
+      "difficulty": 1
+    },
+    {
+      "word": "humble",
+      "definition": "not thinking you are better than others; modest",
+      "synonyms": ["modest", "simple", "unassuming", "meek"],
+      "antonyms": ["proud", "arrogant", "boastful", "conceited"],
+      "example_sentence": "Despite winning, the athlete remained _____.",
+      "difficulty": 1
+    },
+    {
+      "word": "nervous",
+      "definition": "feeling worried or anxious about something",
+      "synonyms": ["worried", "anxious", "scared", "uneasy"],
+      "antonyms": ["calm", "relaxed", "confident", "peaceful"],
+      "example_sentence": "I felt _____ before my first piano recital.",
+      "difficulty": 1
+    },
+    {
+      "word": "obedient",
+      "definition": "doing what you are told; following rules",
+      "synonyms": ["compliant", "well-behaved", "respectful", "dutiful"],
+      "antonyms": ["disobedient", "rebellious", "defiant", "naughty"],
+      "example_sentence": "The _____ dog sat when its owner commanded.",
+      "difficulty": 1
+    },
+    {
+      "word": "precious",
+      "definition": "very valuable and important; treasured",
+      "synonyms": ["valuable", "treasured", "cherished", "special"],
+      "antonyms": ["worthless", "cheap", "common", "ordinary"],
+      "example_sentence": "The family photo was _____ to me.",
+      "difficulty": 1
+    },
+    {
+      "word": "reliable",
+      "definition": "able to be trusted and depended on",
+      "synonyms": ["trustworthy", "dependable", "faithful", "steady"],
+      "antonyms": ["unreliable", "untrustworthy", "unpredictable", "unstable"],
+      "example_sentence": "My _____ friend always keeps her promises.",
+      "difficulty": 1
+    },
+    {
+      "word": "responsible",
+      "definition": "able to be trusted to do what is right",
+      "synonyms": ["trustworthy", "dependable", "reliable", "mature"],
+      "antonyms": ["irresponsible", "careless", "unreliable", "immature"],
+      "example_sentence": "The _____ student always finished homework on time.",
+      "difficulty": 1
+    },
+    {
+      "word": "talented",
+      "definition": "having a natural ability to do something well",
+      "synonyms": ["gifted", "skilled", "able", "capable"],
+      "antonyms": ["untalented", "unskilled", "incompetent", "incapable"],
+      "example_sentence": "The _____ musician played the piano beautifully.",
+      "difficulty": 1
+    },
+    {
+      "word": "trustworthy",
+      "definition": "able to be trusted and relied upon",
+      "synonyms": ["reliable", "honest", "dependable", "faithful"],
+      "antonyms": ["untrustworthy", "dishonest", "unreliable", "deceitful"],
+      "example_sentence": "A _____ friend never breaks promises.",
+      "difficulty": 1
+    },
+    {
+      "word": "unique",
+      "definition": "being the only one of its kind; special",
+      "synonyms": ["special", "different", "one-of-a-kind", "distinctive"],
+      "antonyms": ["common", "ordinary", "typical", "usual"],
+      "example_sentence": "Each person has a _____ fingerprint.",
       "difficulty": 1
     }
   ]

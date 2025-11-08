@@ -69,7 +69,8 @@ func _play_exit_animation() -> void:
 	)
 
 func _on_action_button_pressed() -> void:
-	# Use button press animation helper
+	# Play click sound and use button press animation helper
+	SoundManager.play_click_sound()
 	const Anim = preload("res://scripts/VocabZooConstants.gd")
 	Anim.animate_button_press(action_button)
 	

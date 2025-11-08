@@ -197,6 +197,7 @@ func _on_answer_pressed(button_index: int) -> void:
 	
 	if button_index == q.correct_index:
 		# Correct answer
+		SoundManager.play_correct_sound()
 		answer_buttons[button_index].add_theme_stylebox_override("normal", THEME.get_stylebox("button_answer_correct", "Button"))
 		answer_buttons[button_index].add_theme_stylebox_override("hover", THEME.get_stylebox("button_answer_correct", "Button"))
 		answer_buttons[button_index].add_theme_stylebox_override("pressed", THEME.get_stylebox("button_answer_correct", "Button"))
@@ -214,6 +215,7 @@ func _on_answer_pressed(button_index: int) -> void:
 		_on_game_complete()
 	else:
 		# Wrong answer - NEW BEHAVIOR
+		SoundManager.play_incorrect_sound()
 		answer_buttons[button_index].add_theme_stylebox_override("normal", THEME.get_stylebox("button_answer_wrong", "Button"))
 		answer_buttons[button_index].add_theme_stylebox_override("hover", THEME.get_stylebox("button_answer_wrong", "Button"))
 		answer_buttons[button_index].add_theme_stylebox_override("pressed", THEME.get_stylebox("button_answer_wrong", "Button"))
@@ -285,6 +287,7 @@ func _wiggle_tail() -> void:
 	tween.tween_property(tail_node, "position:x", tail_base_x, 0.25)
 
 func _on_next_pressed() -> void:
+	SoundManager.play_click_sound()
 	Anim.animate_button_press($NextButton)
 	await get_tree().create_timer(0.4).timeout
 	# Request next activity instead of fixed sequence

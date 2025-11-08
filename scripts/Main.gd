@@ -40,7 +40,8 @@ func _on_start_pressed() -> void:
 		_on_vocabulary_load_failed(VocabularyManager.get_load_error())
 		return
 	
-	# Animate button press
+	# Play click sound and animate button press
+	SoundManager.play_click_sound()
 	Anim.animate_button_press(start_button)
 	
 	# Wait briefly for animation
