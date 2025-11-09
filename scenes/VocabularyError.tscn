@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4jvyt8w8b7xp"]
+[gd_scene load_steps=3 format=3 uid="uid://c4jvyt8w8b7xp"]
 
 [ext_resource type="Script" path="res://scripts/VocabularyError.gd" id="1_vocabulary_error"]
+[ext_resource type="Texture2D" uid="uid://starfield_corona" path="res://assets/pixelart_starfields (1)/pixelart_starfield_corona.png" id="2_starfield"]
 
 [node name="VocabularyError" type="Control"]
 layout_mode = 3
@@ -11,14 +12,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vocabulary_error")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+expand_mode = 1
+texture = ExtResource("2_starfield")
+stretch_mode = 6
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1

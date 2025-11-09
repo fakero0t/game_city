@@ -1,46 +1,71 @@
 extends Control
 ## Flashcards Game (Game 1 of 4)
-## Features cat character with tail wiggle animation
+## Features fox image
 
-const CharacterHelper = preload("res://scripts/CharacterHelper.gd")
 const Colors = preload("res://scripts/VocabZooColors.gd")
 const Anim = preload("res://scripts/VocabZooConstants.gd")
 
-var tail_base_x: float
-var wiggle_timer: Timer
+var fox_image: Sprite2D
+var video_player: VideoStreamPlayer
 
 func _ready() -> void:
-	# Create cat character
-	var cat = CharacterHelper.create_cat($Character, Vector2.ZERO, Colors.PRIMARY_PURPLE)
+	# Create fox image from fox.png
+	fox_image = Sprite2D.new()
+	fox_image.name = "FoxImage"
+	# Try loading the texture - if it fails, the image needs to be reimported in Godot
+	var texture = load("res://assets/fox.png")
+	if texture:
+		fox_image.texture = texture
+		fox_image.scale = Vector2(0.5, 0.5)  # Adjust scale as needed
+	else:
+		push_error("Failed to load fox.png - please reimport the image in Godot (right-click -> Reimport)")
+	$Character.add_child(fox_image)
 	
-	# Get tail reference and store base position
-	var tail_node = $Character.get_node("Tail")
-	if tail_node:
-		tail_base_x = tail_node.position.x
-		
-		# Setup tail wiggle timer (2-second cycle per style guide)
-		wiggle_timer = Timer.new()
-		wiggle_timer.wait_time = 2.0
-		wiggle_timer.timeout.connect(_wiggle_tail)
-		add_child(wiggle_timer)
-		wiggle_timer.start()
+	# Create video player for animations (hidden initially)
+	# Note: VideoStreamPlayer is a Control node, so we add it to the root Control, not Character
+	video_player = VideoStreamPlayer.new()
+	video_player.name = "VideoPlayer"
+	video_player.size = Vector2(200, 200)
+	video_player.position = $Character.position - Vector2(100, 100)  # Position relative to Character's world position
+	video_player.visible = false
+	add_child(video_player)
+	video_player.finished.connect(_on_video_finished)
 	
 	# Connect next button
 	$NextButton.pressed.connect(_on_next_pressed)
 	$NextButton.mouse_entered.connect(_on_button_hover_enter)
 	$NextButton.mouse_exited.connect(_on_button_hover_exit)
 
-func _wiggle_tail() -> void:
-	# Tail wiggle per style guide: 2-second cycle, smooth sine wave, translation animation
-	# Total animation: 0.75s (0.25s each direction + 0.25s return)
-	var tail_node = $Character.get_node("Tail")
-	if tail_node:
-		var tween = create_tween()
-		tween.set_ease(Tween.EASE_IN_OUT)  # Smooth loop easing per style guide
-		tween.set_trans(Tween.TRANS_SINE)  # Sine wave motion
-		tween.tween_property(tail_node, "position:x", tail_base_x + 10, 0.25)
-		tween.tween_property(tail_node, "position:x", tail_base_x - 10, 0.25)
-		tween.tween_property(tail_node, "position:x", tail_base_x, 0.25)
+func _on_video_finished() -> void:
+	# Hide video player and show fox image again
+	video_player.visible = false
+	fox_image.visible = true
+
+func _play_fox_jump() -> void:
+	# Play fox_jump video (must be .ogv format for Godot)
+	# Convert your MP4 to Ogg Theora (.ogv) format
+	fox_image.visible = false
+	var stream = load("res://assets/fox_jump.ogv")  # Changed from .mp4 to .ogv
+	if stream:
+		video_player.stream = stream
+		video_player.visible = true
+		video_player.play()
+	else:
+		push_warning("fox_jump.ogv not found - convert fox_jump.mp4 to Ogg Theora format")
+		fox_image.visible = true
+
+func _play_fox_shake() -> void:
+	# Play fox_shake video (must be .ogv format for Godot)
+	# Convert your MP4 to Ogg Theora (.ogv) format
+	fox_image.visible = false
+	var stream = load("res://assets/fox_shake.ogv")  # Changed from .mp4 to .ogv
+	if stream:
+		video_player.stream = stream
+		video_player.visible = true
+		video_player.play()
+	else:
+		push_warning("fox_shake.ogv not found - convert fox_shake.mp4 to Ogg Theora format")
+		fox_image.visible = true
 
 func _on_next_pressed() -> void:
 	SoundManager.play_click_sound()

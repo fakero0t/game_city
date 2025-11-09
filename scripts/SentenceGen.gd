@@ -26,10 +26,7 @@ func _ready() -> void:
 		add_child(wiggle_timer)
 		wiggle_timer.start()
 	
-	# Connect next button
-	$NextButton.pressed.connect(_on_next_pressed)
-	$NextButton.mouse_entered.connect(_on_button_hover_enter)
-	$NextButton.mouse_exited.connect(_on_button_hover_exit)
+	# Next button removed - auto-navigation after activity completion
 
 func _wiggle_tail() -> void:
 	var tail_node = $Character.get_node("Tail")
@@ -41,17 +38,10 @@ func _wiggle_tail() -> void:
 		tween.tween_property(tail_node, "position:x", tail_base_x - 10, 0.25)
 		tween.tween_property(tail_node, "position:x", tail_base_x, 0.25)
 
-func _on_next_pressed() -> void:
-	SoundManager.play_click_sound()
-	Anim.animate_button_press($NextButton)
-	await get_tree().create_timer(0.1).timeout
-	
-	# Last game - go straight to completion screen (no ready modal)
-	GameManager.emit_signal("show_completion_screen")
+func _on_game_complete() -> void:
+	# Automatically navigate to next activity or completion screen
+	# GameManager will determine if session should end
+	GameManager.request_next_activity()
 
-func _on_button_hover_enter() -> void:
-	Anim.create_hover_scale($NextButton, true, 0.2)
-
-func _on_button_hover_exit() -> void:
-	Anim.create_hover_scale($NextButton, false, 0.2)
+# Next button removed - auto-navigation after activity completion
 

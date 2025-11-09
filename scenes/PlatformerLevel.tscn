@@ -1,0 +1,133 @@
+[gd_scene load_steps=5 format=3 uid="uid://platformer_level_001"]
+
+[ext_resource type="Script" path="res://scripts/PlatformerLevel.gd" id="1"]
+[ext_resource type="Theme" path="res://assets/vocab_zoo_theme.tres" id="2"]
+[ext_resource type="FontFile" uid="uid://cjgscn3b8wcvs" path="res://assets/fonts/press-start-2p.ttf" id="3"]
+[ext_resource type="Texture2D" uid="uid://starfield_corona" path="res://assets/pixelart_starfields (1)/pixelart_starfield_corona.png" id="4_starfield"]
+
+[node name="PlatformerLevel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2")
+script = ExtResource("1")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+texture = ExtResource("4_starfield")
+stretch_mode = 6
+
+[node name="GameWorld" type="Node2D" parent="."]
+
+[node name="Platforms" type="Node2D" parent="GameWorld"]
+
+[node name="Player" type="CharacterBody2D" parent="GameWorld"]
+position = Vector2(875, 475)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Player"]
+
+[node name="Sprite" type="ColorRect" parent="GameWorld/Player"]
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+color = Color(0.35, 0.65, 1, 1)
+
+[node name="Collectibles" type="Node2D" parent="GameWorld"]
+
+[node name="Collectible1" type="Area2D" parent="GameWorld/Collectibles"]
+position = Vector2(590, 160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Collectibles/Collectible1"]
+
+[node name="Sprite" type="Polygon2D" parent="GameWorld/Collectibles/Collectible1"]
+color = Color(0.4, 0.9, 1, 1)
+polygon = PackedVector2Array(-8, 0, 0, -12, 8, 0, 0, 12)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="TopBar" type="HBoxContainer" parent="UI"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 60.0
+grow_horizontal = 2
+
+[node name="LeftUI" type="HBoxContainer" parent="UI/TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PlayerIcon" type="ColorRect" parent="UI/TopBar/LeftUI"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+color = Color(0.35, 0.65, 1, 1)
+size_flags_vertical = 4
+
+[node name="LivesLabel" type="Label" parent="UI/TopBar/LeftUI"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 32
+text = "1"
+vertical_alignment = 1
+
+[node name="CenterUI" type="CenterContainer" parent="UI/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScoreLabel" type="Label" parent="UI/TopBar/CenterUI"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 24
+text = "0011E00"
+
+[node name="RightUI" type="HBoxContainer" parent="UI/TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PauseButton" type="Button" parent="UI/TopBar/RightUI"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "■"
+flat = true
+
+[node name="MenuButton" type="Button" parent="UI/TopBar/RightUI"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "≡"
+flat = true
+
+[node name="BottomBar" type="HBoxContainer" parent="UI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -60.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DeathsLabel" type="Label" parent="UI/BottomBar"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 16
+text = "DEATHS: 0"
+

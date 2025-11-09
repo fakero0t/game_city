@@ -8,7 +8,6 @@ static func get_scene_path(activity_type: String) -> String:
 	var mapping = {
 		"connect_def": "res://scenes/WordMatching.tscn",
 		"context_cloze": "res://scenes/FillInBlank.tscn",
-		"select_usage": "res://scenes/MultipleChoice.tscn",
 		"synonym_mcq": "res://scenes/SynonymAntonym.tscn",
 		"flashcard_usage": "res://scenes/MemoryGame.tscn"
 	}
@@ -21,7 +20,6 @@ static func is_valid_activity_type(activity_type: String) -> bool:
 	var valid_types = [
 		"connect_def",
 		"context_cloze",
-		"select_usage",
 		"synonym_mcq",
 		"flashcard_usage"
 	]

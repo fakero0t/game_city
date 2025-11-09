@@ -97,3 +97,8 @@ func _on_game_completed(game_name: String) -> void:
 	# Request next activity directly (no modal)
 	await request_next_activity()
 
+## Return to main menu
+func return_to_menu() -> void:
+	reset_flow()
+	get_tree().reload_current_scene()
+

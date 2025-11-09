@@ -37,7 +37,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 28
-text = "Pick the Meaning"
+text = "Multiple Choice"
 
 [node name="QuestionPanel" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -123,13 +123,4 @@ offset_left = 40.0
 offset_top = 620.0
 offset_right = 1240.0
 offset_bottom = 680.0
-
-[node name="NextButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1100.0
-offset_top = 620.0
-offset_right = 1240.0
-offset_bottom = 680.0
-theme_override_font_sizes/font_size = 20
-text = "Next"
 

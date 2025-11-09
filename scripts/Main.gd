@@ -1,5 +1,5 @@
 extends Control
-## Main Screen - Entry point for Vocabulary Zoo
+## Main Screen - Entry point for vocab console
 ## Handles main menu, modals, and game container loading
 
 var modal_scene = preload("res://scenes/Modal.tscn")
@@ -50,8 +50,8 @@ func _on_start_pressed() -> void:
 	# Hide main menu
 	menu_container.hide()
 	
-	# Show info modal
-	_show_info_modal()
+	# Request first activity directly (skip modal)
+	GameManager.request_next_activity()
 
 func _show_info_modal() -> void:
 	modal_instance = modal_scene.instantiate()
@@ -135,3 +135,13 @@ func _show_error_toast(message: String) -> void:
 	tween.tween_interval(2.0)
 	tween.tween_property(toast, "modulate:a", 0.0, 0.3)
 	tween.tween_callback(toast.queue_free)
+
+func _load_platformer_level() -> void:
+	# Clear previous game if exists
+	for child in game_container.get_children():
+		child.queue_free()
+	
+	# Load platformer level
+	var platformer_scene = load("res://scenes/PlatformerLevel.tscn").instantiate()
+	game_container.add_child(platformer_scene)
+	game_container.show()

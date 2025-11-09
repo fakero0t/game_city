@@ -44,7 +44,23 @@ func load_vocabulary(file_path: String = "res://assets/vocabulary.json") -> void
 		vocabulary_loaded = false
 		return
 	
-	all_words = data["words"]
+	# Convert JSON array to typed array (handle type mismatch from JSON parsing)
+	all_words.clear()
+	var words_data = data["words"]
+	if words_data is Array:
+		for word_entry in words_data:
+			if word_entry is Dictionary:
+				all_words.append(word_entry)
+			else:
+				load_error = "Invalid word entry format in vocabulary file"
+				emit_signal("vocabulary_load_failed", load_error)
+				vocabulary_loaded = false
+				return
+	else:
+		load_error = "Vocabulary 'words' field is not an array"
+		emit_signal("vocabulary_load_failed", load_error)
+		vocabulary_loaded = false
+		return
 	
 	# Validate we have at least some words
 	if all_words.size() == 0:

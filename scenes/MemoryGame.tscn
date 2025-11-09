@@ -206,13 +206,3 @@ theme_override_font_sizes/font_size = 32
 text = "All Matched! 🎉"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="NextButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1100.0
-offset_top = 620.0
-offset_right = 1240.0
-offset_bottom = 680.0
-theme_override_font_sizes/font_size = 20
-text = "Next"
-

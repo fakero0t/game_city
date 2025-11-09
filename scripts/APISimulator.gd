@@ -149,17 +149,10 @@ func validate_activity_data(data: Dictionary) -> bool:
 		push_error("APISimulator: Missing word.media")
 		return false
 	
-	# Validate headword visibility rules
-	var headword_hidden_types = ["spell_typed", "definition_typed", "paraphrase_typed_gen"]
-	var should_hide_headword = headword_hidden_types.has(activity_type)
-	
+	# Validate headword
 	if not word.has("headword"):
 		push_error("APISimulator: Missing word.headword")
 		return false
-	
-	if should_hide_headword and not word["headword"].is_empty():
-		push_warning("APISimulator: Headword should be hidden for %s" % activity_type)
-		# Not a hard error, just a warning
 	
 	# Validate media array structure
 	if not word["media"] is Array:
@@ -190,11 +183,6 @@ func validate_activity_data(data: Dictionary) -> bool:
 	# Validate activity-specific params
 	var params = data["params"]
 	
-	# Activities with null params
-	if activity_type in ["spell_typed", "definition_typed", "paraphrase_typed_gen"]:
-		if params != null:
-			push_warning("APISimulator: %s should have null params" % activity_type)
-	
 	# Activities with options array
 	if activity_type in ["connect_def", "context_cloze"]:
 		if not params.has("options"):
@@ -211,7 +199,7 @@ func validate_activity_data(data: Dictionary) -> bool:
 			return false
 	
 	# Activities with object array options (exampleId + text)
-	if activity_type in ["flashcard_usage", "select_usage"]:
+	if activity_type == "flashcard_usage":
 		if not params.has("options"):
 			push_error("APISimulator: %s missing params.options" % activity_type)
 			return false
@@ -233,13 +221,6 @@ func validate_activity_data(data: Dictionary) -> bool:
 				push_error("APISimulator: synonym_mcq option missing headword")
 				return false
 	
-	# Sentence generation validation
-	if activity_type == "sentence_typed_gen":
-		if not params.has("cueWord"):
-			push_error("APISimulator: sentence_typed_gen missing params.cueWord")
-			return false
-		# cuePos is optional, so don't require it
-	
 	return true
 
 ## Check if test data is exhausted (always false, since we cycle indefinitely)
@@ -256,210 +237,99 @@ func _initialize_test_data() -> void:
 	
 	var item_counter = 1
 	
-	# Note: System will automatically cycle through words using modulo if fewer words available
-	# No minimum word count required - words will be reused as needed
+	# Note: Creating 1 entry per activity type for easy testing/cycling
+	# Each "Next" click will show a different activity type, then cycle through all 4
 	
-	# ========== ACTIVITY TYPE 1: flashcard_usage (indices 0-2) ==========
-	for i in range(3):
-		var word = vocab_words[i % vocab_words.size()]
-		var entry = {
-			"itemId": _generate_uuid_like("item"),
-			"activityType": "flashcard_usage",
-			"phase": "new",
-			"phaseProgress": {"current": i + 1, "total": 3},
-			"word": {
-				"wordId": _generate_uuid_like("word"),
-				"headword": word["word"],
-				"definition": word["definition"],
-				"pos": "adjective",
-				"media": _generate_media_array(word["word"], "word-%03d" % item_counter, true)
-			},
-			"params": {
-				"options": _generate_sentence_options(word, vocab_words)
-			}
+	# ========== ACTIVITY TYPE 1: context_cloze (FillInBlank - Space Invaders) (FIRST) ==========
+	var word = vocab_words[0 % vocab_words.size()]
+	var sentence = word["example_sentence"]
+	var entry = {
+		"itemId": _generate_uuid_like("item"),
+		"activityType": "context_cloze",
+		"phase": "new",
+		"phaseProgress": {"current": 1, "total": 1},
+		"word": {
+			"wordId": _generate_uuid_like("word"),
+			"headword": word["word"],
+			"definition": word["definition"],
+			"pos": "adjective",
+			"media": _generate_media_array(word["word"], "word-%03d" % item_counter, true)
+		},
+		"params": {
+			"sentence": sentence,
+			"options": _generate_word_options(word["word"], vocab_words)
 		}
-		test_data_entries.append(entry)
-		item_counter += 1
+	}
+	test_data_entries.append(entry)
+	item_counter += 1
 	
-	# ========== ACTIVITY TYPE 2: connect_def (indices 3-5) ==========
-	for i in range(3):
-		var word = vocab_words[(i + 3) % vocab_words.size()]
-		var entry = {
-			"itemId": _generate_uuid_like("item"),
-			"activityType": "connect_def",
-			"phase": "new",
-			"phaseProgress": {"current": i + 1, "total": 3},
-			"word": {
+	# ========== ACTIVITY TYPE 2: synonym_mcq ==========
+	word = vocab_words[1 % vocab_words.size()]
+	entry = {
+		"itemId": _generate_uuid_like("item"),
+		"activityType": "synonym_mcq",
+		"phase": "review",
+		"phaseProgress": {"current": 1, "total": 1},
+		"word": {
+			"wordId": _generate_uuid_like("word"),
+			"headword": word["word"],
+			"definition": word["definition"],
+			"pos": "adjective",
+			"media": _generate_media_array(word["word"], "word-%03d" % item_counter, true)
+		},
+		"params": {
+			"targetWord": {
 				"wordId": _generate_uuid_like("word"),
-				"headword": word["word"],
-				"definition": word["definition"],
-				"pos": "adjective",
-				"media": _generate_media_array(word["word"], "word-%03d" % item_counter, true)
+				"headword": word["synonyms"][0]
 			},
-			"params": {
-				"options": _generate_word_options(word["word"], vocab_words)
-			}
+			"options": _generate_synonym_options(word)
 		}
-		test_data_entries.append(entry)
-		item_counter += 1
+	}
+	test_data_entries.append(entry)
+	item_counter += 1
 	
-	# ========== ACTIVITY TYPE 3: context_cloze (indices 6-8) ==========
-	for i in range(3):
-		var word = vocab_words[(i + 6) % vocab_words.size()]
-		var sentence = word["example_sentence"]
-		var entry = {
-			"itemId": _generate_uuid_like("item"),
-			"activityType": "context_cloze",
-			"phase": "new",
-			"phaseProgress": {"current": i + 1, "total": 3},
-			"word": {
-				"wordId": _generate_uuid_like("word"),
-				"headword": word["word"],
-				"definition": word["definition"],
-				"pos": "adjective",
-				"media": _generate_media_array(word["word"], "word-%03d" % item_counter, true)
-			},
-			"params": {
-				"sentence": sentence,
-				"options": _generate_word_options(word["word"], vocab_words)  # FIXED: String array
-			}
+	# ========== ACTIVITY TYPE 3: flashcard_usage ==========
+	word = vocab_words[2 % vocab_words.size()]
+	entry = {
+		"itemId": _generate_uuid_like("item"),
+		"activityType": "flashcard_usage",
+		"phase": "new",
+		"phaseProgress": {"current": 1, "total": 1},
+		"word": {
+			"wordId": _generate_uuid_like("word"),
+			"headword": word["word"],
+			"definition": word["definition"],
+			"pos": "adjective",
+			"media": _generate_media_array(word["word"], "word-%03d" % item_counter, true)
+		},
+		"params": {
+			"options": _generate_sentence_options(word, vocab_words)
 		}
-		test_data_entries.append(entry)
-		item_counter += 1
+	}
+	test_data_entries.append(entry)
+	item_counter += 1
 	
-	# ========== ACTIVITY TYPE 4: select_usage (indices 9-11) ==========
-	for i in range(3):
-		var word = vocab_words[(i + 9) % vocab_words.size()]
-		var entry = {
-			"itemId": _generate_uuid_like("item"),
-			"activityType": "select_usage",
-			"phase": "new",
-			"phaseProgress": {"current": i + 1, "total": 3},
-			"word": {
-				"wordId": _generate_uuid_like("word"),
-				"headword": word["word"],
-				"definition": word["definition"],
-				"pos": "adjective",
-				"media": _generate_media_array(word["word"], "word-%03d" % item_counter, true)
-			},
-			"params": {
-				"options": _generate_sentence_options(word, vocab_words)
-			}
+	# ========== ACTIVITY TYPE 4: connect_def ==========
+	word = vocab_words[3 % vocab_words.size()]
+	entry = {
+		"itemId": _generate_uuid_like("item"),
+		"activityType": "connect_def",
+		"phase": "new",
+		"phaseProgress": {"current": 1, "total": 1},
+		"word": {
+			"wordId": _generate_uuid_like("word"),
+			"headword": word["word"],
+			"definition": word["definition"],
+			"pos": "adjective",
+			"media": _generate_media_array(word["word"], "word-%03d" % item_counter, true)
+		},
+		"params": {
+			"options": _generate_word_options(word["word"], vocab_words)
 		}
-		test_data_entries.append(entry)
-		item_counter += 1
+	}
+	test_data_entries.append(entry)
 	
-	# ========== ACTIVITY TYPE 5: synonym_mcq (indices 12-14) ==========
-	for i in range(3):
-		var word = vocab_words[(i + 12) % vocab_words.size()]
-		var entry = {
-			"itemId": _generate_uuid_like("item"),
-			"activityType": "synonym_mcq",
-			"phase": "review",
-			"phaseProgress": {"current": i + 1, "total": 3},
-			"word": {
-				"wordId": _generate_uuid_like("word"),
-				"headword": word["word"],
-				"definition": word["definition"],
-				"pos": "adjective",
-				"media": _generate_media_array(word["word"], "word-%03d" % item_counter, true)
-			},
-			"params": {
-				"targetWord": {
-					"wordId": _generate_uuid_like("word"),
-					"headword": word["synonyms"][0]
-				},
-				"options": _generate_synonym_options(word)
-			}
-		}
-		test_data_entries.append(entry)
-		item_counter += 1
-	
-	# ========== ACTIVITY TYPE 6: spell_typed (indices 15-17) ==========
-	for i in range(3):
-		var word = vocab_words[(i + 15) % vocab_words.size()]
-		var entry = {
-			"itemId": _generate_uuid_like("item"),
-			"activityType": "spell_typed",
-			"phase": "new",
-			"phaseProgress": {"current": i + 1, "total": 3},
-			"word": {
-				"wordId": _generate_uuid_like("word"),
-				"headword": "",  # HIDDEN
-				"definition": word["definition"],
-				"pos": "adjective",
-				"media": _generate_media_array(word["word"], "word-%03d" % item_counter, true)  # Audio required
-			},
-			"params": null
-		}
-		test_data_entries.append(entry)
-		item_counter += 1
-	
-	# ========== ACTIVITY TYPE 7: definition_typed (indices 18-20) ==========
-	for i in range(3):
-		var word = vocab_words[(i + 18) % vocab_words.size()]
-		var entry = {
-			"itemId": _generate_uuid_like("item"),
-			"activityType": "definition_typed",
-			"phase": "review",
-			"phaseProgress": {"current": i + 1, "total": 3},
-			"word": {
-				"wordId": _generate_uuid_like("word"),
-				"headword": "",  # HIDDEN
-				"definition": word["definition"],
-				"pos": "adjective",
-				"media": _generate_media_array(word["word"], "word-%03d" % item_counter, false)  # No audio
-			},
-			"params": null
-		}
-		test_data_entries.append(entry)
-		item_counter += 1
-	
-	# ========== ACTIVITY TYPE 8: sentence_typed_gen (indices 21-23) ==========
-	for i in range(3):
-		var word = vocab_words[(i + 21) % vocab_words.size()]
-		var cue = _select_cue_word(word["word"], vocab_words)
-		var entry = {
-			"itemId": _generate_uuid_like("item"),
-			"activityType": "sentence_typed_gen",
-			"phase": "review",
-			"phaseProgress": {"current": i + 1, "total": 3},
-			"word": {
-				"wordId": _generate_uuid_like("word"),
-				"headword": word["word"],  # VISIBLE
-				"definition": word["definition"],
-				"pos": "adjective",
-				"media": _generate_media_array(word["word"], "word-%03d" % item_counter, true)
-			},
-			"params": {
-				"cueWord": cue["cueWord"],
-				"cuePos": cue["cuePos"]
-			}
-		}
-		test_data_entries.append(entry)
-		item_counter += 1
-	
-	# ========== ACTIVITY TYPE 9: paraphrase_typed_gen (indices 24-26) ==========
-	for i in range(3):
-		var word = vocab_words[(i + 24) % vocab_words.size()]
-		var entry = {
-			"itemId": _generate_uuid_like("item"),
-			"activityType": "paraphrase_typed_gen",
-			"phase": "review",
-			"phaseProgress": {"current": i + 1, "total": 3},
-			"word": {
-				"wordId": _generate_uuid_like("word"),
-				"headword": "",  # HIDDEN
-				"definition": word["definition"],
-				"pos": "adjective",
-				"media": _generate_media_array(word["word"], "word-%03d" % item_counter, false)  # No audio
-			},
-			"params": null
-		}
-		test_data_entries.append(entry)
-		item_counter += 1
-	
-	print("APISimulator: Initialized with ", test_data_entries.size(), " test entries (9 activity types × 3 each)")
+	print("APISimulator: Initialized with ", test_data_entries.size(), " test entries (4 activity types, 1 per type for testing)")
 
 ## Generate word options for connect_def activities (array of strings)
 func _generate_word_options(correct_word: String, all_words: Array) -> Array:
@@ -476,7 +346,7 @@ func _generate_word_options(correct_word: String, all_words: Array) -> Array:
 	options.shuffle()
 	return options
 
-## Generate sentence options for select_usage/flashcard_usage (array of {exampleId, text})
+## Generate sentence options for flashcard_usage (array of {exampleId, text})
 func _generate_sentence_options(correct_word_data: Dictionary, all_words: Array) -> Array:
 	var options = []
 	

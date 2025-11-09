@@ -3,7 +3,6 @@ extends Control
 ## Pick the correct definition for each word
 ## Features dog character with tail wiggle animation
 
-const CharacterHelper = preload("res://scripts/CharacterHelper.gd")
 const Colors = preload("res://scripts/VocabZooColors.gd")
 const Anim = preload("res://scripts/VocabZooConstants.gd")
 const THEME = preload("res://assets/vocab_zoo_theme.tres")
@@ -19,8 +18,9 @@ var current_question_index: int = 0
 var is_answering: bool = false
 
 var answer_buttons: Array[Button] = []
-var tail_base_x: float
-var wiggle_timer: Timer
+var fox_image: Sprite2D
+var video_player: VideoStreamPlayer
+var character_visible: bool = true
 var encouraging_messages = [
 	"Not quite! Try again - you've got this!",
 	"Keep trying! You can figure this out!",
@@ -30,18 +30,24 @@ var encouraging_messages = [
 ]
 
 func _ready() -> void:
-	# Create dog character
-	var dog = CharacterHelper.create_dog($Character, Vector2.ZERO, Colors.ORANGE)
-	var tail_node = $Character.get_node_or_null("Tail")
-	if tail_node:
-		tail_base_x = tail_node.position.x
-		
-		# Setup tail wiggle
-		wiggle_timer = Timer.new()
-		wiggle_timer.wait_time = 2.0
-		wiggle_timer.timeout.connect(_wiggle_tail)
-		add_child(wiggle_timer)
-		wiggle_timer.start()
+	# Create fox image from fox.png
+	fox_image = Sprite2D.new()
+	fox_image.name = "FoxImage"
+	var texture = load("res://assets/fox.png")
+	if texture:
+		fox_image.texture = texture
+		fox_image.scale = Vector2(0.5, 0.5)  # Adjust scale as needed
+	$Character.add_child(fox_image)
+	
+	# Create video player for fox animations (hidden initially)
+	# Note: VideoStreamPlayer is a Control node, so we add it to the root Control, not Character
+	video_player = VideoStreamPlayer.new()
+	video_player.name = "VideoPlayer"
+	video_player.size = Vector2(200, 200)
+	video_player.position = $Character.position - Vector2(100, 100)  # Position relative to Character's world position
+	video_player.visible = false
+	add_child(video_player)
+	video_player.finished.connect(_on_video_finished)
 	
 	# Get answer buttons
 	answer_buttons = [
@@ -55,10 +61,7 @@ func _ready() -> void:
 	for i in range(4):
 		answer_buttons[i].pressed.connect(_on_answer_pressed.bind(i))
 	
-	$NextButton.pressed.connect(_on_next_pressed)
-	$NextButton.mouse_entered.connect(_on_button_hover_enter)
-	$NextButton.mouse_exited.connect(_on_button_hover_exit)
-	$NextButton.disabled = true
+	# Next button removed - auto-navigation after celebration
 	
 	# Wait for activity data to be loaded via load_activity_data()
 
@@ -78,7 +81,7 @@ func load_activity_data(activity_data: Dictionary) -> void:
 	q.correct_definition = word_data.get("definition", "")
 	
 	# Extract options based on activity type
-	if activity_type == "select_usage" or activity_type == "flashcard_usage":
+	if activity_type == "flashcard_usage":
 		# Options are Array of {exampleId, text}
 		var options_array = params.get("options", [])
 		var options_temp: Array[String] = []
@@ -182,8 +185,8 @@ func _on_answer_pressed(button_index: int) -> void:
 		$FeedbackLabel.show()
 		Anim.create_scale_bounce($FeedbackLabel, 1.0, 0.3)
 		
-		# Wait 2 seconds, then next question (ONLY for correct answers)
-		await get_tree().create_timer(2.0).timeout
+		# Wait for celebration, then auto-navigate to next activity
+		await get_tree().create_timer(2.5).timeout
 		_on_game_complete()
 	else:
 		# Wrong answer - NEW BEHAVIOR
@@ -220,9 +223,9 @@ func _on_answer_pressed(button_index: int) -> void:
 		return  # Exit function without advancing
 
 func _on_game_complete() -> void:
-	# Enable next button
-	$NextButton.disabled = false
-	Anim.create_scale_bounce($NextButton, 1.0, 0.3)
+	# Automatically navigate to next activity
+	await get_tree().create_timer(0.5).timeout
+	GameManager.request_next_activity()
 
 func _reset_button_style(button: Button) -> void:
 	# Reset to default theme style
@@ -235,41 +238,32 @@ func _get_letter(index: int) -> String:
 	return ["A", "B", "C", "D"][index]
 
 func _play_dog_celebration() -> void:
-	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_CUBIC)
-	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property($Character, "rotation", -0.1, 0.15)
-	tween.tween_property($Character, "rotation", 0.1, 0.15)
-	tween.tween_property($Character, "rotation", 0, 0.15)
+	# Play fox_jump video (must be .ogv format for Godot)
+	fox_image.visible = false
+	var stream = load("res://assets/fox_jump.ogv")
+	if stream:
+		video_player.stream = stream
+		video_player.visible = true
+		video_player.play()
+	else:
+		push_warning("fox_jump.ogv not found - convert fox_jump.mp4 to Ogg Theora format")
+		fox_image.visible = true
 
 func _play_dog_sympathy() -> void:
-	var original_y = $Character.position.y
-	var tween = create_tween()
-	tween.tween_property($Character, "position:y", original_y + 10, 0.2)
-	tween.tween_property($Character, "position:y", original_y, 0.2)
+	# Play fox_shake video (must be .ogv format for Godot)
+	fox_image.visible = false
+	var stream = load("res://assets/fox_shake.ogv")
+	if stream:
+		video_player.stream = stream
+		video_player.visible = true
+		video_player.play()
+	else:
+		push_warning("fox_shake.ogv not found - convert fox_shake.mp4 to Ogg Theora format")
+		fox_image.visible = true
 
-func _wiggle_tail() -> void:
-	var tail_node = $Character.get_node_or_null("Tail")
-	if not tail_node:
-		return
-	
-	var tween = create_tween()
-	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.tween_property(tail_node, "position:x", tail_base_x + 10, 0.25)
-	tween.tween_property(tail_node, "position:x", tail_base_x - 10, 0.25)
-	tween.tween_property(tail_node, "position:x", tail_base_x, 0.25)
+func _on_video_finished() -> void:
+	# Hide video player and show fox image again
+	video_player.visible = false
+	fox_image.visible = true
 
-func _on_next_pressed() -> void:
-	SoundManager.play_click_sound()
-	Anim.animate_button_press($NextButton)
-	await get_tree().create_timer(0.4).timeout
-	# Request next activity instead of fixed sequence
-	GameManager.request_next_activity()
-
-func _on_button_hover_enter() -> void:
-	if not $NextButton.disabled:
-		Anim.create_hover_scale($NextButton, true, 0.2)
-
-func _on_button_hover_exit() -> void:
-	Anim.create_hover_scale($NextButton, false, 0.2)
+# Next button removed - auto-navigation after celebration
