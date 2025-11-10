@@ -1,0 +1,5 @@
+Playcademy was a fun product to work on and I see the vision for the streamlined plug & play frontend for adding games. The process of connecting the frontend to backend was not straightforward - there were steps in the requirements document, multiple branches with differing instructions, and a Discord channel to get more necessary details. 
+
+If time weren’t a constraint on this project it would be easier to spend time poking around these docs and figure it out. The API routes seemed pretty well documented and the database seed (minus audio) and install command worked out of the box. Also, setting up the Playcademy assets in Godot was straightforward but coming from someone who’s never used the interface before it would make it even faster to get going if there were screenshots with the steps so I know I’m in the right place in the Godot interface.
+
+It’s really not a terribly hard system to work with; it’s just the scattered resources that made it tricky. Maybe keeping the UI integration docs that exist https://docs.playcademy.net/platform-guides/godot.html in the github repo would be useful so don't need to visit two sets of docs. 
