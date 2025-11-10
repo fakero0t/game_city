@@ -25,16 +25,6 @@ expand_mode = 1
 texture = ExtResource("3_starfield")
 stretch_mode = 6
 
-[node name="ProgressLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1160.0
-offset_top = 40.0
-offset_right = 1240.0
-offset_bottom = 75.0
-theme_override_colors/font_color = Color(0.973, 0.98, 0.988, 1)
-theme_override_font_sizes/font_size = 22
-text = "1 of 4"
-
 [node name="Character" type="Node2D" parent="."]
 position = Vector2(640, 360)
 
@@ -89,7 +79,7 @@ size_flags_vertical = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
 theme_override_font_sizes/font_size = 16
-text = "Click to flip"
+text = "press space to flip"
 horizontal_alignment = 1
 
 [node name="Spacer3" type="Control" parent="CardContainer/Card/FrontSide"]

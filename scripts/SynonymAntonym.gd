@@ -77,6 +77,10 @@ func _ready() -> void:
 	# Initialize mouse position
 	last_mouse_pos = get_global_mouse_position()
 	
+	# Add activity progress indicator (bottom left)
+	var activity_progress = GameManager.create_activity_progress_label()
+	add_child(activity_progress)
+	
 	# Wait for activity data to be loaded via load_activity_data()
 
 func _setup_game_area() -> void:
@@ -109,7 +113,7 @@ func _setup_game_area() -> void:
 	question_label = Label.new()
 	question_label.name = "QuestionLabel"
 	var viewport_size = get_viewport_rect().size
-	question_label.position = Vector2(50, 20)
+	question_label.position = Vector2(50, 40)
 	question_label.size = Vector2(viewport_size.x - 100, 80)
 	question_label.add_theme_font_size_override("font_size", 28)
 	question_label.autowrap_mode = TextServer.AUTOWRAP_WORD
@@ -471,11 +475,12 @@ func _display_question() -> void:
 
 func _create_word_ships(q: RelationshipQuestion) -> void:
 	var viewport_width = get_viewport_rect().size.x
+	var viewport_height = get_viewport_rect().size.y
 	# Reduce spacing - use narrower area for ships (60% of screen width centered)
 	var ships_area_width = viewport_width * 0.6
 	var ship_spacing = ships_area_width / (q.options.size() + 1)
 	var start_offset = (viewport_width - ships_area_width) / 2
-	var ship_y = 120.0
+	var ship_y = viewport_height / 2.0 - 50.0  # Center on horizontal axis
 	
 	for i in range(q.options.size()):
 		var word = q.options[i]
@@ -518,8 +523,8 @@ func _create_word_ships(q: RelationshipQuestion) -> void:
 		var word_label = Label.new()
 		word_label.text = word
 		word_label.size = Vector2(120, 30)
-		word_label.position = Vector2(0, 90)
-		word_label.add_theme_font_size_override("font_size", 14)
+		word_label.position = Vector2(0, 95)
+		word_label.add_theme_font_size_override("font_size", 16)
 		word_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		word_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		word_label.add_theme_color_override("font_color", Colors.LIGHT_BASE)

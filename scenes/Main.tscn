@@ -55,24 +55,8 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 56
-text = "vocab console"
+text = "Vocab Invaders"
 horizontal_alignment = 1
-
-[node name="InstructionsLabel" type="RichTextLabel" parent="MenuContainer/VBoxContainer"]
-custom_minimum_size = Vector2(500, 200)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/default_color = Color(0.973, 0.98, 0.988, 1)
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[center][b]How to Play:[/b]
-Use [b]left/right arrows[/b] to move
-Press [b]spacebar[/b] to shoot the correct answer!
-
-
-Ready to start? Let's go![/center]"
-fit_content = true
-scroll_active = false
 
 [node name="StartButton" type="Button" parent="MenuContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 70)

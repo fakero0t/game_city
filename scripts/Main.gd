@@ -34,6 +34,12 @@ func _ready() -> void:
 	# Initially hide game container
 	game_container.hide()
 
+func _input(event: InputEvent) -> void:
+	# Check for spacebar press on main menu
+	if event.is_action_pressed("ui_accept") and menu_container.visible:
+		start_button.emit_signal("pressed")
+		get_viewport().set_input_as_handled()
+
 func _on_start_pressed() -> void:
 	# Check if vocabulary is loaded
 	if not VocabularyManager.is_vocabulary_ready():
@@ -57,12 +63,7 @@ func _show_info_modal() -> void:
 	modal_instance = modal_scene.instantiate()
 	modal_layer.add_child(modal_instance)
 	
-	var body_text = "[center]You'll complete vocabulary activities to learn new words!\n\n"
-	body_text += "Each activity will help you practice and remember.\n\n"
-	body_text += "[b]How to Play:[/b]\n"
-	body_text += "Use the [b]left and right arrows[/b] to move\n"
-	body_text += "Press [b]spacebar[/b] to release a laser and attack the right answer!\n\n"
-	body_text += "Ready to start? Let's go![/center]"
+	var body_text = "[center]Ready to start? Let's go![/center]"
 	
 	modal_instance.show_modal("Welcome, Friend! 🎉", body_text, "Let's Go!")
 	modal_instance.modal_action_pressed.connect(_on_info_modal_action)

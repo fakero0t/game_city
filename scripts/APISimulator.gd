@@ -237,6 +237,14 @@ func validate_activity_data(data: Dictionary) -> bool:
 func is_test_data_exhausted() -> bool:
 	return current_test_index >= test_data_entries.size()
 
+## Get total number of activities
+func get_total_activities() -> int:
+	return test_data_entries.size()
+
+## Get current activity number (1-indexed)
+func get_current_activity_number() -> int:
+	return current_test_index
+
 ## Initialize test data from vocabulary
 func _initialize_test_data() -> void:
 	# Get vocabulary words from VocabularyManager
@@ -256,8 +264,9 @@ func _initialize_test_data() -> void:
 	for word in vocab_words:
 		var word_key = word["word"]
 		
-		# Skip if word already used
+		# Skip if word already used (should not happen with deduplicated vocab, but double-check)
 		if used_words.has(word_key):
+			print("APISimulator: WARNING - Skipping duplicate word in test data generation: ", word_key)
 			continue
 		
 		# Mark word as used
@@ -287,7 +296,20 @@ func _initialize_test_data() -> void:
 		test_data_entries.append(entry)
 		item_counter += 1
 	
-	print("APISimulator: Initialized with ", test_data_entries.size(), " test entries across ", activity_types.size(), " activity types")
+	# Verify no duplicate words in final test data
+	var final_check = {}
+	var duplicates_found = false
+	for entry in test_data_entries:
+		var word_text = entry.get("word", {}).get("headword", "")
+		if final_check.has(word_text):
+			print("APISimulator: ERROR - Duplicate found in final test data: ", word_text)
+			duplicates_found = true
+		final_check[word_text] = true
+	
+	if duplicates_found:
+		push_error("APISimulator: Duplicates detected in test data!")
+	else:
+		print("APISimulator: Initialized with ", test_data_entries.size(), " unique test entries across ", activity_types.size(), " activity types (no duplicates)")
 
 ## Create flashcard_usage entry
 func _create_flashcard_entry(word: Dictionary, vocab_words: Array, item_counter: int, progress_current: int, progress_total: int) -> Dictionary:

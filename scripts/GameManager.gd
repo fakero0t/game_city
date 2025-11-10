@@ -18,6 +18,7 @@ var current_activity_data: Dictionary = {}
 var session_start_time: float = 0.0
 var session_duration_seconds: float = 600.0  # 10 minutes
 var activities_completed: int = 0
+var total_activities: int = 0
 
 func _ready() -> void:
 	game_completed.connect(_on_game_completed)
@@ -29,6 +30,8 @@ func initialize_session() -> void:
 	activities_completed = 0
 	# Reset API simulator progress to start from beginning
 	APISimulator.reset_progress()
+	# Get total activities from API simulator
+	total_activities = APISimulator.get_total_activities()
 
 ## Check if session should end (time limit or data exhausted)
 func should_end_session() -> bool:
@@ -64,7 +67,6 @@ func request_next_activity() -> void:
 		return
 	
 	current_activity_data = activity_data
-	activities_completed += 1
 	emit_signal("activity_data_received", activity_data)
 	load_game_from_activity(activity_data)
 
@@ -103,4 +105,27 @@ func _on_game_completed(game_name: String) -> void:
 func return_to_menu() -> void:
 	reset_flow()
 	get_tree().reload_current_scene()
+
+## Create and return a progress label for activity screens
+func create_activity_progress_label() -> Label:
+	var progress_label = Label.new()
+	progress_label.name = "ActivityProgressLabel"
+	
+	# Get current progress
+	var current = APISimulator.get_current_activity_number()
+	var total = total_activities
+	
+	# Set text
+	progress_label.text = "%d/%d" % [current, total]
+	
+	# Style the label
+	const Colors = preload("res://scripts/VocabZooColors.gd")
+	progress_label.add_theme_font_size_override("font_size", 18)
+	progress_label.add_theme_color_override("font_color", Colors.LIGHT_BASE)
+	
+	# Position at bottom left
+	progress_label.position = Vector2(40, 680)
+	progress_label.size = Vector2(100, 30)
+	
+	return progress_label
 

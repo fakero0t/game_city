@@ -47,9 +47,17 @@ func load_vocabulary(file_path: String = "res://assets/vocabulary.json") -> void
 	# Convert JSON array to typed array (handle type mismatch from JSON parsing)
 	all_words.clear()
 	var words_data = data["words"]
+	var seen_words = {}  # Track seen words to prevent duplicates
+	
 	if words_data is Array:
 		for word_entry in words_data:
 			if word_entry is Dictionary:
+				var word_text = word_entry.get("word", "")
+				# Skip duplicate words
+				if seen_words.has(word_text):
+					print("VocabularyManager: Skipping duplicate word: ", word_text)
+					continue
+				seen_words[word_text] = true
 				all_words.append(word_entry)
 			else:
 				load_error = "Invalid word entry format in vocabulary file"

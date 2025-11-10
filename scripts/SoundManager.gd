@@ -30,7 +30,7 @@ func _ready() -> void:
 	var incorrect_sound_path = "res://assets/sounds/incorrect_thud.wav"
 	var click_sound_path = "res://assets/sounds/click.wav"
 	var triumph_sound_path = "res://assets/sounds/triumph.wav"
-	var laser_sound_path = "res://assets/Free Retro Sci-Fi Sound Fx/01 Retro Lazer #1.mp3"
+	var laser_sound_path = "res://assets/Free Retro Sci-Fi Sound Fx/03 Retro Lazer #3.mp3"
 	
 	if ResourceLoader.exists(correct_sound_path):
 		correct_player.stream = load(correct_sound_path)
@@ -62,7 +62,10 @@ func _ready() -> void:
 	incorrect_player.volume_db = -10.0
 	click_player.volume_db = -12.0
 	triumph_player.volume_db = -8.0
-	laser_player.volume_db = -10.0
+	laser_player.volume_db = -13.0
+	
+	# Set pitch scale to make laser sound shorter and snappier
+	laser_player.pitch_scale = 2.0
 
 ## Play positive chime sound for correct answers
 func play_correct_sound() -> void:

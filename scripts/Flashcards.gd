@@ -20,7 +20,6 @@ var card_type_label: Label
 @onready var word_label = $CardContainer/Card/FrontSide/WordLabel
 @onready var definition_label = $CardContainer/Card/BackSide/DefinitionLabel
 @onready var example_label = $CardContainer/Card/ExampleSide/ExampleLabel
-@onready var progress_label = $ProgressLabel
 @onready var next_button = $NextButton
 
 func _ready() -> void:
@@ -69,8 +68,8 @@ func _ready() -> void:
 	card_type_label.text = "WORD"
 	card_type_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	card_type_label.add_theme_font_size_override("font_size", 18)
-	card_type_label.add_theme_color_override("font_color", Colors.PRIMARY_BLUE)
-	card_type_label.position = Vector2(0, 110)
+	card_type_label.add_theme_color_override("font_color", Colors.PRIMARY_PURPLE)  # Bright green
+	card_type_label.position = Vector2(0, 580)
 	card_type_label.size = Vector2(viewport_size.x, 30)
 	add_child(card_type_label)
 	
@@ -84,11 +83,30 @@ func _ready() -> void:
 	# Connect card click
 	card.gui_input.connect(_on_card_gui_input)
 	
+	# Connect card hover
+	card.mouse_entered.connect(_on_card_hover_enter)
+	card.mouse_exited.connect(_on_card_hover_exit)
+	
 	# Connect next button (starts disabled)
 	next_button.disabled = true
 	next_button.pressed.connect(_on_next_pressed)
 	next_button.mouse_entered.connect(_on_button_hover_enter)
 	next_button.mouse_exited.connect(_on_button_hover_exit)
+	
+	# Add "press a" subtext below next button
+	var next_subtext = Label.new()
+	next_subtext.name = "NextSubtext"
+	next_subtext.text = "press a"
+	next_subtext.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	next_subtext.add_theme_font_size_override("font_size", 12)
+	next_subtext.add_theme_color_override("font_color", Color(0.7, 0.7, 0.7, 1))
+	next_subtext.position = Vector2(next_button.position.x, next_button.position.y + next_button.size.y + 5)
+	next_subtext.size = Vector2(next_button.size.x, 20)
+	add_child(next_subtext)
+	
+	# Add activity progress indicator (bottom left)
+	var activity_progress = GameManager.create_activity_progress_label()
+	add_child(activity_progress)
 
 func load_activity_data(data: Dictionary) -> void:
 	activity_data = data
@@ -112,11 +130,6 @@ func _setup_flashcard() -> void:
 		example_sentence = "Example: This is a sentence using the word."
 	example_label.text = example_sentence
 	
-	# Set progress
-	var current = phase_progress.get("current", 1)
-	var total = phase_progress.get("total", 1)
-	progress_label.text = "%d of %d" % [current, total]
-	
 	# Reset states
 	current_side = 0
 	has_completed_cycle = false
@@ -130,6 +143,11 @@ func _input(event: InputEvent) -> void:
 	# Handle spacebar to flip card
 	if event.is_action_pressed("ui_accept"):
 		_flip_card()
+	
+	# Handle 'a' key to press next button (when enabled)
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_A and not next_button.disabled:
+			next_button.emit_signal("pressed")
 
 func _on_card_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -238,3 +256,11 @@ func _on_button_hover_enter() -> void:
 
 func _on_button_hover_exit() -> void:
 	Anim.create_hover_scale(next_button, false, 0.2)
+
+func _on_card_hover_enter() -> void:
+	# Card type label stays below the card
+	pass
+
+func _on_card_hover_exit() -> void:
+	# Card type label stays below the card
+	pass

@@ -15,3 +15,4 @@ res://scripts/SoundManager.gd
 res://scripts/Flashcards.gd
 res://scripts/VocabZooColors.gd
 res://scripts/GameManager.gd
+res://scripts/VocabularyManager.gd
