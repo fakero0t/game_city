@@ -27,6 +27,8 @@ func initialize_session() -> void:
 	current_session_id = "test-session-" + str(Time.get_unix_time_from_system())
 	session_start_time = Time.get_unix_time_from_system()
 	activities_completed = 0
+	# Reset API simulator progress to start from beginning
+	APISimulator.reset_progress()
 
 ## Check if session should end (time limit or data exhausted)
 func should_end_session() -> bool:

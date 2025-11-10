@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_main"]
 [ext_resource type="Theme" path="res://assets/vocab_zoo_theme.tres" id="2_theme"]
-[ext_resource type="Texture2D" uid="uid://starfield_corona" path="res://assets/pixelart_starfields (1)/pixelart_starfield_corona.png" id="3_starfield"]
+[ext_resource type="Texture2D" uid="uid://bpc6q2aites4q" path="res://assets/pixelart_starfields (1)/pixelart_starfield_corona.png" id="3_starfield"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -50,13 +50,29 @@ theme_override_constants/separation = 100
 
 [node name="TitleLabel" type="Label" parent="MenuContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.545, 0.361, 0.965, 1)
+theme_override_colors/font_color = Color(0.224, 1.0, 0.078, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 56
 text = "vocab console"
 horizontal_alignment = 1
+
+[node name="InstructionsLabel" type="RichTextLabel" parent="MenuContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/default_color = Color(0.973, 0.98, 0.988, 1)
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center][b]How to Play:[/b]
+Use [b]left/right arrows[/b] to move
+Press [b]spacebar[/b] to shoot the correct answer!
+
+
+Ready to start? Let's go![/center]"
+fit_content = true
+scroll_active = false
 
 [node name="StartButton" type="Button" parent="MenuContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 70)

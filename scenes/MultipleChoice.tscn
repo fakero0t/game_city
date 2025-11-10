@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://multiplechoice_uid"]
+[gd_scene load_steps=4 format=3 uid="uid://multiplechoice_uid"]
 
 [ext_resource type="Script" path="res://scripts/MultipleChoice.gd" id="1_multiplechoice"]
 [ext_resource type="Theme" path="res://assets/vocab_zoo_theme.tres" id="2_theme"]
+[ext_resource type="Texture2D" uid="uid://bpc6q2aites4q" path="res://assets/pixelart_starfields (1)/pixelart_starfield_corona.png" id="3_starfield"]
 
 [node name="MultipleChoice" type="Control"]
 layout_mode = 3
@@ -13,31 +14,16 @@ grow_vertical = 2
 theme = ExtResource("2_theme")
 script = ExtResource("1_multiplechoice")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="HeaderBar" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 40.0
-offset_right = 1240.0
-offset_bottom = 80.0
-
-[node name="TitleLabel" type="Label" parent="HeaderBar"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.973, 0.98, 0.988, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 28
-text = "Multiple Choice"
+expand_mode = 1
+texture = ExtResource("3_starfield")
+stretch_mode = 6
 
 [node name="QuestionPanel" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -116,11 +102,4 @@ vertical_alignment = 1
 
 [node name="Character" type="Node2D" parent="."]
 position = Vector2(180, 400)
-
-[node name="FooterBar" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 620.0
-offset_right = 1240.0
-offset_bottom = 680.0
 

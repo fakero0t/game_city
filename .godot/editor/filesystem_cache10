@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1762728161
+::res://::1762730024
 activity_card_format.md::TextFile::-1::1762567711::0::1::::<><><>0<>0<><>::
 cursor_implementation_prompt.md::TextFile::-1::1762567417::0::1::::<><><>0<>0<><>::
 game_api_update_prd.md::TextFile::-1::1762568045::0::1::::<><><>0<>0<><>::
@@ -12,11 +12,37 @@ v1_prd.md::TextFile::-1::1762567417::0::1::::<><><>0<>0<><>::
 v1_task_list.md::TextFile::-1::1762567417::0::1::::<><><>0<>0<><>::
 v2_prd.md::TextFile::-1::1762567417::0::1::::<><><>0<>0<><>::
 v2_task_list.md::TextFile::-1::1762567417::0::1::::<><><>0<>0<><>::
-::res://assets/::1762728166
+::res://assets/::1762729867
 BoldPixels.ttf::FontFile::3174220522958262050::1762727422::1762727457::1::::<><><>0<>0<>f7e4aac5d33453864bd75e3582c501df<>res://.godot/imported/BoldPixels.ttf-d0ec95a09ea945cf4c172901e9f8b418.fontdata::
 fox.png::CompressedTexture2D::4388192720257288736::1762572696::1762573667::0::::<><><>0<>0<>b667db3513a3cef77fdaae491d9c3861<>::
 vocabulary.json::JSON::-1::1762571549::0::1::::<><><>0<>0<><>::
 vocab_zoo_theme.tres::Theme::-1::1762590805::0::1::::<><><>0<>0<><>::res://assets/fonts/fredoka-bold.ttf<>res://assets/fonts/nunito-regular.ttf
+::res://assets/dungeonmode/::1762729473
+::res://assets/dungeonmode/bitmap/::1762729473
+dungeon-437.png::CompressedTexture2D::1212433789747912495::1743018184::1762729459::1::::<><><>0<>0<>93c3b20fb3a4fee5dcf0048f1c3d6afb<>res://.godot/imported/dungeon-437.png-1516adf5a25e5036c495c8c7489ea95f.ctex::
+dungeon-mode.png::CompressedTexture2D::5318782604302402652::1743018184::1762729459::1::::<><><>0<>0<>b63f170449f468e4d7e371922d55a187<>res://.godot/imported/dungeon-mode.png-2fdba65f874688054b17840df33722ec.ctex::
+::res://assets/dungeonmode/font/::1762729473
+dungeon-mode-inverted.ttf::FontFile::1155989211798271037::1743018184::1762729459::1::::<><><>0<>0<>eba152c21fdc581db3ff532203b27a7f<>res://.godot/imported/dungeon-mode-inverted.ttf-8a08c57e670089ed0f0a3128a4dde62a.fontdata::
+dungeon-mode.ttf::FontFile::3718471116092540336::1743018184::1762729459::1::::<><><>0<>0<>6a82eb370b647b55cb0af8e897c700c5<>res://.godot/imported/dungeon-mode.ttf-8edf33f871220f2504fbe52b04a741fe.fontdata::
+::res://assets/dungeonmode/playscii/::1762729473
+readme-playscii.txt::TextFile::-1::1742342752::0::1::::<><><>0<>0<><>::
+::res://assets/dungeonmode/playscii/art/::1762729473
+goblin-tunnels.png::CompressedTexture2D::6679476543316571839::1742339556::1762729459::1::::<><><>0<>0<>201eab07d1006a1ed33c4edc4f753739<>res://.godot/imported/goblin-tunnels.png-bfd864cf6579314d30fd422b7f4f8e80.ctex::
+::res://assets/dungeonmode/playscii/charsets/::1762729473
+dungeon-437.png::CompressedTexture2D::7677055795835587917::1743018184::1762729459::1::::<><><>0<>0<>5c74953a07cbfa18244e85debb44f45c<>res://.godot/imported/dungeon-437.png-86de12ea409da0aaa782e47b1b3395c8.ctex::
+dungeon-mode.png::CompressedTexture2D::6261501994729362080::1743018184::1762729459::1::::<><><>0<>0<>c3f4468fc8a74182c92bdb7ea0bdfca9<>res://.godot/imported/dungeon-mode.png-a41c05af39c46882090610f980f5bd46.ctex::
+::res://assets/dungeonmode/playscii/palettes/::1762729473
+dungeon-pal.png::CompressedTexture2D::4149025496254696623::1743018184::1762729459::1::::<><><>0<>0<>8085e222480501e3b508f4df713966a3<>res://.godot/imported/dungeon-pal.png-5fa631b7d928e83566c73ae21f4d7b55.ctex::
+::res://assets/dungeonmode/rexpaint/::1762729473
+readme-rexpaint.txt::TextFile::-1::1742342828::0::1::::<><><>0<>0<><>::
+::res://assets/dungeonmode/rexpaint/data/::1762729473
+::res://assets/dungeonmode/rexpaint/data/fonts/::1762729473
+dungeon-437.png::CompressedTexture2D::3403811029304375285::1743018184::1762729459::1::::<><><>0<>0<>8d2b0a40913705bb691fb2cb561d5a7f<>res://.godot/imported/dungeon-437.png-507926ed8305b95b9c25bf9956118acc.ctex::
+dungeon-mode.png::CompressedTexture2D::3187622992348167589::1743018184::1762729459::1::::<><><>0<>0<>53320ef3fab2834ddf8d57899b2eea54<>res://.godot/imported/dungeon-mode.png-20d1389cd03165e952a30fa2a77a72de.ctex::
+::res://assets/dungeonmode/rexpaint/data/palettes/::1762729388
+dungeon-pal.txt::TextFile::-1::1742336324::0::1::::<><><>0<>0<><>::
+::res://assets/dungeonmode/rexpaint/images/::1762729470
+skull-hold.png::CompressedTexture2D::8939903196464588654::1742339680::1762729459::1::::<><><>0<>0<>5978e36c9fdc592aba153bb8c451b4b6<>res://.godot/imported/skull-hold.png-bba1a539193c628cd86807ed9fdfdd8c.ctex::
 ::res://assets/fonts/::1762590812
 FONTS_README.txt::TextFile::-1::1762567417::0::1::::<><><>0<>0<><>::
 fredoka-bold.ttf::FontFile::4302687705064513650::1762567417::1762567417::1::::<><><>0<>0<>7d2fead1d615a58016ca5d05984249a4<>res://.godot/imported/fredoka-bold.ttf-55d4f81f9ee03f257c9575928a740546.fontdata::
@@ -73,20 +99,51 @@ Nunito-Medium.ttf::FontFile::8778720405266727394::1762567417::1762567417::1::::<
 Nunito-MediumItalic.ttf::FontFile::7540505296009940499::1762567417::1762567417::1::::<><><>0<>0<>f9cef2bf6a2570fbbaa6ac432895381e<>res://.godot/imported/Nunito-MediumItalic.ttf-53bbf7ff58734ee65117b9aab089cbe3.fontdata::
 Nunito-SemiBold.ttf::FontFile::5072462049524328568::1762567417::1762567417::1::::<><><>0<>0<>65f34435e3e45069576922548cfd01fd<>res://.godot/imported/Nunito-SemiBold.ttf-b251f45af2334ecec0868b73e6211d53.fontdata::
 Nunito-SemiBoldItalic.ttf::FontFile::5171923693194777483::1762567417::1762567417::1::::<><><>0<>0<>d3a62a6bdfc7fc693707a87552dc981c<>res://.godot/imported/Nunito-SemiBoldItalic.ttf-58fb3fd3f97e1c616e195e20d2dc0c2c.fontdata::
+::res://assets/Free Retro Sci-Fi Sound Fx/::1762729867
+01 Retro Lazer #1.mp3::AudioStreamMP3::6659539436063291560::1746691559::1762730041::1::::<><><>0<>0<>33264e407076ccfa19b409f162ddcdec<>res://.godot/imported/01 Retro Lazer #1.mp3-d422e2515f162189c5288902e6d2c151.mp3str::
+02 Retro Lazer #2.mp3::AudioStreamMP3::2058250473879336629::1746691559::1762730041::1::::<><><>0<>0<>b996e1cdab9427f952e8416d559d22fd<>res://.godot/imported/02 Retro Lazer #2.mp3-4a9fea1ad28fe64253dbd7a24ae5bc1c.mp3str::
+03 Retro Lazer #3.mp3::AudioStreamMP3::8166561021805826912::1746691559::1762730041::1::::<><><>0<>0<>ddfe3051d1bacdf241aacdb1bc18d1bc<>res://.godot/imported/03 Retro Lazer #3.mp3-9c5ae8204cb70a4fe4952ee132f2ffd1.mp3str::
+04 Retro Lazer #4.mp3::AudioStreamMP3::1689872240721116329::1746691559::1762730041::1::::<><><>0<>0<>2759808b2e731bd1c6a9b26efe128ec0<>res://.godot/imported/04 Retro Lazer #4.mp3-b4f8e10152fea05ef4807842c08e335a.mp3str::
+05 Retro Lazer #5.mp3::AudioStreamMP3::8533144318859859180::1746691559::1762730041::1::::<><><>0<>0<>5d4ba726640ee96884ee569989ea0d17<>res://.godot/imported/05 Retro Lazer #5.mp3-2c950730a31d234a968c27a9de2baaca.mp3str::
+06 Retro Lazer #6.mp3::AudioStreamMP3::7970586548151636353::1746691559::1762730041::1::::<><><>0<>0<>5abfe33c62e0826e6c486fed6be01e10<>res://.godot/imported/06 Retro Lazer #6.mp3-5c9f289484cca844de0a574bfacecd56.mp3str::
+07 Retro Lazer #7.mp3::AudioStreamMP3::5880838259357285438::1746691559::1762730041::1::::<><><>0<>0<>4264bfa0161de6b491c421bbdcf06100<>res://.godot/imported/07 Retro Lazer #7.mp3-6cbd94a80f68242aa21c0509ae1d61f3.mp3str::
+08 Retro Lazer #8.mp3::AudioStreamMP3::2505009678274892750::1746691559::1762730041::1::::<><><>0<>0<>b1202bb0a9d7a06028c0428fa21f04ee<>res://.godot/imported/08 Retro Lazer #8.mp3-fb50d0403d130225fd6bf4ac8f640ec0.mp3str::
+09 Retro Space Alarm #1.mp3::AudioStreamMP3::7321864459042227488::1746691559::1762730041::1::::<><><>0<>0<>65f2ca7c6fc4400d88a453ecdc2cac6c<>res://.godot/imported/09 Retro Space Alarm #1.mp3-784ad04d50a7217acbb12bcaff37ee11.mp3str::
+10 Retro Space Alarm #2.mp3::AudioStreamMP3::7308878077268534002::1746691559::1762730041::1::::<><><>0<>0<>b9e50a9b85d5ddc137ea6a27c0218199<>res://.godot/imported/10 Retro Space Alarm #2.mp3-4662976ac09505bb809f212048fd4151.mp3str::
+11 Retro Space Alarm #3.mp3::AudioStreamMP3::6642067352503017536::1746691559::1762730041::1::::<><><>0<>0<>01cbcbe0572eb1f8310c1344cdc9a492<>res://.godot/imported/11 Retro Space Alarm #3.mp3-4cd65b017efdd3d98ef02daad849a11b.mp3str::
+12 Retro Space Alarm #4.mp3::AudioStreamMP3::5013400691738489944::1746691559::1762730041::1::::<><><>0<>0<>f4acdcc3fbfe4ff72293c32f7bbb4891<>res://.godot/imported/12 Retro Space Alarm #4.mp3-5da15e4bdc9ece29343fd0d1a02ad41e.mp3str::
+13 Retro Space Alarm #5.mp3::AudioStreamMP3::3008988552786587215::1746691559::1762730041::1::::<><><>0<>0<>c271a44879f4420b1e5cfd31931c6f9a<>res://.godot/imported/13 Retro Space Alarm #5.mp3-117a3011c0d95e5299e43aa30582e54a.mp3str::
+14 Retro Explosion #1.mp3::AudioStreamMP3::8923026558185136031::1746691559::1762730041::1::::<><><>0<>0<>c9f89c0fa4d08524d7b6a79854b2818d<>res://.godot/imported/14 Retro Explosion #1.mp3-abab8034d801fc1e58347ff219d5ea20.mp3str::
+15 Retro Explosion #2.mp3::AudioStreamMP3::834035763153802299::1746691559::1762730041::1::::<><><>0<>0<>a5777be26af236af5a9ae20affb6b933<>res://.godot/imported/15 Retro Explosion #2.mp3-4b9b49638ade5001ebf4923ca7919165.mp3str::
+16 Retro Explosion #3.mp3::AudioStreamMP3::7024528323777268736::1746691559::1762730041::1::::<><><>0<>0<>19f73d06be1911f0c6150ef7dcc438c0<>res://.godot/imported/16 Retro Explosion #3.mp3-5c4c27bf3b14fae88328b727ccbccbac.mp3str::
+17 Retro Explosion #4.mp3::AudioStreamMP3::1066548255500854257::1746691559::1762730041::1::::<><><>0<>0<>0359074c27aac7ad59c299215f2cfb45<>res://.godot/imported/17 Retro Explosion #4.mp3-4408c0da3b16b5c84fcfd3c4c751c537.mp3str::
+18 Retro Explosion #5.mp3::AudioStreamMP3::5695117516329399975::1746691559::1762730041::1::::<><><>0<>0<>2028948243edb00969c1db573ac2fa3c<>res://.godot/imported/18 Retro Explosion #5.mp3-f4a6f789f026d3e7ae1447525fb0e016.mp3str::
+19 Retro Enemy Dying #1.mp3::AudioStreamMP3::7791403447166448868::1746691559::1762730041::1::::<><><>0<>0<>7b6d7a52ccd955399fc7bfc745fd8bd7<>res://.godot/imported/19 Retro Enemy Dying #1.mp3-a5a5fc3f80d16e7356fc9f84c25980d5.mp3str::
+20 Retro Enemy Dying #2.mp3::AudioStreamMP3::6892362568985347946::1746691560::1762730041::1::::<><><>0<>0<>d4ce3f5e60b31676cca73e2096160ef0<>res://.godot/imported/20 Retro Enemy Dying #2.mp3-41818ee9d639178a472266ecf475d690.mp3str::
+21 Retro Enemy Dying #3.mp3::AudioStreamMP3::7520862792374193265::1746691560::1762730041::1::::<><><>0<>0<>1339a7bc05d04eef54b43ecda53d3ef3<>res://.godot/imported/21 Retro Enemy Dying #3.mp3-48a8646a052cc4b210c8fa51215df240.mp3str::
+22 Retro Space Power Up #1.mp3::AudioStreamMP3::7386190056927809244::1746691560::1762730041::1::::<><><>0<>0<>6088f065716a4af68cf8fac3a9a92416<>res://.godot/imported/22 Retro Space Power Up #1.mp3-b58cd5046e628510f96769e98e91511e.mp3str::
+23 Retro Space Power Up #2.mp3::AudioStreamMP3::7285646820858076320::1746691560::1762730041::1::::<><><>0<>0<>716d9b50b9c08c3163f6ae1ff0ea937d<>res://.godot/imported/23 Retro Space Power Up #2.mp3-b3138c8524df1569bda9e144edd0fbf9.mp3str::
+24 Retro Space Power Up #3.mp3::AudioStreamMP3::2304473784859755349::1746691560::1762730041::1::::<><><>0<>0<>65b96e297560e15f62a9fbdb68343516<>res://.godot/imported/24 Retro Space Power Up #3.mp3-6d0ab3ea42dd283fe2399e047a0a792a.mp3str::
+25 Retro Power Up #4.mp3::AudioStreamMP3::7779837573723826260::1746691560::1762730041::1::::<><><>0<>0<>3f2ffe6da81139dc55bc58d8e5207359<>res://.godot/imported/25 Retro Power Up #4.mp3-7c49e955e7cb38c408d0dc868db0a61a.mp3str::
+26 Retro Enemy Ship #1.mp3::AudioStreamMP3::7313884485898370368::1746691560::1762730041::1::::<><><>0<>0<>fbbad4361682e279401a0f204c2fd4b3<>res://.godot/imported/26 Retro Enemy Ship #1.mp3-1bfbec606fbec4f7c4b39f9157423280.mp3str::
+27 Retro Enemy Ship #2.mp3::AudioStreamMP3::7585505214669394816::1746691560::1762730041::1::::<><><>0<>0<>cb5243ae4111ff3e768697c2810dbd77<>res://.godot/imported/27 Retro Enemy Ship #2.mp3-98c3fb942334fed34b61789ee2e6670e.mp3str::
+28 Retro enemy Ship #3.mp3::AudioStreamMP3::3499318268591534942::1746691560::1762730041::1::::<><><>0<>0<>95f55507ed5812abbdd90aca56a3b337<>res://.godot/imported/28 Retro enemy Ship #3.mp3-3e96afc672c59598baac804a4cbc2041.mp3str::
+29 Retro Enemy Ship #4.mp3::AudioStreamMP3::1495670510862100139::1746691560::1762730041::1::::<><><>0<>0<>e8e9bc0594562c06ca61697686217a8b<>res://.godot/imported/29 Retro Enemy Ship #4.mp3-4e3b79d977e8d8b16eb4ccd386fe1fe5.mp3str::
+30 Retro Space Level Up.mp3::AudioStreamMP3::2289628737167824816::1746691560::1762730041::1::::<><><>0<>0<>8884f6151ed574ae33426a80c17fadb4<>res://.godot/imported/30 Retro Space Level Up.mp3-1f1ead1c08df1e2d04d5383428400af2.mp3str::
 ::res://assets/pixelart_starfields (1)/::1762727467
 pixelart_starfield.png::CompressedTexture2D::5618683921071887991::1700355470::1762727457::1::::<><><>0<>0<>eeb18e3b5ce151a3a2016d3f75251809<>res://.godot/imported/pixelart_starfield.png-aeffc2d7e0f38be38d8d7eecba9bc71e.ctex::
 pixelart_starfield_corona.png::CompressedTexture2D::3445294311769451778::1700536974::1762727457::1::::<><><>0<>0<>181c0e8185391aef473b3530fc12a6a9<>res://.godot/imported/pixelart_starfield_corona.png-8be0fdcd179c20a3851e59a037d6515c.ctex::
 pixelart_starfield_diagonal_diffraction_spikes.png::CompressedTexture2D::7833886619782997253::1700443784::1762727457::1::::<><><>0<>0<>6dfffe62fb08adf3619c93b029c8e205<>res://.godot/imported/pixelart_starfield_diagonal_diffraction_spikes.png-406c829d3c7849738bed43e997a24bb0.ctex::
 ::res://assets/shaders/::1762590812
-::res://assets/SpaceShooter/::1762728165
-::res://assets/SpaceShooter/Backgrounds/::1762728165
+::res://assets/SpaceShooter/::1762728213
+::res://assets/SpaceShooter/Backgrounds/::1762728213
 Planet.png::CompressedTexture2D::6131449595334301659::1679075704::1762728170::1::::<><><>0<>0<>e0d00e468ded68f58a996f49affd35ac<>res://.godot/imported/Planet.png-1cbd830e3490b73703fb697bb7815a5e.ctex::
 SpaceStation.png::CompressedTexture2D::476592386087304548::1679072880::1762728170::1::::<><><>0<>0<>11bff7a30f4b2f0ce9de5e074e345062<>res://.godot/imported/SpaceStation.png-c627f8fb48141ccbdf065de0157dec3c.ctex::
 Space_01-Sheet.png::CompressedTexture2D::1051278384205328647::1651285016::1762728170::1::::<><><>0<>0<>190cdde7c9d0fca032e0ec937d2b33e0<>res://.godot/imported/Space_01-Sheet.png-49165c016f4dcad77b3ae349a5fb9087.ctex::
 Space_02-Sheet.png::CompressedTexture2D::4344089880087672512::1651287212::1762728170::1::::<><><>0<>0<>99dc800128084977a88f804d561b4825<>res://.godot/imported/Space_02-Sheet.png-6e74668d9c19ed59e43f4aa5375dd1fb.ctex::
 Space_03-Sheet.png::CompressedTexture2D::4004937862144156258::1651338154::1762728170::1::::<><><>0<>0<>4ae66c3c37cea9572118b3806506b5bd<>res://.godot/imported/Space_03-Sheet.png-8b1049f9eaa4a271d67049e47bc69cb0.ctex::
 Space_04-Sheet.png::CompressedTexture2D::2459431908572654493::1651338164::1762728170::1::::<><><>0<>0<>7f7b89721b1126776824b316be6fa0ab<>res://.godot/imported/Space_04-Sheet.png-8740803182341d1c086c8b6f5811b4b3.ctex::
-::res://assets/SpaceShooter/Enemies/::1762728165
+::res://assets/SpaceShooter/Enemies/::1762728213
 Asteroids-Sheet.png::CompressedTexture2D::1976255625256159485::1674599574::1762728170::1::::<><><>0<>0<>044794ac247ea58f2a89d8b08607b968<>res://.godot/imported/Asteroids-Sheet.png-ab05b1db755df24edab0e3c2a1257cad.ctex::
 Asteroids_Explosive.png::CompressedTexture2D::5678186607209041688::1674973338::1762728170::1::::<><><>0<>0<>8724cb5c1ae6af663d55555dcdf77cb6<>res://.godot/imported/Asteroids_Explosive.png-480c36afb942261e6089b8d735c4b8b3.ctex::
 CrabShip.png::CompressedTexture2D::7562188342059446669::1666297878::1762728170::1::::<><><>0<>0<>552203dd63dc020f6aa105b109c47bdf<>res://.godot/imported/CrabShip.png-8916cc5d469512f82ac380fd7c9abe02.ctex::
@@ -100,13 +157,13 @@ Pirate_Base.png::CompressedTexture2D::6738278938133028829::1675449778::176272817
 Pirate_Boss.png::CompressedTexture2D::3324830025526221722::1675524188::1762728170::1::::<><><>0<>0<>dc204eb6fb3c67a8d3cb26bc48f49371<>res://.godot/imported/Pirate_Boss.png-db52f488b4be85c901527821a32cd628.ctex::
 Pirate_Boss_Gun.png::CompressedTexture2D::4460357304916429240::1675523994::1762728170::1::::<><><>0<>0<>6d2d68f1a7a0b8afd09f1c52ed866e4e<>res://.godot/imported/Pirate_Boss_Gun.png-781982dc4b9038f7101bf2fdc82a64f4.ctex::
 Pirate_Fighter.png::CompressedTexture2D::8140784254693736258::1675018188::1762728170::1::::<><><>0<>0<>528c16a4439e57d4c887af9eb2dc9395<>res://.godot/imported/Pirate_Fighter.png-d1e28e2e5110f8550cf00e296ba8e49c.ctex::
-::res://assets/SpaceShooter/Player/::1762728165
+::res://assets/SpaceShooter/Player/::1762728203
 Player01-Sheet.png::CompressedTexture2D::800126503681122125::1675200850::1762728170::1::::<><><>0<>0<>71710f0ea54b1fe657eff8ecfab999ec<>res://.godot/imported/Player01-Sheet.png-1fbbb4ebdecba7a4ab31daaa0aa1a321.ctex::
-::res://assets/SpaceShooter/Powerup/::1762728165
+::res://assets/SpaceShooter/Powerup/::1762728203
 Credits-Sheet.png::CompressedTexture2D::508629555250926564::1665972112::1762728170::1::::<><><>0<>0<>30eda53dfc785417c4662c9af9f3d972<>res://.godot/imported/Credits-Sheet.png-12796e588ae365df52fa3d84b7a72106.ctex::
 EnergyContainer.png::CompressedTexture2D::2121775508601372101::1679075262::1762728170::1::::<><><>0<>0<>bf012f7da46dc5419ccfd990bbdd549f<>res://.godot/imported/EnergyContainer.png-aedc9bfe78c2378fee04f540f64e3ceb.ctex::
 HPContainer.png::CompressedTexture2D::3272792574274314721::1679075280::1762728170::1::::<><><>0<>0<>ee6dec90817e37350c1ea5bccd68023d<>res://.godot/imported/HPContainer.png-89978addaf93fb61785e78684d15dba9.ctex::
-::res://assets/SpaceShooter/Projectiles And Explosions/::1762728165
+::res://assets/SpaceShooter/Projectiles And Explosions/::1762728213
 Bombe-Sheet.png::CompressedTexture2D::6613530294076714130::1655064752::1762728170::1::::<><><>0<>0<>2d03dc7dd212e847801840b22d1fd918<>res://.godot/imported/Bombe-Sheet.png-dd85fceb17843149752e539c19acb4d2.ctex::
 Explosion01-Sheet.png::CompressedTexture2D::8145177343136094409::1666231354::1762728170::1::::<><><>0<>0<>30b39a002b2eed9a63b74801d85dca92<>res://.godot/imported/Explosion01-Sheet.png-0a2659dd1c79fbd9fa4b6767d228bc97.ctex::
 Explosion02-Sheet.png::CompressedTexture2D::8186657186815044550::1651453294::1762728170::1::::<><><>0<>0<>6f4a86481aa0cac712b0ac174187b54f<>res://.godot/imported/Explosion02-Sheet.png-df56f97631021339a94035fc2f8905be.ctex::
@@ -119,47 +176,47 @@ Projectile01.png::CompressedTexture2D::1251766927914088284::1675020024::17627281
 Projectile02.png::CompressedTexture2D::3496413703985265462::1675020086::1762728170::1::::<><><>0<>0<>5ed283e3e309b276df1d54f6cdf2de02<>res://.godot/imported/Projectile02.png-259b272e2b55ea0d5653f586095712c4.ctex::
 Projectile03.png::CompressedTexture2D::1801418942796338294::1675021942::1762728170::1::::<><><>0<>0<>c9e9ac2d94ce0a16cc9ff2dfcc2a2c2e<>res://.godot/imported/Projectile03.png-521036105a805af9098478c56cc21179.ctex::
 Projectile04.png::CompressedTexture2D::7551035399057059838::1675021962::1762728170::1::::<><><>0<>0<>60feb60e4922808547e0608397df0651<>res://.godot/imported/Projectile04.png-6d5e0d7a9d51471b81403bfb99c10711.ctex::
-::res://assets/SpaceShooter/UI/::1762728165
+::res://assets/SpaceShooter/UI/::1762728213
 BtnFrame.png::CompressedTexture2D::1870480491844069523::1675223782::1762728170::1::::<><><>0<>0<>19f9289d3cab701abd2aedd091f296b9<>res://.godot/imported/BtnFrame.png-e717a7f559c3b891eb2aea56cced1a4b.ctex::
 HealthBar-Sheet.png::CompressedTexture2D::2196954596464176988::1679075528::1762728170::1::::<><><>0<>0<>60a1aaacbaf800e4f9a4389ccfcc2058<>res://.godot/imported/HealthBar-Sheet.png-2b31a68719216e63da50d66086f8fb5d.ctex::
 Panel2.png::CompressedTexture2D::2833853203375233428::1679075574::1762728170::1::::<><><>0<>0<>1be904fab63f4d0df6263e393a5638c7<>res://.godot/imported/Panel2.png-6ff1bbb10240a42399bbeb7554be13c6.ctex::
 Panel.png::CompressedTexture2D::828050779923605019::1679075552::1762728170::1::::<><><>0<>0<>574396ad9eeba1ccb0dc234b6d8ee8b6<>res://.godot/imported/Panel.png-08c9f49b66451bb5a1a3fd9f42bfe08c.ctex::
 SeperatorH.png::CompressedTexture2D::2026535754073939644::1666238336::1762728170::1::::<><><>0<>0<>0db1f8ab03567578e564d6fc8e5e08bc<>res://.godot/imported/SeperatorH.png-07dc48a46e254103945568352beb5be0.ctex::
 ::res://assets/sprites/::1762676588
-::res://scenes/::1762727423
+::res://scenes/::1762728203
 Completion.tscn::PackedScene::-1::1762727520::0::1::::<><><>0<>0<><>::res://scripts/Completion.gd<>res://assets/vocab_zoo_theme.tres
-FillInBlank.tscn::PackedScene::-1::1762727520::0::1::::<><><>0<>0<><>::res://scripts/FillInBlank.gd<>res://assets/vocab_zoo_theme.tres
+FillInBlank.tscn::PackedScene::-1::1762728187::0::1::::<><><>0<>0<><>::res://scripts/FillInBlank.gd<>res://assets/vocab_zoo_theme.tres
 Flashcards.tscn::PackedScene::-1::1762727520::0::1::::<><><>0<>0<><>::res://scripts/Flashcards.gd<>res://assets/vocab_zoo_theme.tres
 Main.tscn::PackedScene::1745053945424163896::1762727520::0::1::::<><><>0<>0<><>::res://scripts/Main.gd<>res://assets/vocab_zoo_theme.tres
-MemoryGame.tscn::PackedScene::-1::1762727520::0::1::::<><><>0<>0<><>::res://scripts/MemoryGame.gd<>res://assets/vocab_zoo_theme.tres
+MemoryGame.tscn::PackedScene::-1::1762728187::0::1::::<><><>0<>0<><>::res://scripts/MemoryGame.gd<>res://assets/vocab_zoo_theme.tres
 Modal.tscn::PackedScene::-1::1762590805::0::1::::<><><>0<>0<><>::res://scripts/Modal.gd<>res://assets/vocab_zoo_theme.tres
-MultipleChoice.tscn::PackedScene::-1::1762727520::0::1::::<><><>0<>0<><>::res://scripts/MultipleChoice.gd<>res://assets/vocab_zoo_theme.tres
+MultipleChoice.tscn::PackedScene::-1::1762728187::0::1::::<><><>0<>0<><>::res://scripts/MultipleChoice.gd<>res://assets/vocab_zoo_theme.tres
 PlatformerLevel.tscn::PackedScene::-1::1762727520::0::1::::<><><>0<>0<><>::res://scripts/PlatformerLevel.gd<>res://assets/vocab_zoo_theme.tres<>uid://cjgscn3b8wcvs::::res://assets/fonts/press-start-2p.ttf
 SentenceGen.tscn::PackedScene::-1::1762727520::0::1::::<><><>0<>0<><>::res://scripts/SentenceGen.gd<>res://assets/vocab_zoo_theme.tres
 SynonymAntonym.tscn::PackedScene::-1::1762727520::0::1::::<><><>0<>0<><>::res://scripts/SynonymAntonym.gd<>res://assets/vocab_zoo_theme.tres
 VocabularyError.tscn::PackedScene::6828216198543446453::1762727520::0::1::::<><><>0<>0<><>::res://scripts/VocabularyError.gd<>res://assets/pixelart_starfields (1)/pixelart_starfield_corona.png
-WordMatching.tscn::PackedScene::-1::1762727520::0::1::::<><><>0<>0<><>::res://scripts/WordMatching.gd<>res://assets/vocab_zoo_theme.tres
-::res://scripts/::1762728044
+WordMatching.tscn::PackedScene::-1::1762728187::0::1::::<><><>0<>0<><>::res://scripts/WordMatching.gd<>res://assets/vocab_zoo_theme.tres
+::res://scripts/::1762730024
 ActivityMapper.gd::GDScript::3978853613652639679::1762723403::0::1::::ActivityMapper<>RefCounted<><>0<>0<><>::
-APISimulator.gd::GDScript::7315996208290796602::1762724254::0::1::::<>Node<><>0<>0<><>::
+APISimulator.gd::GDScript::7315996208290796602::1762728538::0::1::::<>Node<><>0<>0<><>::
 CharacterHelper.gd::GDScript::8790765816428313506::1762590806::0::1::::<>Node<><>0<>0<><>::
 Completion.gd::GDScript::725921827336919249::1762590806::0::1::::<>Control<><>0<>0<><>::
-FillInBlank.gd::GDScript::8520064587723607987::1762725320::0::1::::<>Control<><>0<>0<><>::
+FillInBlank.gd::GDScript::8520064587723607987::1762729270::0::1::::<>Control<><>0<>0<><>::
 Flashcards.gd::GDScript::8824151563438074924::1762590806::0::1::::<>Control<><>0<>0<><>::
 GameManager.gd::GDScript::535065676721453927::1762676792::0::1::::<>Node<><>0<>0<><>::
 Main.gd::GDScript::1766179455655423231::1762724305::0::1::::<>Control<><>0<>0<><>::
 MemoryGame.gd::GDScript::9089377353855614993::1762726607::0::1::::<>Control<><>0<>0<><>::
 Modal.gd::GDScript::8517484647630987397::1762571254::0::1::::<>Control<><>0<>0<><>::
-MultipleChoice.gd::GDScript::928680455930569097::1762725319::0::1::::<>Control<><>0<>0<><>::
+MultipleChoice.gd::GDScript::928680455930569097::1762729671::0::1::::<>Control<><>0<>0<><>::
 PlatformerLevel.gd::GDScript::8797799396656624256::1762727448::0::1::::<>Control<><>0<>0<><>::
 SentenceGen.gd::GDScript::9106391354877399422::1762725319::0::1::::<>Control<><>0<>0<><>::
 SoundManager.gd::GDScript::4384780547490486572::1762571254::0::1::::<>Node<><>0<>0<><>::
-SynonymAntonym.gd::GDScript::4832010052141156189::1762728054::0::1::::<>Control<><>0<>0<><>::
+SynonymAntonym.gd::GDScript::4832010052141156189::1762730037::0::1::::<>Control<><>0<>0<><>::
 VocabularyError.gd::GDScript::4729210297593065462::1762499826::0::1::::<>Control<><>0<>0<><>::
 VocabularyManager.gd::GDScript::5420613658023236403::1762572972::0::1::::<>Node<><>0<>0<><>::
 VocabZooColors.gd::GDScript::3914299001429541048::1762590806::0::1::::<>Node<><>0<>0<><>::
 VocabZooConstants.gd::GDScript::3205468635690212376::1762590806::0::1::::<>Node<><>0<>0<><>::
-WordMatching.gd::GDScript::8808555952275256382::1762725319::0::1::::<>Control<><>0<>0<><>::
+WordMatching.gd::GDScript::8808555952275256382::1762729671::0::1::::<>Control<><>0<>0<><>::
 ::res://ui_nostalgia_cursor_modules/::1762590905
 01_console_frame_and_structure.md::TextFile::-1::1762612388::0::1::::<><><>0<>0<><>::
 02_crt_effects.md::TextFile::-1::1762612388::0::1::::<><><>0<>0<><>::

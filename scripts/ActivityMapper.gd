@@ -9,7 +9,7 @@ static func get_scene_path(activity_type: String) -> String:
 		"connect_def": "res://scenes/WordMatching.tscn",
 		"context_cloze": "res://scenes/FillInBlank.tscn",
 		"synonym_mcq": "res://scenes/SynonymAntonym.tscn",
-		"flashcard_usage": "res://scenes/MemoryGame.tscn"
+		"flashcard_usage": "res://scenes/Flashcards.tscn"
 	}
 	
 	# Default fallback to MultipleChoice if activity type not found

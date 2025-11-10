@@ -9,3 +9,9 @@ res://scripts/FillInBlank.gd
 res://scripts/SentenceGen.gd
 res://scenes/VocabularyError.tscn
 res://scripts/PlatformerLevel.gd
+res://assets/vocab_zoo_theme.tres
+res://scripts/Completion.gd
+res://scripts/SoundManager.gd
+res://scripts/Flashcards.gd
+res://scripts/VocabZooColors.gd
+res://scripts/GameManager.gd

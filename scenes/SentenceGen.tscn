@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/SentenceGen.gd" id="1_sentencegen"]
 [ext_resource type="Theme" path="res://assets/vocab_zoo_theme.tres" id="2_theme"]
-[ext_resource type="Texture2D" uid="uid://starfield_corona" path="res://assets/pixelart_starfields (1)/pixelart_starfield_corona.png" id="3_starfield"]
+[ext_resource type="Texture2D" uid="uid://bpc6q2aites4q" path="res://assets/pixelart_starfields (1)/pixelart_starfield_corona.png" id="3_starfield"]
 
 [node name="SentenceGen" type="Control"]
 layout_mode = 3
@@ -24,19 +24,6 @@ grow_vertical = 2
 expand_mode = 1
 texture = ExtResource("3_starfield")
 stretch_mode = 6
-
-[node name="TitleLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 40.0
-offset_right = 320.0
-offset_bottom = 80.0
-theme_override_colors/font_color = Color(0.973, 0.98, 0.988, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 28
-text = "Sentence Builder"
 
 [node name="ProgressLabel" type="Label" parent="."]
 layout_mode = 0

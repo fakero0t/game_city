@@ -59,6 +59,9 @@ func _show_info_modal() -> void:
 	
 	var body_text = "[center]You'll complete vocabulary activities to learn new words!\n\n"
 	body_text += "Each activity will help you practice and remember.\n\n"
+	body_text += "[b]How to Play:[/b]\n"
+	body_text += "Use the [b]left and right arrows[/b] to move\n"
+	body_text += "Press [b]spacebar[/b] to release a laser and attack the right answer!\n\n"
 	body_text += "Ready to start? Let's go![/center]"
 	
 	modal_instance.show_modal("Welcome, Friend! 🎉", body_text, "Let's Go!")

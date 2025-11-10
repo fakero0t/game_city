@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Flashcards.gd" id="1_flashcards"]
 [ext_resource type="Theme" path="res://assets/vocab_zoo_theme.tres" id="2_theme"]
-[ext_resource type="Texture2D" uid="uid://starfield_corona" path="res://assets/pixelart_starfields (1)/pixelart_starfield_corona.png" id="3_starfield"]
+[ext_resource type="Texture2D" uid="uid://bpc6q2aites4q" path="res://assets/pixelart_starfields (1)/pixelart_starfield_corona.png" id="3_starfield"]
 
 [node name="Flashcards" type="Control"]
 layout_mode = 3
@@ -25,19 +25,6 @@ expand_mode = 1
 texture = ExtResource("3_starfield")
 stretch_mode = 6
 
-[node name="TitleLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 40.0
-offset_right = 240.0
-offset_bottom = 80.0
-theme_override_colors/font_color = Color(0.973, 0.98, 0.988, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 28
-text = "Flashcards"
-
 [node name="ProgressLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 1160.0
@@ -51,6 +38,126 @@ text = "1 of 4"
 [node name="Character" type="Node2D" parent="."]
 position = Vector2(640, 360)
 
+[node name="CardContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card" type="Panel" parent="CardContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FrontSide" type="VBoxContainer" parent="CardContainer/Card"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Spacer1" type="Control" parent="CardContainer/Card/FrontSide"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="WordLabel" type="Label" parent="CardContainer/Card/FrontSide"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.973, 0.98, 0.988, 1)
+theme_override_font_sizes/font_size = 48
+text = "Word"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer2" type="Control" parent="CardContainer/Card/FrontSide"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ClickPrompt" type="Label" parent="CardContainer/Card/FrontSide"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 16
+text = "Click to flip"
+horizontal_alignment = 1
+
+[node name="Spacer3" type="Control" parent="CardContainer/Card/FrontSide"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="BackSide" type="VBoxContainer" parent="CardContainer/Card"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Spacer1" type="Control" parent="CardContainer/Card/BackSide"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="DefinitionLabel" type="Label" parent="CardContainer/Card/BackSide"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.973, 0.98, 0.988, 1)
+theme_override_font_sizes/font_size = 28
+text = "Definition"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Spacer2" type="Control" parent="CardContainer/Card/BackSide"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Spacer3" type="Control" parent="CardContainer/Card/BackSide"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ExampleSide" type="VBoxContainer" parent="CardContainer/Card"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Spacer1" type="Control" parent="CardContainer/Card/ExampleSide"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="ExampleLabel" type="Label" parent="CardContainer/Card/ExampleSide"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.973, 0.98, 0.988, 1)
+theme_override_font_sizes/font_size = 24
+text = "Example"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Spacer2" type="Control" parent="CardContainer/Card/ExampleSide"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Spacer3" type="Control" parent="CardContainer/Card/ExampleSide"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
 [node name="NextButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 1100.0
@@ -58,5 +165,6 @@ offset_top = 620.0
 offset_right = 1240.0
 offset_bottom = 680.0
 theme_override_font_sizes/font_size = 20
+disabled = true
 text = "Next"
 

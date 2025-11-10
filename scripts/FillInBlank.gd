@@ -27,7 +27,7 @@ var current_question: Dictionary = {}
 var word_ships: Array[WordShip] = []
 var bullets: Array[Bullet] = []
 var shooter_position: float = 0.0
-var shooter_speed: float = 300.0
+var shooter_speed: float = 675.0
 var can_shoot: bool = true
 var shoot_cooldown: float = 0.3
 var last_mouse_pos: Vector2
@@ -121,21 +121,6 @@ func _setup_game_area() -> void:
 	sentence_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	sentence_label.add_theme_color_override("font_color", Colors.LIGHT_BASE)
 	game_area.add_child(sentence_label)
-	
-	# Create info label (centered on screen)
-	info_label = Label.new()
-	info_label.name = "InfoLabel"
-	var info_label_width = viewport_size.x - 100
-	var info_label_height = 40
-	info_label.position = Vector2((viewport_size.x - info_label_width) / 2, (viewport_size.y - info_label_height) / 2)
-	info_label.size = Vector2(info_label_width, info_label_height)
-	info_label.add_theme_font_size_override("font_size", 14)
-	info_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	var info_color = Colors.PRIMARY_BLUE
-	info_color.a = 0.6  # Lighter opacity
-	info_label.add_theme_color_override("font_color", info_color)
-	info_label.text = "Use the left and right arrows to move and spacebar to release a laser and attack the right answer!"
-	game_area.add_child(info_label)
 	
 	# Create shooter at bottom - using a single enemy ship as the player base
 	var shooter_container = Control.new()
@@ -300,7 +285,7 @@ func _shoot_bullet() -> void:
 	game_area.add_child(bullet.sprite)
 	
 	bullets.append(bullet)
-	SoundManager.play_click_sound()
+	SoundManager.play_laser_sound()
 
 func _handle_ship_hit(ship: WordShip, bullet: Bullet) -> void:
 	ship.hit = true
@@ -311,8 +296,8 @@ func _handle_ship_hit(ship: WordShip, bullet: Bullet) -> void:
 		_explode_ship(ship, true)
 		_play_rabbit_celebration()
 		
-		# Wait for celebration, then auto-navigate to next activity
-		await get_tree().create_timer(2.0).timeout
+		# Wait briefly for explosion animation, then auto-navigate to next activity
+		await get_tree().create_timer(0.8).timeout
 		_on_game_complete()
 	else:
 		# Incorrect word - shake and turn red
@@ -370,12 +355,9 @@ func _explode_ship(ship: WordShip, is_correct: bool) -> void:
 	if is_instance_valid(explosion):
 		explosion.queue_free()
 	
-	# Ship explosion - scale up, rotate, and fade
+	# Ship explosion - just fade out (explosion sprite handles the visual)
 	if is_instance_valid(ship.button):
 		var ship_tween = create_tween()
-		ship_tween.set_parallel(true)
-		ship_tween.tween_property(ship.button, "scale", Vector2(1.8, 1.8), 0.4)
-		ship_tween.tween_property(ship.button, "rotation", PI * 2, 0.4)
 		ship_tween.tween_property(ship.button, "modulate:a", 0.0, 0.4)
 
 func _animate_ship(ship_container: Control, index: int) -> void:
@@ -483,7 +465,10 @@ func _display_question() -> void:
 
 func _create_word_ships() -> void:
 	var viewport_width = get_viewport_rect().size.x
-	var ship_spacing = viewport_width / (current_question["options"].size() + 1)
+	# Reduce spacing - use narrower area for ships (60% of screen width centered)
+	var ships_area_width = viewport_width * 0.6
+	var ship_spacing = ships_area_width / (current_question["options"].size() + 1)
+	var start_offset = (viewport_width - ships_area_width) / 2
 	var ship_y = 120.0
 	
 	for i in range(current_question["options"].size()):
@@ -497,7 +482,7 @@ func _create_word_ships() -> void:
 		# Create ship container with enemy sprite
 		var ship_container = Control.new()
 		ship_container.size = Vector2(120, 100)
-		ship_container.position = Vector2(ship_spacing * (i + 1) - 60, ship_y)
+		ship_container.position = Vector2(start_offset + ship_spacing * (i + 1) - 60, ship_y)
 		
 		# Randomly select enemy ship type for variety
 		var enemy_ship_paths = [
@@ -526,12 +511,13 @@ func _create_word_ships() -> void:
 		# Word label on ship (positioned below the ship)
 		var word_label = Label.new()
 		word_label.text = word
-		word_label.size = Vector2(120, 20)
-		word_label.position = Vector2(0, 85)
+		word_label.size = Vector2(120, 30)
+		word_label.position = Vector2(0, 100)
 		word_label.add_theme_font_size_override("font_size", 14)
 		word_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		word_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		word_label.add_theme_color_override("font_color", Colors.LIGHT_BASE)
+		word_label.z_index = 3
 		ship_container.add_child(word_label)
 		
 		# Update container size to include label

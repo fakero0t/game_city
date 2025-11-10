@@ -8,6 +8,7 @@ var correct_player: AudioStreamPlayer
 var incorrect_player: AudioStreamPlayer
 var click_player: AudioStreamPlayer
 var triumph_player: AudioStreamPlayer
+var laser_player: AudioStreamPlayer
 
 func _ready() -> void:
 	# Create audio players
@@ -15,18 +16,21 @@ func _ready() -> void:
 	incorrect_player = AudioStreamPlayer.new()
 	click_player = AudioStreamPlayer.new()
 	triumph_player = AudioStreamPlayer.new()
+	laser_player = AudioStreamPlayer.new()
 	
 	add_child(correct_player)
 	add_child(incorrect_player)
 	add_child(click_player)
 	add_child(triumph_player)
+	add_child(laser_player)
 	
 	# Try to load sound files from assets/sounds/
-	# If files don't exist, generate procedural sounds
-	var correct_sound_path = "res://assets/sounds/correct_chime.wav"
+	# If files don't exist, generate procedural sounds or use retro sci-fi sounds
+	var correct_sound_path = "res://assets/Free Retro Sci-Fi Sound Fx/14 Retro Explosion #1.mp3"
 	var incorrect_sound_path = "res://assets/sounds/incorrect_thud.wav"
 	var click_sound_path = "res://assets/sounds/click.wav"
 	var triumph_sound_path = "res://assets/sounds/triumph.wav"
+	var laser_sound_path = "res://assets/Free Retro Sci-Fi Sound Fx/01 Retro Lazer #1.mp3"
 	
 	if ResourceLoader.exists(correct_sound_path):
 		correct_player.stream = load(correct_sound_path)
@@ -48,11 +52,17 @@ func _ready() -> void:
 	else:
 		triumph_player.stream = _create_triumph_sound()
 	
+	if ResourceLoader.exists(laser_sound_path):
+		laser_player.stream = load(laser_sound_path)
+	else:
+		laser_player.stream = _create_click_sound()
+	
 	# Set volume (adjust as needed)
 	correct_player.volume_db = -10.0
 	incorrect_player.volume_db = -10.0
 	click_player.volume_db = -12.0
 	triumph_player.volume_db = -8.0
+	laser_player.volume_db = -10.0
 
 ## Play positive chime sound for correct answers
 func play_correct_sound() -> void:
@@ -73,6 +83,11 @@ func play_click_sound() -> void:
 func play_triumph_sound() -> void:
 	if triumph_player and triumph_player.stream:
 		triumph_player.play()
+
+## Play laser sound for shooting
+func play_laser_sound() -> void:
+	if laser_player and laser_player.stream:
+		laser_player.play()
 
 ## Create a three-tone ascending chime using AudioStreamWAV
 func _create_correct_beep() -> AudioStreamWAV:

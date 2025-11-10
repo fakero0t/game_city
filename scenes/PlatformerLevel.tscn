@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/PlatformerLevel.gd" id="1"]
 [ext_resource type="Theme" path="res://assets/vocab_zoo_theme.tres" id="2"]
-[ext_resource type="FontFile" uid="uid://cjgscn3b8wcvs" path="res://assets/fonts/press-start-2p.ttf" id="3"]
-[ext_resource type="Texture2D" uid="uid://starfield_corona" path="res://assets/pixelart_starfields (1)/pixelart_starfield_corona.png" id="4_starfield"]
+[ext_resource type="FontFile" path="res://assets/dungeonmode/font/dungeon-mode.ttf" id="3"]
+[ext_resource type="Texture2D" uid="uid://bpc6q2aites4q" path="res://assets/pixelart_starfields (1)/pixelart_starfield_corona.png" id="4_starfield"]
 
 [node name="PlatformerLevel" type="Control"]
 layout_mode = 3

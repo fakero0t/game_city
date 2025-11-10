@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cp1ysuis1ivy1"
+path="res://.godot/imported/07 Retro Lazer #7.mp3-6cbd94a80f68242aa21c0509ae1d61f3.mp3str"
+
+[deps]
+
+source_file="res://assets/Free Retro Sci-Fi Sound Fx/07 Retro Lazer #7.mp3"
+dest_files=["res://.godot/imported/07 Retro Lazer #7.mp3-6cbd94a80f68242aa21c0509ae1d61f3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

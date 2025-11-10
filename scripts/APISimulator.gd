@@ -91,6 +91,11 @@ func clear_test_data() -> void:
 	test_data_entries.clear()
 	current_test_index = 0
 
+## Reset test data index (allows cycling through words again)
+func reset_progress() -> void:
+	current_test_index = 0
+	print("APISimulator: Progress reset - starting from beginning")
+
 ## Get all test data entries
 func get_test_data() -> Array:
 	return test_data_entries
@@ -105,9 +110,14 @@ func request_next_activity(session_id: String) -> Dictionary:
 		push_error("APISimulator: No test data available")
 		return {}
 	
-	# Round-robin selection (cycles through test data indefinitely)
+	# Check if we've exhausted all words
+	if current_test_index >= test_data_entries.size():
+		print("APISimulator: All words have been completed!")
+		return {}
+	
+	# Get next entry (sequential, no cycling)
 	var selected_data = test_data_entries[current_test_index].duplicate(true)  # Deep copy
-	current_test_index = (current_test_index + 1) % test_data_entries.size()
+	current_test_index += 1
 	
 	# Validate before returning
 	if not validate_activity_data(selected_data):
@@ -223,9 +233,9 @@ func validate_activity_data(data: Dictionary) -> bool:
 	
 	return true
 
-## Check if test data is exhausted (always false, since we cycle indefinitely)
+## Check if test data is exhausted (all words have been shown)
 func is_test_data_exhausted() -> bool:
-	return false
+	return current_test_index >= test_data_entries.size()
 
 ## Initialize test data from vocabulary
 func _initialize_test_data() -> void:
@@ -235,19 +245,77 @@ func _initialize_test_data() -> void:
 		push_error("APISimulator: No vocabulary data available")
 		return
 	
+	# Activity types to cycle through
+	var activity_types = ["flashcard_usage", "context_cloze", "connect_def", "synonym_mcq"]
+	
 	var item_counter = 1
+	var used_words = {}  # Track which words have been used
+	var activity_index = 0  # Track which activity type to use
 	
-	# Note: Creating 1 entry per activity type for easy testing/cycling
-	# Each "Next" click will show a different activity type, then cycle through all 4
+	# Create entries for all vocabulary words, cycling through activity types
+	for word in vocab_words:
+		var word_key = word["word"]
+		
+		# Skip if word already used
+		if used_words.has(word_key):
+			continue
+		
+		# Mark word as used
+		used_words[word_key] = true
+		
+		# Get current activity type and cycle to next
+		var activity_type = activity_types[activity_index]
+		activity_index = (activity_index + 1) % activity_types.size()
+		
+		# Calculate progress
+		var progress_total = vocab_words.size()
+		var progress_current = item_counter
+		
+		# Create entry based on activity type
+		var entry: Dictionary = {}
+		
+		match activity_type:
+			"flashcard_usage":
+				entry = _create_flashcard_entry(word, vocab_words, item_counter, progress_current, progress_total)
+			"context_cloze":
+				entry = _create_context_cloze_entry(word, vocab_words, item_counter, progress_current, progress_total)
+			"connect_def":
+				entry = _create_connect_def_entry(word, vocab_words, item_counter, progress_current, progress_total)
+			"synonym_mcq":
+				entry = _create_synonym_mcq_entry(word, vocab_words, item_counter, progress_current, progress_total)
+		
+		test_data_entries.append(entry)
+		item_counter += 1
 	
-	# ========== ACTIVITY TYPE 1: context_cloze (FillInBlank - Space Invaders) (FIRST) ==========
-	var word = vocab_words[0 % vocab_words.size()]
-	var sentence = word["example_sentence"]
-	var entry = {
+	print("APISimulator: Initialized with ", test_data_entries.size(), " test entries across ", activity_types.size(), " activity types")
+
+## Create flashcard_usage entry
+func _create_flashcard_entry(word: Dictionary, vocab_words: Array, item_counter: int, progress_current: int, progress_total: int) -> Dictionary:
+	return {
+		"itemId": _generate_uuid_like("item"),
+		"activityType": "flashcard_usage",
+		"phase": "new",
+		"phaseProgress": {"current": progress_current, "total": progress_total},
+		"word": {
+			"wordId": _generate_uuid_like("word"),
+			"headword": word["word"],
+			"definition": word["definition"],
+			"exampleSentence": word["example_sentence"],
+			"pos": "adjective",
+			"media": _generate_media_array(word["word"], "word-%03d" % item_counter, true)
+		},
+		"params": {
+			"options": _generate_sentence_options(word, vocab_words)
+		}
+	}
+
+## Create context_cloze entry
+func _create_context_cloze_entry(word: Dictionary, vocab_words: Array, item_counter: int, progress_current: int, progress_total: int) -> Dictionary:
+	return {
 		"itemId": _generate_uuid_like("item"),
 		"activityType": "context_cloze",
 		"phase": "new",
-		"phaseProgress": {"current": 1, "total": 1},
+		"phaseProgress": {"current": progress_current, "total": progress_total},
 		"word": {
 			"wordId": _generate_uuid_like("word"),
 			"headword": word["word"],
@@ -256,20 +324,37 @@ func _initialize_test_data() -> void:
 			"media": _generate_media_array(word["word"], "word-%03d" % item_counter, true)
 		},
 		"params": {
-			"sentence": sentence,
+			"sentence": word["example_sentence"],
 			"options": _generate_word_options(word["word"], vocab_words)
 		}
 	}
-	test_data_entries.append(entry)
-	item_counter += 1
-	
-	# ========== ACTIVITY TYPE 2: synonym_mcq ==========
-	word = vocab_words[1 % vocab_words.size()]
-	entry = {
+
+## Create connect_def entry
+func _create_connect_def_entry(word: Dictionary, vocab_words: Array, item_counter: int, progress_current: int, progress_total: int) -> Dictionary:
+	return {
+		"itemId": _generate_uuid_like("item"),
+		"activityType": "connect_def",
+		"phase": "new",
+		"phaseProgress": {"current": progress_current, "total": progress_total},
+		"word": {
+			"wordId": _generate_uuid_like("word"),
+			"headword": word["word"],
+			"definition": word["definition"],
+			"pos": "adjective",
+			"media": _generate_media_array(word["word"], "word-%03d" % item_counter, true)
+		},
+		"params": {
+			"options": _generate_word_options(word["word"], vocab_words)
+		}
+	}
+
+## Create synonym_mcq entry
+func _create_synonym_mcq_entry(word: Dictionary, vocab_words: Array, item_counter: int, progress_current: int, progress_total: int) -> Dictionary:
+	return {
 		"itemId": _generate_uuid_like("item"),
 		"activityType": "synonym_mcq",
 		"phase": "review",
-		"phaseProgress": {"current": 1, "total": 1},
+		"phaseProgress": {"current": progress_current, "total": progress_total},
 		"word": {
 			"wordId": _generate_uuid_like("word"),
 			"headword": word["word"],
@@ -285,51 +370,6 @@ func _initialize_test_data() -> void:
 			"options": _generate_synonym_options(word)
 		}
 	}
-	test_data_entries.append(entry)
-	item_counter += 1
-	
-	# ========== ACTIVITY TYPE 3: flashcard_usage ==========
-	word = vocab_words[2 % vocab_words.size()]
-	entry = {
-		"itemId": _generate_uuid_like("item"),
-		"activityType": "flashcard_usage",
-		"phase": "new",
-		"phaseProgress": {"current": 1, "total": 1},
-		"word": {
-			"wordId": _generate_uuid_like("word"),
-			"headword": word["word"],
-			"definition": word["definition"],
-			"pos": "adjective",
-			"media": _generate_media_array(word["word"], "word-%03d" % item_counter, true)
-		},
-		"params": {
-			"options": _generate_sentence_options(word, vocab_words)
-		}
-	}
-	test_data_entries.append(entry)
-	item_counter += 1
-	
-	# ========== ACTIVITY TYPE 4: connect_def ==========
-	word = vocab_words[3 % vocab_words.size()]
-	entry = {
-		"itemId": _generate_uuid_like("item"),
-		"activityType": "connect_def",
-		"phase": "new",
-		"phaseProgress": {"current": 1, "total": 1},
-		"word": {
-			"wordId": _generate_uuid_like("word"),
-			"headword": word["word"],
-			"definition": word["definition"],
-			"pos": "adjective",
-			"media": _generate_media_array(word["word"], "word-%03d" % item_counter, true)
-		},
-		"params": {
-			"options": _generate_word_options(word["word"], vocab_words)
-		}
-	}
-	test_data_entries.append(entry)
-	
-	print("APISimulator: Initialized with ", test_data_entries.size(), " test entries (4 activity types, 1 per type for testing)")
 
 ## Generate word options for connect_def activities (array of strings)
 func _generate_word_options(correct_word: String, all_words: Array) -> Array:
@@ -374,14 +414,21 @@ func _generate_sentence_options(correct_word_data: Dictionary, all_words: Array)
 	return options
 
 ## Generate synonym options for synonym_mcq (array of {headword})
+## Creates 1 synonym (correct answer) and 3 antonyms (distractors)
 func _generate_synonym_options(word_data: Dictionary) -> Array:
 	var options = []
 	var synonyms = word_data["synonyms"]
+	var antonyms = word_data["antonyms"]
 	
-	# Use all 4 synonyms as options
-	for i in range(min(4, synonyms.size())):
+	# Add 1 synonym (the correct answer - same as targetWord)
+	options.append({
+		"headword": synonyms[0]  # This matches the targetWord
+	})
+	
+	# Add 3 antonyms as distractors
+	for i in range(min(3, antonyms.size())):
 		options.append({
-			"headword": synonyms[i]  # CHANGED: Removed wordId field
+			"headword": antonyms[i]
 		})
 	
 	options.shuffle()

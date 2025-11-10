@@ -3,7 +3,7 @@ extends Node
 ## Reference script for all colors defined in the style guide
 
 # Primary Colors
-const PRIMARY_PURPLE = Color("#8B5CF6")
+const PRIMARY_PURPLE = Color("#39FF14")  # Sci-fi lime green (was purple)
 const PRIMARY_BLUE = Color("#3B82F6")
 const PRIMARY_PINK = Color("#EC4899")
 const PRIMARY_GREEN = Color("#10B981")
